@@ -89,7 +89,7 @@ def to_svg(lay: Layout) -> str:
 
     out.append(f'<g id="wire-table" font-size="{LABEL_FONT}">')
     top = lay.table_top
-    right = lay.table_cols[-1] + 260
+    right = lay.table_right
     for c, head in zip(lay.table_cols, lay.table_header):
         out.append(f'<text x="{_f(c + (22 if c == lay.table_cols[0] else 0))}" y="{_f(top + 14)}" '
                    f'font-weight="bold" fill="{INK}">{escape(head)}</text>')
@@ -161,7 +161,7 @@ def to_png(lay: Layout, path: str | Path, scale: float = 2.0, oversample: int = 
     top = lay.table_top
     for i, (c, head) in enumerate(zip(lay.table_cols, lay.table_header)):
         text(c + (22 if i == 0 else 0), top + 14, head, LABEL_FONT, INK, bold=True)
-    right = lay.table_cols[-1] + 260
+    right = lay.table_right
     d.line([(lay.table_cols[0] * k, (top + ROW_H - 2) * k), (right * k, (top + ROW_H - 2) * k)],
            fill=_hex("#C8CCD2"), width=max(1, int(k)))
     for r in lay.table_rows:

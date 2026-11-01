@@ -27,7 +27,7 @@ def parse_color(value) -> np.ndarray:
         s = value.strip().lstrip("#")
         if len(s) == 3:
             s = "".join(c * 2 for c in s)
-        if len(s) != 6:
+        if len(s) != 6 or any(c not in "0123456789abcdefABCDEF" for c in s):
             raise ValueError(f"bad colour {value!r}; use #RRGGBB")
         return np.array([int(s[i:i + 2], 16) for i in (0, 2, 4)], float) / 255.0
     arr = np.asarray(value, float)

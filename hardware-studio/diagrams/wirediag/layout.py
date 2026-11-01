@@ -8,7 +8,8 @@ in a column with its pins on the edge facing the hub. Wires are orthogonal:
 * side-column pins sit on whole grid steps (k * PITCH); hub pins sit on half steps,
   or on a whole step only when they connect straight across to that very pin,
   so horizontal segments of different nets never share a y inside a channel;
-* a wire between parts in opposite columns runs down to its own lane below all parts;
+* parts wired to each other (not via the hub) are kept in the same column, so no
+  wire ever has to cross the hub;
 * net labels sit just outside the box edge, above their own pin's stub, in a zone
   that only that pin's stub crosses.
 
@@ -32,7 +33,6 @@ TITLE_FONT = 13
 BOX_PAD = 10.0
 MARGIN = 36.0
 ZONE_PAD = 8.0
-LANE_GAP = 13.0
 ROW_H = 21.0
 
 POWER_COLORS = ["#D62728", "#B0141E", "#E8613C", "#C2185B"]
@@ -106,6 +106,7 @@ class Layout:
     table_cols: list[float]
     table_rows: list[TableRow]
     table_top: float
+    table_right: float
     legend_y: float
     net_colors: dict[str, str]
     font_family: str
@@ -332,23 +333,14 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
     zone_right_hub = label_zone([(hub, pin) for pin in pins[hub] if "R" in hub_pin_sides[pin]])
     zone_right_outer = label_zone([(p, pin) for p in columns["right"] for pin in pins[p]])
 
-    # ---- channel membership
-    def end_geom(part: str, pin: str, toward: str):
-        """(x placeholder key, y, column) for an end; toward = edge used on the hub."""
-        if part == hub:
-            return ("hub", hub_y[(pin, toward)])
-        return (side[part], pin_y[(part, pin)])
-
+    # ---- channel membership (connected non-hub parts share a column, see _assign_sides)
     chan_items: dict[str, list[_ChanWire]] = {"L": [], "R": []}
-    cross: list[Wire] = []
     straight: list[Wire] = []
     wire_route: dict[int, dict] = {}
     for w in wires:
         (pa, pna), (pb, pnb) = w.ends
         sa, sb = side[pa], side[pb]
-        if {sa, sb} == {"left", "right"}:
-            cross.append(w)
-            continue
+        assert {sa, sb} != {"left", "right"}, "connected parts must share a column"
         if sa == "hub" and sb == "hub":
             chan = "L"
         elif "left" in (sa, sb):
@@ -372,18 +364,6 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
         chan_items[chan].append(_ChanWire(w, stubs, min(ys), max(ys)))
 
     all_bottom = max([b for _, b in box_y.values()] + [hub_bottom])
-    lanes: dict[int, float] = {}
-    for i, w in enumerate(cross):
-        lanes[w.row] = all_bottom + PITCH * 0.8 + i * LANE_GAP
-    for w in cross:
-        (pa, pna), (pb, pnb) = w.ends
-        ya = pin_y[(pa, pna)]
-        yb = pin_y[(pb, pnb)]
-        yl, yr = (ya, yb) if side[pa] == "left" else (yb, ya)
-        lane = lanes[w.row]
-        chan_items["L"].append(_ChanWire(w, [(yl, "L"), (lane, "R")], yl, lane))
-        chan_items["R"].append(_ChanWire(w, [(lane, "L"), (yr, "R")], yr, lane))
-
     order = {c: _order_tracks(items) for c, items in chan_items.items()}
 
     # ---- x positions
@@ -415,7 +395,7 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
     track_x = {"L": {}, "R": {}}
     for c, t0 in (("L", track_l0), ("R", track_r0)):
         for k, it in enumerate(order[c]):
-            track_x[c].setdefault(it.wire.row, t0 + k * TRACK)
+            track_x[c][it.wire.row] = t0 + k * TRACK
 
     # ---- boxes & pins
     boxes: list[BoxGeom] = []
@@ -459,28 +439,14 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
     wire_geoms: list[WireGeom] = []
     for w in wires:
         (pa, pna), (pb, pnb) = w.ends
-        if w in cross:
-            if side[pa] == "left":
-                a = end_xy(pa, pna, "L")
-                b = end_xy(pb, pnb, "R")
-            else:
-                a = end_xy(pa, pna, "R")
-                b = end_xy(pb, pnb, "L")
-            tl, tr = track_x["L"][w.row], track_x["R"][w.row]
-            lane = lanes[w.row]
-            if side[pa] == "left":
-                pts = [a, (tl, a[1]), (tl, lane), (tr, lane), (tr, b[1]), b]
-            else:
-                pts = [a, (tr, a[1]), (tr, lane), (tl, lane), (tl, b[1]), b]
+        chan = wire_route[w.row]["chan"]
+        a = end_xy(pa, pna, chan)
+        b = end_xy(pb, pnb, chan)
+        if w in straight:
+            pts = [a, b]
         else:
-            chan = wire_route[w.row]["chan"]
-            a = end_xy(pa, pna, chan)
-            b = end_xy(pb, pnb, chan)
-            if w in straight:
-                pts = [a, b]
-            else:
-                t = track_x[chan][w.row]
-                pts = [a, (t, a[1]), (t, b[1]), b]
+            t = track_x[chan][w.row]
+            pts = [a, (t, a[1]), (t, b[1]), b]
         wire_geoms.append(WireGeom(w, [(float(px), float(py)) for px, py in pts], colors[w.net], _width(w.kind)))
 
     # ---- labels (one per pin instance that has a stub)
@@ -494,8 +460,7 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
                                     (p.part, p.pin, p.side)))
 
     # ---- table & legend
-    lane_bottom = max(lanes.values()) if lanes else all_bottom
-    legend_y = lane_bottom + PITCH * 1.4
+    legend_y = all_bottom + PITCH * 1.4
     table_top = legend_y + PITCH * 1.1
     header = ["#", "从 From", "到 To", "网络 Net", "类型 Kind", "备注 Note"]
     kind_cn = {"power": "电源 power", "ground": "地 ground", "signal": "信号 signal"}
@@ -516,7 +481,7 @@ def build_layout(wires: list[Wire], title: str = "", subtitle: str = "",
     legend_w = m.width("图例 Legend:  电源 Power  地 Ground  信号 Signal（按网络着色 coloured per net）", LABEL_FONT) + 120
     width = max(diagram_right, table_right, title_w, legend_w + MARGIN) + MARGIN
     return Layout(width, height, title, subtitle, boxes, wire_geoms, labels, header, cols, table_rows,
-                  table_top, legend_y, colors, m.family, m)
+                  table_top, table_right, legend_y, colors, m.family, m)
 
 
 # ---------------------------------------------------------- verification ---

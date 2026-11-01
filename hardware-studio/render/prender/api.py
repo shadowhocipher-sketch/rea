@@ -70,7 +70,10 @@ class PartSpec:
         return part
 
     def validate(self):
-        E.parse_color(self.color)
+        try:
+            E.parse_color(self.color)
+        except ValueError as exc:
+            raise RenderConfigError(str(exc)) from None
         if self.material not in E.MATERIALS:
             raise RenderConfigError(
                 f"unknown material {self.material!r}; choose from {', '.join(E.MATERIALS)}")

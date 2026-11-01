@@ -132,6 +132,7 @@ class SimRuntime:
         self.wake_cfg = {"ext0": None, "ext1": None, "touch": False, "gpio": None, "ulp": False}
         self.touch_threshold = {}
         self.boot_us = self.now_us
+        self.displays = []              # same panel after reboot keeps the same display id
         for t_us, pin, level in self.stim.pin_edges():
             if t_us >= self.now_us:
                 self.schedule_at(t_us, self._make_edge_cb(pin, level), tag="edge")
