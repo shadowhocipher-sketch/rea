@@ -51,6 +51,8 @@ documentation.espressif.com、www.espressif.com、docs.espressif.com、st.com、
 ### power/ 电源
 - [usb-c-sink.md](power/usb-c-sink.md) — USB-C 受电：CC 下拉 5.1 kΩ（Type-C 规范 R2.1）
 - [tp4056.md](power/tp4056.md) — 单节锂电线性充电
+- [mcp73831.md](power/mcp73831.md) — 单节锂电线性充电（SOT-23-5，≤500 mA，浮充电压按后缀）
+- [max17048.md](power/max17048.md) — 单节锂电电量计（fuel gauge，I2C，电量百分比，休眠 3 μA）
 - [dw01-protection.md](power/dw01-protection.md) — 锂电保护 DW01-P + FS8205A
 - [me6211.md](power/me6211.md) — 500 mA LDO（静态 60 μA）
 - [xc6206.md](power/xc6206.md) — 超低静态电流 LDO（1 μA，约 200 mA）

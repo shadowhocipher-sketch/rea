@@ -38,7 +38,7 @@
 | SLA-3 | 典型尺寸公差 | ±0.2 mm（≤100 mm） | [JLC3DP 能力页](https://jlc3dp.com/capabilities/3d-printing-service) · B · 2026-11-01 | 摘要 |
 | SLA-3a | 装配配合单边间隙 | 0.2 mm | **估算**：取 SLA-3 的一个公差值 | — |
 | SLA-4 | 最小孔径；排液孔 | Form 4：孔 0.5 mm；排液孔 0.75 mm；小于 0.15 mm 的凹凸细节可能糊掉 | [Formlabs Form 4 Design Guide](https://formlabs.com/blog/design-guide-form4) · A · 2026-11-01 | 摘要 |
-| SLA-5 | Formlabs 数值基于 Clear 树脂、100 µm 层厚，其他树脂和层厚会略有不同 | — | 同上 | 摘要 |
+| SLA-5 | Formlabs 数值基于 Clear 树脂、100 µm 层厚，其他树脂和层厚会略有不同 | — | [Formlabs Form 4 Design Guide](https://formlabs.com/blog/design-guide-form4) · A · 2026-11-01 | 摘要 |
 
 ## 3. MJF（HP Multi Jet Fusion，尼龙粉末）
 
@@ -89,7 +89,7 @@
 | USB-2 | 插座壳长度（参考尺寸） | 6.20 ± 0.02 mm | USB Type-C ECN for receptacle shell length（[镜像](https://docs.ampnuts.ru/eevblog.docs/Standards/USB%203.1/usb_31_030215/USB%20Type-C/USB%20Type-C%20ECNs/USB%20Type-C%20ECN%20for%20receptacle%20shell%20length.pdf)）· A · 2026-11-01 | 待核实（非 usb.org 原站） |
 | USB-3 | 插头外壳（overmold）最大尺寸 | **未查到** USB-IF 规范里的数值（查过搜索摘要；规范为 IEC 62680-1-3 / USB Type-C Cable and Connector Specification）。库内默认 12.4 × 6.5 × 20 mm 为**估算**：DigiKey 论坛有用户以 12.5 mm 为限（C 级），GCT USB4215 图纸配合视图标 6.5 Max | [DigiKey 论坛](https://forum.digikey.com/t/overmold-size-of-the-usb-c-male-end/70874) · C；[GCT USB4215](https://gct.co/Files/Drawings/USB4215.pdf) · S（该零件）· 2026-11-01 | 估算，**用游标卡尺量实际线材** |
 | USB-4 | 插座外形默认 8.94 × 3.26 × 7.35 mm | — | **估算**，未查到 S 级来源；必须换成所用插座数据手册的值 | — |
-| USB-5 | 开孔规则：插座端面缩进外表面（recess > 0）时，插头外壳要伸进壁里，开孔按插头外壳 + 间隙；平齐或伸出时按插座外形 + 间隙 | — | 几何推导（见 `hwcad/usbc.py`），由插头包络干涉检查验证 | — |
+| USB-5 | 开孔规则：插座端面缩进外表面（recess > 0）时，插头外壳要伸进壁里，开孔按插头外壳 + 间隙；平齐或伸出时按插座外形 + 间隙 | — | 几何推导（推论，见 `hwcad/usbc.py`，由插头包络干涉检查验证）；用到的插头外壳尺寸来自 USB-1 / USB-3：[CJT CJ-CM026-24P 图纸](https://cjt.com/up/CJ-CM026-24P_dwg.pdf) · S（该零件）· 2026-11-01；插头 overmold 尺寸为估算 | 待核实（插头外壳尺寸本身是估算） |
 
 ## 8. 电池
 
@@ -117,12 +117,12 @@
 
 **估算的决策表**（依据：上表区间；小型电子产品外壳一般为 50–150 mm、每台 2–4 个塑料件。在具体项目里应拿两家以上报价复核）：
 
-| 每款零件数量 | 建议工艺 | 理由 |
-|---|---|---|
-| 1–20 | FDM（功能验证）；外观样机用光固化 | 无模具、当天出件；光固化表面好、公差 ±0.2 mm |
-| 20–300 | 光固化或 MJF（外包） | 单价随数量几乎不变；MJF 尼龙件强度和一致性适合小批量终端件 |
-| 300–2,000 | MJF 与铝模（快速模）注塑二选一，拿报价比较 | 落在 Xometry / RSP 给出的平衡点区间内 |
-| > 2,000 | 注塑（钢模 / 铝模） | 超过大部分来源的平衡点；先按 IM-1~IM-6 改设计（均匀壁厚、斜度、筋、螺丝柱） |
+| 每款零件数量 | 建议工艺 | 理由 | 来源 · 级别 · 日期 |
+|---|---|---|---|
+| 1–20 | FDM（功能验证）；外观样机用光固化 | 无模具、当天出件；光固化表面好、公差 ±0.2 mm | 估算；光固化公差见 SLA-3：[JLC3DP 能力页](https://jlc3dp.com/capabilities/3d-printing-service) · B · 2026-11-01 |
+| 20–300 | 光固化或 MJF（外包） | 单价随数量几乎不变；MJF 尼龙件强度和一致性适合小批量终端件 | 估算；上限取上表平衡点下限 250 件：[Xometry Breakeven](https://www.xometry.com/resources/3d-printing/3d-printing-vs-injection-molding-breakeven/) · B；[RSP](https://www.rspinc.com/blog/contract-manufacturing/3d-printing-vs-injection-molding/) · C · 2026-11-01 |
+| 300–2,000 | MJF 与铝模（快速模）注塑二选一，拿报价比较 | 落在 Xometry / RSP 给出的平衡点区间内 | 估算；[Xometry Breakeven](https://www.xometry.com/resources/3d-printing/3d-printing-vs-injection-molding-breakeven/) · B；[RSP](https://www.rspinc.com/blog/contract-manufacturing/3d-printing-vs-injection-molding/) · C · 2026-11-01 |
+| > 2,000 | 注塑（钢模 / 铝模） | 超过大部分来源的平衡点；先按 IM-1~IM-6 改设计（均匀壁厚、斜度、筋、螺丝柱） | 估算；下限取 Xometry 平衡点上限 2,000 件：[Xometry Breakeven](https://www.xometry.com/resources/3d-printing/3d-printing-vs-injection-molding-breakeven/) · B · 2026-11-01（Prusa、Formlabs 给出的平衡点更高，见上表） |
 
 切换前要改的设计（估算 / 经验，按本页规则核对）：3D 打印件的厚实心螺丝柱、零斜度直壁、尖角，在注塑时都要改；
 光固化 / MJF 的配合间隙（0.2–0.3 mm）在注塑时通常可以收小（IM-7 未查到官方值）。
