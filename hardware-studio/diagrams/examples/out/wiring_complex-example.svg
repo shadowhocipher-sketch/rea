@@ -1,0 +1,363 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="922.1" height="1369.6" viewBox="0 0 922.1 1369.6" data-generator="hardware-studio/diagrams wiring" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','WenQuanYi Micro Hei','DejaVu Sans',sans-serif">
+<rect x="0" y="0" width="922.1" height="1369.6" fill="#FFFFFF"/>
+<text x="36" y="44" font-size="16" font-weight="bold" fill="#1D2430">接线图 / Wiring diagram — complex-example</text>
+<text x="36" y="66" font-size="11" fill="#5C6370">虚构示例数据（测试排版用），由 diagrams/examples/complex/pins.csv 自动生成</text>
+<g id="wires" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<polyline class="wire" data-row="1" data-from="USB_C.VBUS" data-to="CHARGER.VIN" data-from-part="USB_C" data-from-pin="VBUS" data-to-part="CHARGER" data-to-pin="VIN" data-net="+5V" data-kind="power" stroke="#D62728" stroke-width="2.6" points="790.1,130 604.7,130 604.7,260 790.1,260"><title>#1 +5V: USB_C.VBUS → CHARGER.VIN USB 受电</title></polyline>
+<polyline class="wire" data-row="2" data-from="USB_C.GND" data-to="CHARGER.GND" data-from-part="USB_C" data-from-pin="GND" data-to-part="CHARGER" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="790.1,156 617.7,156 617.7,286 790.1,286"><title>#2 GND: USB_C.GND → CHARGER.GND</title></polyline>
+<polyline class="wire" data-row="3" data-from="USB_C.CC1" data-to="CHARGER.CC1" data-from-part="USB_C" data-from-pin="CC1" data-to-part="CHARGER" data-to-pin="CC1" data-net="CC1" data-kind="signal" stroke="#1F77B4" stroke-width="1.8" points="790.1,182 630.7,182 630.7,312 790.1,312"><title>#3 CC1: USB_C.CC1 → CHARGER.CC1 5.1k 下拉在模块上</title></polyline>
+<polyline class="wire" data-row="4" data-from="CHARGER.BAT" data-to="BATTERY.+" data-from-part="CHARGER" data-from-pin="BAT" data-to-part="BATTERY" data-to-pin="+" data-net="VBAT" data-kind="power" stroke="#B0141E" stroke-width="2.6" points="790.1,338 656.7,338 656.7,442 790.1,442"><title>#4 VBAT: CHARGER.BAT → BATTERY.+ 单节锂电</title></polyline>
+<polyline class="wire" data-row="5" data-from="CHARGER.GND" data-to="BATTERY.-" data-from-part="CHARGER" data-from-pin="GND" data-to-part="BATTERY" data-to-pin="-" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="790.1,286 643.7,286 643.7,468 790.1,468"><title>#5 GND: CHARGER.GND → BATTERY.-</title></polyline>
+<polyline class="wire" data-row="6" data-from="CHARGER.VOUT" data-to="LDO.VIN" data-from-part="CHARGER" data-from-pin="VOUT" data-to-part="LDO" data-to-pin="VIN" data-net="VSYS" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="790.1,364 669.7,364 669.7,546 790.1,546"><title>#6 VSYS: CHARGER.VOUT → LDO.VIN</title></polyline>
+<polyline class="wire" data-row="7" data-from="LDO.VOUT" data-to="MCU.3V3" data-from-part="LDO" data-from-pin="VOUT" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#C2185B" stroke-width="2.6" points="790.1,572 510.4,572"><title>#7 +3V3: LDO.VOUT → MCU.3V3</title></polyline>
+<polyline class="wire" data-row="8" data-from="LDO.GND" data-to="MCU.GND" data-from-part="LDO" data-from-pin="GND" data-to-part="MCU" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="790.1,598 510.4,598"><title>#8 GND: LDO.GND → MCU.GND</title></polyline>
+<polyline class="wire" data-row="9" data-from="MCU.3V3" data-to="OLED.VCC" data-from-part="MCU" data-from-pin="3V3" data-to-part="OLED" data-to-pin="VCC" data-net="+3V3" data-kind="power" stroke="#C2185B" stroke-width="2.6" points="390.3,247 267.7,247 267.7,130 132,130"><title>#9 +3V3: MCU.3V3 → OLED.VCC</title></polyline>
+<polyline class="wire" data-row="10" data-from="MCU.GND" data-to="OLED.GND" data-from-part="MCU" data-from-pin="GND" data-to-part="OLED" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="390.3,429 254.7,429 254.7,156 132,156"><title>#10 GND: MCU.GND → OLED.GND</title></polyline>
+<polyline class="wire" data-row="11" data-from="MCU.GPIO8" data-to="OLED.SDA" data-from-part="MCU" data-from-pin="GPIO8" data-to-part="OLED" data-to-pin="SDA" data-net="I2C_SDA" data-kind="signal" stroke="#2CA02C" stroke-width="1.8" points="390.3,273 228.7,273 228.7,182 132,182"><title>#11 I2C_SDA: MCU.GPIO8 → OLED.SDA I2C 400kHz</title></polyline>
+<polyline class="wire" data-row="12" data-from="MCU.GPIO9" data-to="OLED.SCL" data-from-part="MCU" data-from-pin="GPIO9" data-to-part="OLED" data-to-pin="SCL" data-net="I2C_SCL" data-kind="signal" stroke="#9467BD" stroke-width="1.8" points="390.3,299 215.7,299 215.7,208 132,208"><title>#12 I2C_SCL: MCU.GPIO9 → OLED.SCL</title></polyline>
+<polyline class="wire" data-row="13" data-from="MCU.GPIO8" data-to="IMU.SDA" data-from-part="MCU" data-from-pin="GPIO8" data-to-part="IMU" data-to-pin="SDA" data-net="I2C_SDA" data-kind="signal" stroke="#2CA02C" stroke-width="1.8" points="390.3,273 241.7,273 241.7,286 132,286"><title>#13 I2C_SDA: MCU.GPIO8 → IMU.SDA 与 OLED 共用总线</title></polyline>
+<polyline class="wire" data-row="14" data-from="MCU.GPIO9" data-to="IMU.SCL" data-from-part="MCU" data-from-pin="GPIO9" data-to-part="IMU" data-to-pin="SCL" data-net="I2C_SCL" data-kind="signal" stroke="#9467BD" stroke-width="1.8" points="390.3,299 293.7,299 293.7,312 132,312"><title>#14 I2C_SCL: MCU.GPIO9 → IMU.SCL</title></polyline>
+<polyline class="wire" data-row="15" data-from="MCU.3V3" data-to="IMU.VDD" data-from-part="MCU" data-from-pin="3V3" data-to-part="IMU" data-to-pin="VDD" data-net="+3V3" data-kind="power" stroke="#C2185B" stroke-width="2.6" points="390.3,247 280.7,247 280.7,338 132,338"><title>#15 +3V3: MCU.3V3 → IMU.VDD</title></polyline>
+<polyline class="wire" data-row="16" data-from="MCU.GND" data-to="IMU.GND" data-from-part="MCU" data-from-pin="GND" data-to-part="IMU" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="390.3,429 202.7,429 202.7,364 132,364"><title>#16 GND: MCU.GND → IMU.GND</title></polyline>
+<polyline class="wire" data-row="17" data-from="MCU.GPIO4" data-to="IMU.INT1" data-from-part="MCU" data-from-pin="GPIO4" data-to-part="IMU" data-to-pin="INT1" data-net="IMU_INT" data-kind="signal" stroke="#FF7F0E" stroke-width="1.8" points="390.3,390 132,390"><title>#17 IMU_INT: MCU.GPIO4 → IMU.INT1 中断，低有效</title></polyline>
+<polyline class="wire" data-row="18" data-from="MCU.GPIO2" data-to="BUTTON.A" data-from-part="MCU" data-from-pin="GPIO2" data-to-part="BUTTON" data-to-pin="A" data-net="BTN" data-kind="signal" stroke="#17BECF" stroke-width="1.8" points="390.3,468 132,468"><title>#18 BTN: MCU.GPIO2 → BUTTON.A 内部上拉</title></polyline>
+<polyline class="wire" data-row="19" data-from="MCU.GND" data-to="BUTTON.B" data-from-part="MCU" data-from-pin="GND" data-to-part="BUTTON" data-to-pin="B" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="390.3,429 306.7,429 306.7,494 132,494"><title>#19 GND: MCU.GND → BUTTON.B</title></polyline>
+<polyline class="wire" data-row="20" data-from="MCU.GPIO5" data-to="BUZZER.+" data-from-part="MCU" data-from-pin="GPIO5" data-to-part="BUZZER" data-to-pin="+" data-net="BUZZ" data-kind="signal" stroke="#8C564B" stroke-width="1.8" points="390.3,572 132,572"><title>#20 BUZZ: MCU.GPIO5 → BUZZER.+ PWM 2–4kHz</title></polyline>
+<polyline class="wire" data-row="21" data-from="MCU.GND" data-to="BUZZER.-" data-from-part="MCU" data-from-pin="GND" data-to-part="BUZZER" data-to-pin="-" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="390.3,429 319.7,429 319.7,598 132,598"><title>#21 GND: MCU.GND → BUZZER.-</title></polyline>
+<polyline class="wire" data-row="22" data-from="MCU.GPIO1" data-to="DIVIDER.MID" data-from-part="MCU" data-from-pin="GPIO1" data-to-part="DIVIDER" data-to-pin="MID" data-net="VBAT_SENSE" data-kind="signal" stroke="#E377C2" stroke-width="1.8" points="510.4,676 790.1,676"><title>#22 VBAT_SENSE: MCU.GPIO1 → DIVIDER.MID ADC 量电</title></polyline>
+<polyline class="wire" data-row="23" data-from="BATTERY.+" data-to="DIVIDER.TOP" data-from-part="BATTERY" data-from-pin="+" data-to-part="DIVIDER" data-to-pin="TOP" data-net="VBAT" data-kind="power" stroke="#B0141E" stroke-width="2.6" points="790.1,442 682.7,442 682.7,702 790.1,702"><title>#23 VBAT: BATTERY.+ → DIVIDER.TOP</title></polyline>
+<polyline class="wire" data-row="24" data-from="DIVIDER.BOT" data-to="BATTERY.-" data-from-part="DIVIDER" data-from-pin="BOT" data-to-part="BATTERY" data-to-pin="-" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="790.1,728 695.7,728 695.7,468 790.1,468"><title>#24 GND: DIVIDER.BOT → BATTERY.-</title></polyline>
+</g>
+<g id="parts">
+<g class="part" data-part="MCU">
+<rect x="390.3" y="92.3" width="120.1" height="599.3" rx="6" fill="#EEF2F7" stroke="#3A4250" stroke-width="1.4"/>
+<text x="450.3" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">MCU</text>
+<g class="pin" data-part="MCU" data-pin="3V3" data-side="R" data-net="+3V3"><circle cx="510.4" cy="572" r="3.6" fill="#C2185B" stroke="#FFFFFF" stroke-width="1"/><text x="501.4" y="576" font-size="12" text-anchor="end" fill="#1D2430">3V3</text></g>
+<g class="pin" data-part="MCU" data-pin="3V3" data-side="L" data-net="+3V3"><circle cx="390.3" cy="247" r="3.6" fill="#C2185B" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="251" font-size="12" text-anchor="start" fill="#1D2430">3V3</text></g>
+<g class="pin" data-part="MCU" data-pin="GND" data-side="R" data-net="GND"><circle cx="510.4" cy="598" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="501.4" y="602" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="MCU" data-pin="GND" data-side="L" data-net="GND"><circle cx="390.3" cy="429" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="433" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO8" data-side="L" data-net="I2C_SDA"><circle cx="390.3" cy="273" r="3.6" fill="#2CA02C" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="277" font-size="12" text-anchor="start" fill="#1D2430">GPIO8</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO9" data-side="L" data-net="I2C_SCL"><circle cx="390.3" cy="299" r="3.6" fill="#9467BD" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="303" font-size="12" text-anchor="start" fill="#1D2430">GPIO9</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO4" data-side="L" data-net="IMU_INT"><circle cx="390.3" cy="390" r="3.6" fill="#FF7F0E" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="394" font-size="12" text-anchor="start" fill="#1D2430">GPIO4</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO2" data-side="L" data-net="BTN"><circle cx="390.3" cy="468" r="3.6" fill="#17BECF" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="472" font-size="12" text-anchor="start" fill="#1D2430">GPIO2</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO5" data-side="L" data-net="BUZZ"><circle cx="390.3" cy="572" r="3.6" fill="#8C564B" stroke="#FFFFFF" stroke-width="1"/><text x="399.3" y="576" font-size="12" text-anchor="start" fill="#1D2430">GPIO5</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO1" data-side="R" data-net="VBAT_SENSE"><circle cx="510.4" cy="676" r="3.6" fill="#E377C2" stroke="#FFFFFF" stroke-width="1"/><text x="501.4" y="680" font-size="12" text-anchor="end" fill="#1D2430">GPIO1</text></g>
+</g>
+<g class="part" data-part="OLED">
+<rect x="36" y="92.3" width="96" height="131.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">OLED</text>
+<g class="pin" data-part="OLED" data-pin="VCC" data-side="R" data-net="+3V3"><circle cx="132" cy="130" r="3.6" fill="#C2185B" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="134" font-size="12" text-anchor="end" fill="#1D2430">VCC</text></g>
+<g class="pin" data-part="OLED" data-pin="GND" data-side="R" data-net="GND"><circle cx="132" cy="156" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="160" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="OLED" data-pin="SDA" data-side="R" data-net="I2C_SDA"><circle cx="132" cy="182" r="3.6" fill="#2CA02C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="186" font-size="12" text-anchor="end" fill="#1D2430">SDA</text></g>
+<g class="pin" data-part="OLED" data-pin="SCL" data-side="R" data-net="I2C_SCL"><circle cx="132" cy="208" r="3.6" fill="#9467BD" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="212" font-size="12" text-anchor="end" fill="#1D2430">SCL</text></g>
+</g>
+<g class="part" data-part="IMU">
+<rect x="36" y="248.3" width="96" height="157.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="267.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">IMU</text>
+<g class="pin" data-part="IMU" data-pin="SDA" data-side="R" data-net="I2C_SDA"><circle cx="132" cy="286" r="3.6" fill="#2CA02C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="290" font-size="12" text-anchor="end" fill="#1D2430">SDA</text></g>
+<g class="pin" data-part="IMU" data-pin="SCL" data-side="R" data-net="I2C_SCL"><circle cx="132" cy="312" r="3.6" fill="#9467BD" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="316" font-size="12" text-anchor="end" fill="#1D2430">SCL</text></g>
+<g class="pin" data-part="IMU" data-pin="VDD" data-side="R" data-net="+3V3"><circle cx="132" cy="338" r="3.6" fill="#C2185B" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="342" font-size="12" text-anchor="end" fill="#1D2430">VDD</text></g>
+<g class="pin" data-part="IMU" data-pin="GND" data-side="R" data-net="GND"><circle cx="132" cy="364" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="368" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="IMU" data-pin="INT1" data-side="R" data-net="IMU_INT"><circle cx="132" cy="390" r="3.6" fill="#FF7F0E" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="394" font-size="12" text-anchor="end" fill="#1D2430">INT1</text></g>
+</g>
+<g class="part" data-part="BUTTON">
+<rect x="36" y="430.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="449.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">BUTTON</text>
+<g class="pin" data-part="BUTTON" data-pin="A" data-side="R" data-net="BTN"><circle cx="132" cy="468" r="3.6" fill="#17BECF" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="472" font-size="12" text-anchor="end" fill="#1D2430">A</text></g>
+<g class="pin" data-part="BUTTON" data-pin="B" data-side="R" data-net="GND"><circle cx="132" cy="494" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="498" font-size="12" text-anchor="end" fill="#1D2430">B</text></g>
+</g>
+<g class="part" data-part="BUZZER">
+<rect x="36" y="534.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="553.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">BUZZER</text>
+<g class="pin" data-part="BUZZER" data-pin="+" data-side="R" data-net="BUZZ"><circle cx="132" cy="572" r="3.6" fill="#8C564B" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="576" font-size="12" text-anchor="end" fill="#1D2430">+</text></g>
+<g class="pin" data-part="BUZZER" data-pin="-" data-side="R" data-net="GND"><circle cx="132" cy="598" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="602" font-size="12" text-anchor="end" fill="#1D2430">-</text></g>
+</g>
+<g class="part" data-part="USB_C">
+<rect x="790.1" y="92.3" width="96" height="105.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="838.1" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">USB_C</text>
+<g class="pin" data-part="USB_C" data-pin="VBUS" data-side="L" data-net="+5V"><circle cx="790.1" cy="130" r="3.6" fill="#D62728" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="134" font-size="12" text-anchor="start" fill="#1D2430">VBUS</text></g>
+<g class="pin" data-part="USB_C" data-pin="GND" data-side="L" data-net="GND"><circle cx="790.1" cy="156" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="160" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="USB_C" data-pin="CC1" data-side="L" data-net="CC1"><circle cx="790.1" cy="182" r="3.6" fill="#1F77B4" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="186" font-size="12" text-anchor="start" fill="#1D2430">CC1</text></g>
+</g>
+<g class="part" data-part="CHARGER">
+<rect x="790.1" y="222.3" width="96" height="157.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="838.1" y="241.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">CHARGER</text>
+<g class="pin" data-part="CHARGER" data-pin="VIN" data-side="L" data-net="+5V"><circle cx="790.1" cy="260" r="3.6" fill="#D62728" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="264" font-size="12" text-anchor="start" fill="#1D2430">VIN</text></g>
+<g class="pin" data-part="CHARGER" data-pin="GND" data-side="L" data-net="GND"><circle cx="790.1" cy="286" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="290" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="CHARGER" data-pin="CC1" data-side="L" data-net="CC1"><circle cx="790.1" cy="312" r="3.6" fill="#1F77B4" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="316" font-size="12" text-anchor="start" fill="#1D2430">CC1</text></g>
+<g class="pin" data-part="CHARGER" data-pin="BAT" data-side="L" data-net="VBAT"><circle cx="790.1" cy="338" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="342" font-size="12" text-anchor="start" fill="#1D2430">BAT</text></g>
+<g class="pin" data-part="CHARGER" data-pin="VOUT" data-side="L" data-net="VSYS"><circle cx="790.1" cy="364" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="368" font-size="12" text-anchor="start" fill="#1D2430">VOUT</text></g>
+</g>
+<g class="part" data-part="BATTERY">
+<rect x="790.1" y="404.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="838.1" y="423.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">BATTERY</text>
+<g class="pin" data-part="BATTERY" data-pin="+" data-side="L" data-net="VBAT"><circle cx="790.1" cy="442" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="446" font-size="12" text-anchor="start" fill="#1D2430">+</text></g>
+<g class="pin" data-part="BATTERY" data-pin="-" data-side="L" data-net="GND"><circle cx="790.1" cy="468" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="472" font-size="12" text-anchor="start" fill="#1D2430">-</text></g>
+</g>
+<g class="part" data-part="LDO">
+<rect x="790.1" y="508.3" width="96" height="105.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="838.1" y="527.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">LDO</text>
+<g class="pin" data-part="LDO" data-pin="VIN" data-side="L" data-net="VSYS"><circle cx="790.1" cy="546" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="550" font-size="12" text-anchor="start" fill="#1D2430">VIN</text></g>
+<g class="pin" data-part="LDO" data-pin="VOUT" data-side="L" data-net="+3V3"><circle cx="790.1" cy="572" r="3.6" fill="#C2185B" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="576" font-size="12" text-anchor="start" fill="#1D2430">VOUT</text></g>
+<g class="pin" data-part="LDO" data-pin="GND" data-side="L" data-net="GND"><circle cx="790.1" cy="598" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="602" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+</g>
+<g class="part" data-part="DIVIDER">
+<rect x="790.1" y="638.3" width="96" height="105.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="838.1" y="657.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">DIVIDER</text>
+<g class="pin" data-part="DIVIDER" data-pin="MID" data-side="L" data-net="VBAT_SENSE"><circle cx="790.1" cy="676" r="3.6" fill="#E377C2" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="680" font-size="12" text-anchor="start" fill="#1D2430">MID</text></g>
+<g class="pin" data-part="DIVIDER" data-pin="TOP" data-side="L" data-net="VBAT"><circle cx="790.1" cy="702" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="706" font-size="12" text-anchor="start" fill="#1D2430">TOP</text></g>
+<g class="pin" data-part="DIVIDER" data-pin="BOT" data-side="L" data-net="GND"><circle cx="790.1" cy="728" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="799.1" y="732" font-size="12" text-anchor="start" fill="#1D2430">BOT</text></g>
+</g>
+</g>
+<g id="net-labels">
+<text class="net-label" data-net="+3V3" x="518.4" y="568" font-size="11" fill="#C2185B">+3V3</text>
+<text class="net-label" data-net="+3V3" x="356.2" y="243" font-size="11" fill="#C2185B">+3V3</text>
+<text class="net-label" data-net="GND" x="518.4" y="594" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="GND" x="357.8" y="425" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="I2C_SDA" x="336.5" y="269" font-size="11" fill="#2CA02C">I2C_SDA</text>
+<text class="net-label" data-net="I2C_SCL" x="337.7" y="295" font-size="11" fill="#9467BD">I2C_SCL</text>
+<text class="net-label" data-net="IMU_INT" x="335.7" y="386" font-size="11" fill="#FF7F0E">IMU_INT</text>
+<text class="net-label" data-net="BTN" x="359.5" y="464" font-size="11" fill="#17BECF">BTN</text>
+<text class="net-label" data-net="BUZZ" x="352.4" y="568" font-size="11" fill="#8C564B">BUZZ</text>
+<text class="net-label" data-net="VBAT_SENSE" x="518.4" y="672" font-size="11" fill="#E377C2">VBAT_SENSE</text>
+<text class="net-label" data-net="+3V3" x="140" y="126" font-size="11" fill="#C2185B">+3V3</text>
+<text class="net-label" data-net="GND" x="140" y="152" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="I2C_SDA" x="140" y="178" font-size="11" fill="#2CA02C">I2C_SDA</text>
+<text class="net-label" data-net="I2C_SCL" x="140" y="204" font-size="11" fill="#9467BD">I2C_SCL</text>
+<text class="net-label" data-net="I2C_SDA" x="140" y="282" font-size="11" fill="#2CA02C">I2C_SDA</text>
+<text class="net-label" data-net="I2C_SCL" x="140" y="308" font-size="11" fill="#9467BD">I2C_SCL</text>
+<text class="net-label" data-net="+3V3" x="140" y="334" font-size="11" fill="#C2185B">+3V3</text>
+<text class="net-label" data-net="GND" x="140" y="360" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="IMU_INT" x="140" y="386" font-size="11" fill="#FF7F0E">IMU_INT</text>
+<text class="net-label" data-net="BTN" x="140" y="464" font-size="11" fill="#17BECF">BTN</text>
+<text class="net-label" data-net="GND" x="140" y="490" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="BUZZ" x="140" y="568" font-size="11" fill="#8C564B">BUZZ</text>
+<text class="net-label" data-net="GND" x="140" y="594" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="+5V" x="762.4" y="126" font-size="11" fill="#D62728">+5V</text>
+<text class="net-label" data-net="GND" x="757.6" y="152" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="CC1" x="761.1" y="178" font-size="11" fill="#1F77B4">CC1</text>
+<text class="net-label" data-net="+5V" x="762.4" y="256" font-size="11" fill="#D62728">+5V</text>
+<text class="net-label" data-net="GND" x="757.6" y="282" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="CC1" x="761.1" y="308" font-size="11" fill="#1F77B4">CC1</text>
+<text class="net-label" data-net="VBAT" x="754.4" y="334" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="VSYS" x="755.8" y="360" font-size="11" fill="#E8613C">VSYS</text>
+<text class="net-label" data-net="VBAT" x="754.4" y="438" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="GND" x="757.6" y="464" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="VSYS" x="755.8" y="542" font-size="11" fill="#E8613C">VSYS</text>
+<text class="net-label" data-net="+3V3" x="756" y="568" font-size="11" fill="#C2185B">+3V3</text>
+<text class="net-label" data-net="GND" x="757.6" y="594" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="VBAT_SENSE" x="711.7" y="672" font-size="11" fill="#E377C2">VBAT_SENSE</text>
+<text class="net-label" data-net="VBAT" x="754.4" y="698" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="GND" x="757.6" y="724" font-size="11" fill="#111111">GND</text>
+</g>
+<g id="legend" font-size="11">
+<text x="36" y="784" fill="#1D2430">图例 Legend:</text>
+<line x1="116.9" y1="780" x2="138.9" y2="780" stroke="#D62728" stroke-width="2.6"/>
+<text x="144.9" y="784" fill="#1D2430">电源 Power</text>
+<line x1="223.2" y1="780" x2="245.2" y2="780" stroke="#111111" stroke-width="2.6"/>
+<text x="251.2" y="784" fill="#1D2430">地 Ground</text>
+<line x1="324.4" y1="780" x2="346.4" y2="780" stroke="#1F77B4" stroke-width="2.6"/>
+<text x="352.4" y="784" fill="#1D2430">信号 Signal（按网络着色 coloured per net）</text>
+</g>
+<g id="wire-table" font-size="11">
+<text x="58" y="822.6" font-weight="bold" fill="#1D2430">#</text>
+<text x="89" y="822.6" font-weight="bold" fill="#1D2430">从 From</text>
+<text x="192.7" y="822.6" font-weight="bold" fill="#1D2430">到 To</text>
+<text x="291.2" y="822.6" font-weight="bold" fill="#1D2430">网络 Net</text>
+<text x="379.5" y="822.6" font-weight="bold" fill="#1D2430">类型 Kind</text>
+<text x="458" y="822.6" font-weight="bold" fill="#1D2430">备注 Note</text>
+<line x1="36" y1="827.6" x2="571.2" y2="827.6" stroke="#C8CCD2"/>
+<g class="wire-row" data-row="1"><line x1="36" y1="839.6" x2="52" y2="839.6" stroke="#D62728" stroke-width="3"/>
+<text x="58" y="843.6" fill="#1D2430">1</text>
+<text x="89" y="843.6" fill="#1D2430">USB_C.VBUS</text>
+<text x="192.7" y="843.6" fill="#1D2430">CHARGER.VIN</text>
+<text x="291.2" y="843.6" fill="#1D2430">+5V</text>
+<text x="379.5" y="843.6" fill="#1D2430">电源 power</text>
+<text x="458" y="843.6" fill="#1D2430">USB 受电</text>
+</g>
+<g class="wire-row" data-row="2"><line x1="36" y1="860.6" x2="52" y2="860.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="864.6" fill="#1D2430">2</text>
+<text x="89" y="864.6" fill="#1D2430">USB_C.GND</text>
+<text x="192.7" y="864.6" fill="#1D2430">CHARGER.GND</text>
+<text x="291.2" y="864.6" fill="#1D2430">GND</text>
+<text x="379.5" y="864.6" fill="#1D2430">地 ground</text>
+<text x="458" y="864.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="3"><line x1="36" y1="881.6" x2="52" y2="881.6" stroke="#1F77B4" stroke-width="3"/>
+<text x="58" y="885.6" fill="#1D2430">3</text>
+<text x="89" y="885.6" fill="#1D2430">USB_C.CC1</text>
+<text x="192.7" y="885.6" fill="#1D2430">CHARGER.CC1</text>
+<text x="291.2" y="885.6" fill="#1D2430">CC1</text>
+<text x="379.5" y="885.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="885.6" fill="#1D2430">5.1k 下拉在模块上</text>
+</g>
+<g class="wire-row" data-row="4"><line x1="36" y1="902.6" x2="52" y2="902.6" stroke="#B0141E" stroke-width="3"/>
+<text x="58" y="906.6" fill="#1D2430">4</text>
+<text x="89" y="906.6" fill="#1D2430">CHARGER.BAT</text>
+<text x="192.7" y="906.6" fill="#1D2430">BATTERY.+</text>
+<text x="291.2" y="906.6" fill="#1D2430">VBAT</text>
+<text x="379.5" y="906.6" fill="#1D2430">电源 power</text>
+<text x="458" y="906.6" fill="#1D2430">单节锂电</text>
+</g>
+<g class="wire-row" data-row="5"><line x1="36" y1="923.6" x2="52" y2="923.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="927.6" fill="#1D2430">5</text>
+<text x="89" y="927.6" fill="#1D2430">CHARGER.GND</text>
+<text x="192.7" y="927.6" fill="#1D2430">BATTERY.-</text>
+<text x="291.2" y="927.6" fill="#1D2430">GND</text>
+<text x="379.5" y="927.6" fill="#1D2430">地 ground</text>
+<text x="458" y="927.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="6"><line x1="36" y1="944.6" x2="52" y2="944.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="948.6" fill="#1D2430">6</text>
+<text x="89" y="948.6" fill="#1D2430">CHARGER.VOUT</text>
+<text x="192.7" y="948.6" fill="#1D2430">LDO.VIN</text>
+<text x="291.2" y="948.6" fill="#1D2430">VSYS</text>
+<text x="379.5" y="948.6" fill="#1D2430">电源 power</text>
+<text x="458" y="948.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="7"><line x1="36" y1="965.6" x2="52" y2="965.6" stroke="#C2185B" stroke-width="3"/>
+<text x="58" y="969.6" fill="#1D2430">7</text>
+<text x="89" y="969.6" fill="#1D2430">LDO.VOUT</text>
+<text x="192.7" y="969.6" fill="#1D2430">MCU.3V3</text>
+<text x="291.2" y="969.6" fill="#1D2430">+3V3</text>
+<text x="379.5" y="969.6" fill="#1D2430">电源 power</text>
+<text x="458" y="969.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="8"><line x1="36" y1="986.6" x2="52" y2="986.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="990.6" fill="#1D2430">8</text>
+<text x="89" y="990.6" fill="#1D2430">LDO.GND</text>
+<text x="192.7" y="990.6" fill="#1D2430">MCU.GND</text>
+<text x="291.2" y="990.6" fill="#1D2430">GND</text>
+<text x="379.5" y="990.6" fill="#1D2430">地 ground</text>
+<text x="458" y="990.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="9"><line x1="36" y1="1007.6" x2="52" y2="1007.6" stroke="#C2185B" stroke-width="3"/>
+<text x="58" y="1011.6" fill="#1D2430">9</text>
+<text x="89" y="1011.6" fill="#1D2430">MCU.3V3</text>
+<text x="192.7" y="1011.6" fill="#1D2430">OLED.VCC</text>
+<text x="291.2" y="1011.6" fill="#1D2430">+3V3</text>
+<text x="379.5" y="1011.6" fill="#1D2430">电源 power</text>
+<text x="458" y="1011.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="10"><line x1="36" y1="1028.6" x2="52" y2="1028.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1032.6" fill="#1D2430">10</text>
+<text x="89" y="1032.6" fill="#1D2430">MCU.GND</text>
+<text x="192.7" y="1032.6" fill="#1D2430">OLED.GND</text>
+<text x="291.2" y="1032.6" fill="#1D2430">GND</text>
+<text x="379.5" y="1032.6" fill="#1D2430">地 ground</text>
+<text x="458" y="1032.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="11"><line x1="36" y1="1049.6" x2="52" y2="1049.6" stroke="#2CA02C" stroke-width="3"/>
+<text x="58" y="1053.6" fill="#1D2430">11</text>
+<text x="89" y="1053.6" fill="#1D2430">MCU.GPIO8</text>
+<text x="192.7" y="1053.6" fill="#1D2430">OLED.SDA</text>
+<text x="291.2" y="1053.6" fill="#1D2430">I2C_SDA</text>
+<text x="379.5" y="1053.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1053.6" fill="#1D2430">I2C 400kHz</text>
+</g>
+<g class="wire-row" data-row="12"><line x1="36" y1="1070.6" x2="52" y2="1070.6" stroke="#9467BD" stroke-width="3"/>
+<text x="58" y="1074.6" fill="#1D2430">12</text>
+<text x="89" y="1074.6" fill="#1D2430">MCU.GPIO9</text>
+<text x="192.7" y="1074.6" fill="#1D2430">OLED.SCL</text>
+<text x="291.2" y="1074.6" fill="#1D2430">I2C_SCL</text>
+<text x="379.5" y="1074.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1074.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="13"><line x1="36" y1="1091.6" x2="52" y2="1091.6" stroke="#2CA02C" stroke-width="3"/>
+<text x="58" y="1095.6" fill="#1D2430">13</text>
+<text x="89" y="1095.6" fill="#1D2430">MCU.GPIO8</text>
+<text x="192.7" y="1095.6" fill="#1D2430">IMU.SDA</text>
+<text x="291.2" y="1095.6" fill="#1D2430">I2C_SDA</text>
+<text x="379.5" y="1095.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1095.6" fill="#1D2430">与 OLED 共用总线</text>
+</g>
+<g class="wire-row" data-row="14"><line x1="36" y1="1112.6" x2="52" y2="1112.6" stroke="#9467BD" stroke-width="3"/>
+<text x="58" y="1116.6" fill="#1D2430">14</text>
+<text x="89" y="1116.6" fill="#1D2430">MCU.GPIO9</text>
+<text x="192.7" y="1116.6" fill="#1D2430">IMU.SCL</text>
+<text x="291.2" y="1116.6" fill="#1D2430">I2C_SCL</text>
+<text x="379.5" y="1116.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1116.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="15"><line x1="36" y1="1133.6" x2="52" y2="1133.6" stroke="#C2185B" stroke-width="3"/>
+<text x="58" y="1137.6" fill="#1D2430">15</text>
+<text x="89" y="1137.6" fill="#1D2430">MCU.3V3</text>
+<text x="192.7" y="1137.6" fill="#1D2430">IMU.VDD</text>
+<text x="291.2" y="1137.6" fill="#1D2430">+3V3</text>
+<text x="379.5" y="1137.6" fill="#1D2430">电源 power</text>
+<text x="458" y="1137.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="16"><line x1="36" y1="1154.6" x2="52" y2="1154.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1158.6" fill="#1D2430">16</text>
+<text x="89" y="1158.6" fill="#1D2430">MCU.GND</text>
+<text x="192.7" y="1158.6" fill="#1D2430">IMU.GND</text>
+<text x="291.2" y="1158.6" fill="#1D2430">GND</text>
+<text x="379.5" y="1158.6" fill="#1D2430">地 ground</text>
+<text x="458" y="1158.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="17"><line x1="36" y1="1175.6" x2="52" y2="1175.6" stroke="#FF7F0E" stroke-width="3"/>
+<text x="58" y="1179.6" fill="#1D2430">17</text>
+<text x="89" y="1179.6" fill="#1D2430">MCU.GPIO4</text>
+<text x="192.7" y="1179.6" fill="#1D2430">IMU.INT1</text>
+<text x="291.2" y="1179.6" fill="#1D2430">IMU_INT</text>
+<text x="379.5" y="1179.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1179.6" fill="#1D2430">中断，低有效</text>
+</g>
+<g class="wire-row" data-row="18"><line x1="36" y1="1196.6" x2="52" y2="1196.6" stroke="#17BECF" stroke-width="3"/>
+<text x="58" y="1200.6" fill="#1D2430">18</text>
+<text x="89" y="1200.6" fill="#1D2430">MCU.GPIO2</text>
+<text x="192.7" y="1200.6" fill="#1D2430">BUTTON.A</text>
+<text x="291.2" y="1200.6" fill="#1D2430">BTN</text>
+<text x="379.5" y="1200.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1200.6" fill="#1D2430">内部上拉</text>
+</g>
+<g class="wire-row" data-row="19"><line x1="36" y1="1217.6" x2="52" y2="1217.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1221.6" fill="#1D2430">19</text>
+<text x="89" y="1221.6" fill="#1D2430">MCU.GND</text>
+<text x="192.7" y="1221.6" fill="#1D2430">BUTTON.B</text>
+<text x="291.2" y="1221.6" fill="#1D2430">GND</text>
+<text x="379.5" y="1221.6" fill="#1D2430">地 ground</text>
+<text x="458" y="1221.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="20"><line x1="36" y1="1238.6" x2="52" y2="1238.6" stroke="#8C564B" stroke-width="3"/>
+<text x="58" y="1242.6" fill="#1D2430">20</text>
+<text x="89" y="1242.6" fill="#1D2430">MCU.GPIO5</text>
+<text x="192.7" y="1242.6" fill="#1D2430">BUZZER.+</text>
+<text x="291.2" y="1242.6" fill="#1D2430">BUZZ</text>
+<text x="379.5" y="1242.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1242.6" fill="#1D2430">PWM 2–4kHz</text>
+</g>
+<g class="wire-row" data-row="21"><line x1="36" y1="1259.6" x2="52" y2="1259.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1263.6" fill="#1D2430">21</text>
+<text x="89" y="1263.6" fill="#1D2430">MCU.GND</text>
+<text x="192.7" y="1263.6" fill="#1D2430">BUZZER.-</text>
+<text x="291.2" y="1263.6" fill="#1D2430">GND</text>
+<text x="379.5" y="1263.6" fill="#1D2430">地 ground</text>
+<text x="458" y="1263.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="22"><line x1="36" y1="1280.6" x2="52" y2="1280.6" stroke="#E377C2" stroke-width="3"/>
+<text x="58" y="1284.6" fill="#1D2430">22</text>
+<text x="89" y="1284.6" fill="#1D2430">MCU.GPIO1</text>
+<text x="192.7" y="1284.6" fill="#1D2430">DIVIDER.MID</text>
+<text x="291.2" y="1284.6" fill="#1D2430">VBAT_SENSE</text>
+<text x="379.5" y="1284.6" fill="#1D2430">信号 signal</text>
+<text x="458" y="1284.6" fill="#1D2430">ADC 量电</text>
+</g>
+<g class="wire-row" data-row="23"><line x1="36" y1="1301.6" x2="52" y2="1301.6" stroke="#B0141E" stroke-width="3"/>
+<text x="58" y="1305.6" fill="#1D2430">23</text>
+<text x="89" y="1305.6" fill="#1D2430">BATTERY.+</text>
+<text x="192.7" y="1305.6" fill="#1D2430">DIVIDER.TOP</text>
+<text x="291.2" y="1305.6" fill="#1D2430">VBAT</text>
+<text x="379.5" y="1305.6" fill="#1D2430">电源 power</text>
+<text x="458" y="1305.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="24"><line x1="36" y1="1322.6" x2="52" y2="1322.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1326.6" fill="#1D2430">24</text>
+<text x="89" y="1326.6" fill="#1D2430">DIVIDER.BOT</text>
+<text x="192.7" y="1326.6" fill="#1D2430">BATTERY.-</text>
+<text x="291.2" y="1326.6" fill="#1D2430">GND</text>
+<text x="379.5" y="1326.6" fill="#1D2430">地 ground</text>
+<text x="458" y="1326.6" fill="#1D2430"></text>
+</g>
+</g>
+</svg>

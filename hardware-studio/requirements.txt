@@ -10,3 +10,5 @@ imageio==2.38.1
 -r cad/requirements.txt
 -r compliance/requirements.txt
 -r mfg/requirements.txt
+-r render/requirements.txt
+-r diagrams/requirements.txt
