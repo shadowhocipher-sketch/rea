@@ -85,7 +85,7 @@ products/<产品名>/
 - **做法**：
   1. 写 `pins.csv`（每行一根线，格式见 CONVENTIONS 第 2 节；`kind` = power/ground/signal）；
   2. 从模板起固件：`cp firmware/templates/state_machine.py products/<产品名>/firmware/main.py`
-     （按键用 `buttons.py`，休眠用 `power.py`，开机自检用 `selftest.py`），只改开头的 `CONFIG`，引脚和 `pins.csv` 一致；
+     （按键用 `buttons.py`，摇一摇/加速度计用 `shake.py`，休眠用 `power.py`，开机自检用 `selftest.py`），只改开头的 `CONFIG`，引脚和 `pins.csv` 一致；
   3. 出接线图：`python diagrams/wiring.py products/<产品名>/pins.csv --out products/<产品名>/out`
      （替身/未确认的引脚加 `--subtitle "替身数据 / stand-in data"`）。
 - **验收**：`wiring.py` 输出 `OK: every wire drawn exactly once`、退出码 0；`product.py check ... --step 3` 全 OK；

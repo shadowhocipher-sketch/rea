@@ -136,6 +136,21 @@ def test_epaper_refresh_counts_time_and_ghosting(tmp_path):
     assert r.rt.stats["epaper"]["ssd1680#0"] == {"full": 1, "partial": 1, "refresh_ms": 3300}
 
 
+def test_epaper_stats_accumulate_across_deepsleep_reboots(tmp_path):
+    # the same panel is driven by a new driver object after every deep-sleep reboot;
+    # the summary must count all refreshes, not only the last boot's
+    p = fw(tmp_path, """
+        import machine, epaper
+        e = epaper.SSD1681()
+        e.fill(epaper.WHITE); e.show(); e.show_partial()
+        if machine.reset_cause() != machine.DEEPSLEEP_RESET:
+            machine.deepsleep(1000)
+    """)
+    r = run(p, display="epaper", max_seconds=30, echo=False)
+    assert r.boots == 2 and len(r.frames) == 4
+    assert r.rt.stats["epaper"]["ssd1681#0"] == {"full": 2, "partial": 2, "refresh_ms": 2 * 2000 + 2 * 260}
+
+
 def test_epaper_red_panel_forces_full_refresh(tmp_path):
     p = fw(tmp_path, """
         import epaper

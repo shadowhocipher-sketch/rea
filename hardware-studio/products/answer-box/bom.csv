@@ -1,0 +1,21 @@
+ref,name,mpn,manufacturer,package,qty_per_unit,category,lcsc,price_key,cost_mode,attrition,joints,dnp,note
+U1,主控模组（射频不开启）,ESP32-C3-MINI-1-H4X,Espressif Systems,"SMD,16.6x13.2mm",1,电子件,C41349510,,unit,,,,knowledge/mcu/esp32-c3.md
+U2,三轴加速度计（摇一摇）,LIS3DHTR,STMicroelectronics,LGA-16,1,电子件,C15134,,unit,,,,knowledge/input/lis3dh.md
+U3,锂电线性充电 130 mA,TP4056-42-ESOP8,TOPPOWER,ESOP-8,1,电子件,C16581,,unit,,,,Preferred 料免换料费；knowledge/power/tp4056.md
+U4,3.3V LDO（静态 1 μA）,XC6206P332MR-G,Torex,SOT-23,1,电子件,C5446,,unit,,,,knowledge/power/xc6206.md
+J1,USB-C 16P 受电插座,TYPE-C-31-M-12,Korean Hroparts,SMD,1,电子件,C165948,,unit,,,,knowledge/power/usb-c-sink.md
+"R1,R2",CC 下拉 5.1k,0402WGF5101TCE,UNI-ROYAL,0402,2,电子件,C25905,,unit,,,,
+R3-R8,10k（RPROG、CS/RST 上拉、I2C 上拉、EN 上拉）,0402WGF1002TCE,UNI-ROYAL,0402,6,电子件,C25744,,unit,,,,
+C1-C4,100nF 去耦,CL05B104KO5NNNC,Samsung,0402,4,电子件,C1525,,unit,,,,
+C5-C7,1uF（LDO 输入/输出、EN RC）,CL05A105KA5NQNC,Samsung,0402,3,电子件,C52923,,unit,,,,
+C8-C10,10uF（VBUS、BAT、3V3）,CL10A106KP8NNNC,Samsung,0603,3,电子件,C19702,,unit,,,,
+DS1,1.54 寸墨水屏模块 200x200,1.54inch e-Paper Module,Waveshare,模块 48x33mm,1,外购模块,C5374685,,unit,,,,手工焊 8 根线；价格待核实
+BAT1,402030 锂聚合物电芯 200mAh（带 PCM）,,,30x20x4mm,1,外购模块,,est:lipo-402030-200mah,unit,,,,估算价；手工焊引线
+PCB1,PCB 2 层 46x30mm,,,46x30mm,1,加工费,,jlcpcb:pcb-2l-proto-100x100,unit,0.02,,,按打样价折算（偏高）
+SMT1,贴片工程费,,,,1,加工费,,jlcpcb:pcba-setup,batch,,,,每批一次
+SMT2,钢网,,,,1,加工费,,jlcpcb:pcba-stencil,batch,,,,每批一次
+SMT3,贴片焊点费,,,,1,加工费,,jlcpcb:smt-joint,per_joint,,,,单面贴片
+SMT4,扩展库换料费,,,,1,加工费,,jlcpcb:extended-part-loading,per_extended_type,,,,每种扩展料每批一次
+ENC1,外壳 MJF PA12（克）,,,,13.9,结构件,,jlc3dp:mjf-pa12-per-gram,unit,,,,第 5 步体积 13735 mm³ × 1.01 g/cm³（估算）；只含材料费
+ASM1,整机组装人工（分钟）,,,,10,加工费,,est:assembly-labor,unit,,,,假设：焊屏 8 线 + 焊电池 + 合壳 + 摇一摇测试 共 10 分钟
+PKG1,基础包装,,,,1,包装,,est:packaging-basic,unit,,,,

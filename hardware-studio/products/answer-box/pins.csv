@@ -1,0 +1,43 @@
+from_part,from_pin,to_part,to_pin,net,kind,note
+USB,VBUS,CHG,VCC,VBUS,power,USB-C 只取 5 V（不做 PD）
+USB,VBUS,CHG,CE,VBUS,power,CE 高电平=允许充电
+USB,GND,CHG,GND,GND,ground,
+USB,CC1,RCC1,1,CC1,signal,5.1k 下拉（每个 CC 独立一个）
+RCC1,2,USB,GND,GND,ground,
+USB,CC2,RCC2,1,CC2,signal,5.1k 下拉
+RCC2,2,USB,GND,GND,ground,
+USB,D-,MCU,GPIO18,USB_DN,signal,USB Serial/JTAG 烧录
+USB,D+,MCU,GPIO19,USB_DP,signal,
+CHG,TEMP,USB,GND,GND,ground,不用 NTC：TEMP 接地关闭温度检测
+CHG,PROG,RPROG,1,PROG,signal,RPROG=10k → 130 mA
+RPROG,2,USB,GND,GND,ground,
+CHG,BAT,BAT,+,VBAT,power,电芯自带保护板（PCM）
+BAT,-,CHG,GND,GND,ground,
+BAT,+,LDO,VIN,VBAT,power,
+LDO,VSS,BAT,-,GND,ground,
+LDO,VOUT,MCU,3V3,+3V3,power,XC6206 3.3V
+MCU,GND,LDO,VSS,GND,ground,
+MCU,3V3,EPD,VCC,+3V3,power,
+MCU,GND,EPD,GND,GND,ground,
+MCU,GPIO6,EPD,CLK,EPD_SCK,signal,SPI
+MCU,GPIO7,EPD,DIN,EPD_MOSI,signal,
+MCU,GPIO8,EPD,CS,EPD_CS,signal,GPIO8 是 strapping：CS 加 10k 上拉
+MCU,GPIO10,EPD,DC,EPD_DC,signal,
+MCU,GPIO2,EPD,RST,EPD_RST,signal,GPIO2 是 strapping：RST 加 10k 上拉
+MCU,GPIO5,EPD,BUSY,EPD_BUSY,signal,高=忙
+RPU1,1,MCU,3V3,+3V3,power,
+RPU1,2,MCU,GPIO8,EPD_CS,signal,10k 上拉
+RPU2,1,MCU,3V3,+3V3,power,
+RPU2,2,MCU,GPIO2,EPD_RST,signal,10k 上拉
+MCU,3V3,ACC,VDD,+3V3,power,
+MCU,3V3,ACC,VDD_IO,+3V3,power,
+MCU,3V3,ACC,CS,+3V3,power,CS 高=I2C
+MCU,GND,ACC,GND,GND,ground,
+MCU,GND,ACC,SA0,GND,ground,SA0 接地 → 地址 0x18
+MCU,GPIO1,ACC,SDA,I2C_SDA,signal,I2C 400 kHz
+MCU,GPIO4,ACC,SCL,I2C_SCL,signal,
+RPU3,1,MCU,3V3,+3V3,power,
+RPU3,2,MCU,GPIO1,I2C_SDA,signal,10k 上拉
+RPU4,1,MCU,3V3,+3V3,power,
+RPU4,2,MCU,GPIO4,I2C_SCL,signal,10k 上拉
+ACC,INT1,MCU,GPIO3,ACC_INT1,signal,摇一摇中断 + 深睡唤醒（C3 只有 GPIO0–5 能唤醒深睡）

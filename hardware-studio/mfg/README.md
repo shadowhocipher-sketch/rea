@@ -100,9 +100,9 @@ SMT3,贴片焊点费,,,,1,加工费,,jlcpcb:smt-joint,per_joint,,,,
 | 文件 | 内容 |
 |---|---|
 | `prices/jlcpcb-parts.yaml` | 25 条元件阶梯价，JLCPCB 元件库数据（经 jlcparts 镜像，快照 2026-10-31），`quote` |
-| `prices/unverified.yaml` | 2 条模组价，只有搜索摘要，`unverified` |
+| `prices/unverified.yaml` | 3 条模组/模块价（2 个无线模组 + 1.54 寸墨水屏模块），只有搜索摘要，`unverified` |
 | `prices/fees.yaml` | 6 条 JLCPCB/JLC3DP 加工费，只有搜索摘要且有冲突，`unverified` |
-| `prices/estimates.yaml` | 3 条估算（OLED 模块、组装人工、包装） |
+| `prices/estimates.yaml` | 4 条估算（OLED 模块、组装人工、包装、402030 锂聚合物电芯） |
 
 ## 4. 计算规则
 

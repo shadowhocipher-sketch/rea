@@ -1,0 +1,587 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1091.4" height="2033.6" viewBox="0 0 1091.4 2033.6" data-generator="hardware-studio/diagrams wiring" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','WenQuanYi Micro Hei','DejaVu Sans',sans-serif">
+<rect x="0" y="0" width="1091.4" height="2033.6" fill="#FFFFFF"/>
+<text x="36" y="44" font-size="16" font-weight="bold" fill="#1D2430">接线图 / Wiring diagram — answer-box</text>
+<text x="36" y="66" font-size="11" fill="#5C6370">由 pins.csv 自动生成，共 42 根线</text>
+<g id="wires" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<polyline class="wire" data-row="1" data-from="USB.VBUS" data-to="CHG.VCC" data-from-part="USB" data-from-pin="VBUS" data-to-part="CHG" data-to-pin="VCC" data-net="VBUS" data-kind="power" stroke="#D62728" stroke-width="2.6" points="959.4,130 733.5,130 733.5,338 959.4,338"><title>#1 VBUS: USB.VBUS → CHG.VCC USB-C 只取 5 V（不做 PD）</title></polyline>
+<polyline class="wire" data-row="2" data-from="USB.VBUS" data-to="CHG.CE" data-from-part="USB" data-from-pin="VBUS" data-to-part="CHG" data-to-pin="CE" data-net="VBUS" data-kind="power" stroke="#D62728" stroke-width="2.6" points="959.4,130 720.5,130 720.5,364 959.4,364"><title>#2 VBUS: USB.VBUS → CHG.CE CE 高电平=允许充电</title></polyline>
+<polyline class="wire" data-row="3" data-from="USB.GND" data-to="CHG.GND" data-from-part="USB" data-from-pin="GND" data-to-part="CHG" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,156 824.5,156 824.5,390 959.4,390"><title>#3 GND: USB.GND → CHG.GND</title></polyline>
+<polyline class="wire" data-row="4" data-from="USB.CC1" data-to="RCC1.1" data-from-part="USB" data-from-pin="CC1" data-to-part="RCC1" data-to-pin="1" data-net="CC1" data-kind="signal" stroke="#1F77B4" stroke-width="1.8" points="959.4,182 811.5,182 811.5,546 959.4,546"><title>#4 CC1: USB.CC1 → RCC1.1 5.1k 下拉（每个 CC 独立一个）</title></polyline>
+<polyline class="wire" data-row="5" data-from="RCC1.2" data-to="USB.GND" data-from-part="RCC1" data-from-pin="2" data-to-part="USB" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,572 772.5,572 772.5,156 959.4,156"><title>#5 GND: RCC1.2 → USB.GND</title></polyline>
+<polyline class="wire" data-row="6" data-from="USB.CC2" data-to="RCC2.1" data-from-part="USB" data-from-pin="CC2" data-to-part="RCC2" data-to-pin="1" data-net="CC2" data-kind="signal" stroke="#2CA02C" stroke-width="1.8" points="959.4,208 798.5,208 798.5,650 959.4,650"><title>#6 CC2: USB.CC2 → RCC2.1 5.1k 下拉</title></polyline>
+<polyline class="wire" data-row="7" data-from="RCC2.2" data-to="USB.GND" data-from-part="RCC2" data-from-pin="2" data-to-part="USB" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,676 759.5,676 759.5,156 959.4,156"><title>#7 GND: RCC2.2 → USB.GND</title></polyline>
+<polyline class="wire" data-row="8" data-from="USB.D-" data-to="MCU.GPIO18" data-from-part="USB" data-from-pin="D-" data-to-part="MCU" data-to-pin="GPIO18" data-net="USB_DN" data-kind="signal" stroke="#9467BD" stroke-width="1.8" points="959.4,234 650.6,234"><title>#8 USB_DN: USB.D- → MCU.GPIO18 USB Serial/JTAG 烧录</title></polyline>
+<polyline class="wire" data-row="9" data-from="USB.D+" data-to="MCU.GPIO19" data-from-part="USB" data-from-pin="D+" data-to-part="MCU" data-to-pin="GPIO19" data-net="USB_DP" data-kind="signal" stroke="#FF7F0E" stroke-width="1.8" points="959.4,260 650.6,260"><title>#9 USB_DP: USB.D+ → MCU.GPIO19</title></polyline>
+<polyline class="wire" data-row="10" data-from="CHG.TEMP" data-to="USB.GND" data-from-part="CHG" data-from-pin="TEMP" data-to-part="USB" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,416 785.5,416 785.5,156 959.4,156"><title>#10 GND: CHG.TEMP → USB.GND 不用 NTC：TEMP 接地关闭温度检测</title></polyline>
+<polyline class="wire" data-row="11" data-from="CHG.PROG" data-to="RPROG.1" data-from-part="CHG" data-from-pin="PROG" data-to-part="RPROG" data-to-pin="1" data-net="PROG" data-kind="signal" stroke="#17BECF" stroke-width="1.8" points="959.4,442 850.5,442 850.5,754 959.4,754"><title>#11 PROG: CHG.PROG → RPROG.1 RPROG=10k → 130 mA</title></polyline>
+<polyline class="wire" data-row="12" data-from="RPROG.2" data-to="USB.GND" data-from-part="RPROG" data-from-pin="2" data-to-part="USB" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,780 746.5,780 746.5,156 959.4,156"><title>#12 GND: RPROG.2 → USB.GND</title></polyline>
+<polyline class="wire" data-row="13" data-from="CHG.BAT" data-to="BAT.+" data-from-part="CHG" data-from-pin="BAT" data-to-part="BAT" data-to-pin="+" data-net="VBAT" data-kind="power" stroke="#B0141E" stroke-width="2.6" points="959.4,468 863.5,468 863.5,858 959.4,858"><title>#13 VBAT: CHG.BAT → BAT.+ 电芯自带保护板（PCM）</title></polyline>
+<polyline class="wire" data-row="14" data-from="BAT.-" data-to="CHG.GND" data-from-part="BAT" data-from-pin="-" data-to-part="CHG" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,884 837.5,884 837.5,390 959.4,390"><title>#14 GND: BAT.- → CHG.GND</title></polyline>
+<polyline class="wire" data-row="15" data-from="BAT.+" data-to="LDO.VIN" data-from-part="BAT" data-from-pin="+" data-to-part="LDO" data-to-pin="VIN" data-net="VBAT" data-kind="power" stroke="#B0141E" stroke-width="2.6" points="959.4,858 876.5,858 876.5,962 959.4,962"><title>#15 VBAT: BAT.+ → LDO.VIN</title></polyline>
+<polyline class="wire" data-row="16" data-from="LDO.VSS" data-to="BAT.-" data-from-part="LDO" data-from-pin="VSS" data-to-part="BAT" data-to-pin="-" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="959.4,988 889.5,988 889.5,884 959.4,884"><title>#16 GND: LDO.VSS → BAT.-</title></polyline>
+<polyline class="wire" data-row="17" data-from="LDO.VOUT" data-to="MCU.3V3" data-from-part="LDO" data-from-pin="VOUT" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="959.4,1014 650.6,1014"><title>#17 +3V3: LDO.VOUT → MCU.3V3 XC6206 3.3V</title></polyline>
+<polyline class="wire" data-row="18" data-from="MCU.GND" data-to="LDO.VSS" data-from-part="MCU" data-from-pin="GND" data-to-part="LDO" data-to-pin="VSS" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="650.6,988 959.4,988"><title>#18 GND: MCU.GND → LDO.VSS</title></polyline>
+<polyline class="wire" data-row="19" data-from="MCU.3V3" data-to="EPD.VCC" data-from-part="MCU" data-from-pin="3V3" data-to-part="EPD" data-to-pin="VCC" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="516.4,598 291.7,598 291.7,130 132,130"><title>#19 +3V3: MCU.3V3 → EPD.VCC</title></polyline>
+<polyline class="wire" data-row="20" data-from="MCU.GND" data-to="EPD.GND" data-from-part="MCU" data-from-pin="GND" data-to-part="EPD" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="516.4,533 317.7,533 317.7,156 132,156"><title>#20 GND: MCU.GND → EPD.GND</title></polyline>
+<polyline class="wire" data-row="21" data-from="MCU.GPIO6" data-to="EPD.CLK" data-from-part="MCU" data-from-pin="GPIO6" data-to-part="EPD" data-to-pin="CLK" data-net="EPD_SCK" data-kind="signal" stroke="#8C564B" stroke-width="1.8" points="516.4,182 132,182"><title>#21 EPD_SCK: MCU.GPIO6 → EPD.CLK SPI</title></polyline>
+<polyline class="wire" data-row="22" data-from="MCU.GPIO7" data-to="EPD.DIN" data-from-part="MCU" data-from-pin="GPIO7" data-to-part="EPD" data-to-pin="DIN" data-net="EPD_MOSI" data-kind="signal" stroke="#E377C2" stroke-width="1.8" points="516.4,208 132,208"><title>#22 EPD_MOSI: MCU.GPIO7 → EPD.DIN</title></polyline>
+<polyline class="wire" data-row="23" data-from="MCU.GPIO8" data-to="EPD.CS" data-from-part="MCU" data-from-pin="GPIO8" data-to-part="EPD" data-to-pin="CS" data-net="EPD_CS" data-kind="signal" stroke="#7F7F00" stroke-width="1.8" points="516.4,351 252.7,351 252.7,234 132,234"><title>#23 EPD_CS: MCU.GPIO8 → EPD.CS GPIO8 是 strapping：CS 加 10k 上拉</title></polyline>
+<polyline class="wire" data-row="24" data-from="MCU.GPIO10" data-to="EPD.DC" data-from-part="MCU" data-from-pin="GPIO10" data-to-part="EPD" data-to-pin="DC" data-net="EPD_DC" data-kind="signal" stroke="#3B5BA9" stroke-width="1.8" points="516.4,260 132,260"><title>#24 EPD_DC: MCU.GPIO10 → EPD.DC</title></polyline>
+<polyline class="wire" data-row="25" data-from="MCU.GPIO2" data-to="EPD.RST" data-from-part="MCU" data-from-pin="GPIO2" data-to-part="EPD" data-to-pin="RST" data-net="EPD_RST" data-kind="signal" stroke="#0E8A6D" stroke-width="1.8" points="516.4,403 239.7,403 239.7,286 132,286"><title>#25 EPD_RST: MCU.GPIO2 → EPD.RST GPIO2 是 strapping：RST 加 10k 上拉</title></polyline>
+<polyline class="wire" data-row="26" data-from="MCU.GPIO5" data-to="EPD.BUSY" data-from-part="MCU" data-from-pin="GPIO5" data-to-part="EPD" data-to-pin="BUSY" data-net="EPD_BUSY" data-kind="signal" stroke="#7B4FA0" stroke-width="1.8" points="516.4,312 132,312"><title>#26 EPD_BUSY: MCU.GPIO5 → EPD.BUSY 高=忙</title></polyline>
+<polyline class="wire" data-row="27" data-from="RPU1.1" data-to="MCU.3V3" data-from-part="RPU1" data-from-pin="1" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="132,390 226.7,390 226.7,598 516.4,598"><title>#27 +3V3: RPU1.1 → MCU.3V3</title></polyline>
+<polyline class="wire" data-row="28" data-from="RPU1.2" data-to="MCU.GPIO8" data-from-part="RPU1" data-from-pin="2" data-to-part="MCU" data-to-pin="GPIO8" data-net="EPD_CS" data-kind="signal" stroke="#7F7F00" stroke-width="1.8" points="132,416 265.7,416 265.7,351 516.4,351"><title>#28 EPD_CS: RPU1.2 → MCU.GPIO8 10k 上拉</title></polyline>
+<polyline class="wire" data-row="29" data-from="RPU2.1" data-to="MCU.3V3" data-from-part="RPU2" data-from-pin="1" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="132,494 213.7,494 213.7,598 516.4,598"><title>#29 +3V3: RPU2.1 → MCU.3V3</title></polyline>
+<polyline class="wire" data-row="30" data-from="RPU2.2" data-to="MCU.GPIO2" data-from-part="RPU2" data-from-pin="2" data-to-part="MCU" data-to-pin="GPIO2" data-net="EPD_RST" data-kind="signal" stroke="#0E8A6D" stroke-width="1.8" points="132,520 278.7,520 278.7,403 516.4,403"><title>#30 EPD_RST: RPU2.2 → MCU.GPIO2 10k 上拉</title></polyline>
+<polyline class="wire" data-row="31" data-from="MCU.3V3" data-to="ACC.VDD" data-from-part="MCU" data-from-pin="3V3" data-to-part="ACC" data-to-pin="VDD" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="516.4,598 132,598"><title>#31 +3V3: MCU.3V3 → ACC.VDD</title></polyline>
+<polyline class="wire" data-row="32" data-from="MCU.3V3" data-to="ACC.VDD_IO" data-from-part="MCU" data-from-pin="3V3" data-to-part="ACC" data-to-pin="VDD_IO" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="516.4,598 330.7,598 330.7,624 132,624"><title>#32 +3V3: MCU.3V3 → ACC.VDD_IO</title></polyline>
+<polyline class="wire" data-row="33" data-from="MCU.3V3" data-to="ACC.CS" data-from-part="MCU" data-from-pin="3V3" data-to-part="ACC" data-to-pin="CS" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="516.4,598 356.7,598 356.7,650 132,650"><title>#33 +3V3: MCU.3V3 → ACC.CS CS 高=I2C</title></polyline>
+<polyline class="wire" data-row="34" data-from="MCU.GND" data-to="ACC.GND" data-from-part="MCU" data-from-pin="GND" data-to-part="ACC" data-to-pin="GND" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="516.4,533 304.7,533 304.7,676 132,676"><title>#34 GND: MCU.GND → ACC.GND</title></polyline>
+<polyline class="wire" data-row="35" data-from="MCU.GND" data-to="ACC.SA0" data-from-part="MCU" data-from-pin="GND" data-to-part="ACC" data-to-pin="SA0" data-net="GND" data-kind="ground" stroke="#111111" stroke-width="2.6" points="516.4,533 343.7,533 343.7,702 132,702"><title>#35 GND: MCU.GND → ACC.SA0 SA0 接地 → 地址 0x18</title></polyline>
+<polyline class="wire" data-row="36" data-from="MCU.GPIO1" data-to="ACC.SDA" data-from-part="MCU" data-from-pin="GPIO1" data-to-part="ACC" data-to-pin="SDA" data-net="I2C_SDA" data-kind="signal" stroke="#A0522D" stroke-width="1.8" points="516.4,819 408.7,819 408.7,728 132,728"><title>#36 I2C_SDA: MCU.GPIO1 → ACC.SDA I2C 400 kHz</title></polyline>
+<polyline class="wire" data-row="37" data-from="MCU.GPIO4" data-to="ACC.SCL" data-from-part="MCU" data-from-pin="GPIO4" data-to-part="ACC" data-to-pin="SCL" data-net="I2C_SCL" data-kind="signal" stroke="#00838F" stroke-width="1.8" points="516.4,871 395.7,871 395.7,754 132,754"><title>#37 I2C_SCL: MCU.GPIO4 → ACC.SCL</title></polyline>
+<polyline class="wire" data-row="38" data-from="RPU3.1" data-to="MCU.3V3" data-from-part="RPU3" data-from-pin="1" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="132,858 369.7,858 369.7,598 516.4,598"><title>#38 +3V3: RPU3.1 → MCU.3V3</title></polyline>
+<polyline class="wire" data-row="39" data-from="RPU3.2" data-to="MCU.GPIO1" data-from-part="RPU3" data-from-pin="2" data-to-part="MCU" data-to-pin="GPIO1" data-net="I2C_SDA" data-kind="signal" stroke="#A0522D" stroke-width="1.8" points="132,884 421.7,884 421.7,819 516.4,819"><title>#39 I2C_SDA: RPU3.2 → MCU.GPIO1 10k 上拉</title></polyline>
+<polyline class="wire" data-row="40" data-from="RPU4.1" data-to="MCU.3V3" data-from-part="RPU4" data-from-pin="1" data-to-part="MCU" data-to-pin="3V3" data-net="+3V3" data-kind="power" stroke="#E8613C" stroke-width="2.6" points="132,962 382.7,962 382.7,598 516.4,598"><title>#40 +3V3: RPU4.1 → MCU.3V3</title></polyline>
+<polyline class="wire" data-row="41" data-from="RPU4.2" data-to="MCU.GPIO4" data-from-part="RPU4" data-from-pin="2" data-to-part="MCU" data-to-pin="GPIO4" data-net="I2C_SCL" data-kind="signal" stroke="#00838F" stroke-width="1.8" points="132,988 434.7,988 434.7,871 516.4,871"><title>#41 I2C_SCL: RPU4.2 → MCU.GPIO4 10k 上拉</title></polyline>
+<polyline class="wire" data-row="42" data-from="ACC.INT1" data-to="MCU.GPIO3" data-from-part="ACC" data-from-pin="INT1" data-to-part="MCU" data-to-pin="GPIO3" data-net="ACC_INT1" data-kind="signal" stroke="#5D6D7E" stroke-width="1.8" points="132,780 516.4,780"><title>#42 ACC_INT1: ACC.INT1 → MCU.GPIO3 摇一摇中断 + 深睡唤醒（C3 只有 GPIO0–5 能唤醒深睡）</title></polyline>
+</g>
+<g id="parts">
+<g class="part" data-part="MCU">
+<rect x="516.4" y="92.3" width="134.2" height="937.3" rx="6" fill="#EEF2F7" stroke="#3A4250" stroke-width="1.4"/>
+<text x="583.5" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">MCU</text>
+<g class="pin" data-part="MCU" data-pin="GPIO18" data-side="R" data-net="USB_DN"><circle cx="650.6" cy="234" r="3.6" fill="#9467BD" stroke="#FFFFFF" stroke-width="1"/><text x="641.6" y="238" font-size="12" text-anchor="end" fill="#1D2430">GPIO18</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO19" data-side="R" data-net="USB_DP"><circle cx="650.6" cy="260" r="3.6" fill="#FF7F0E" stroke="#FFFFFF" stroke-width="1"/><text x="641.6" y="264" font-size="12" text-anchor="end" fill="#1D2430">GPIO19</text></g>
+<g class="pin" data-part="MCU" data-pin="3V3" data-side="R" data-net="+3V3"><circle cx="650.6" cy="1014" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="641.6" y="1018" font-size="12" text-anchor="end" fill="#1D2430">3V3</text></g>
+<g class="pin" data-part="MCU" data-pin="3V3" data-side="L" data-net="+3V3"><circle cx="516.4" cy="598" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="602" font-size="12" text-anchor="start" fill="#1D2430">3V3</text></g>
+<g class="pin" data-part="MCU" data-pin="GND" data-side="R" data-net="GND"><circle cx="650.6" cy="988" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="641.6" y="992" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="MCU" data-pin="GND" data-side="L" data-net="GND"><circle cx="516.4" cy="533" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="537" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO6" data-side="L" data-net="EPD_SCK"><circle cx="516.4" cy="182" r="3.6" fill="#8C564B" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="186" font-size="12" text-anchor="start" fill="#1D2430">GPIO6</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO7" data-side="L" data-net="EPD_MOSI"><circle cx="516.4" cy="208" r="3.6" fill="#E377C2" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="212" font-size="12" text-anchor="start" fill="#1D2430">GPIO7</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO8" data-side="L" data-net="EPD_CS"><circle cx="516.4" cy="351" r="3.6" fill="#7F7F00" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="355" font-size="12" text-anchor="start" fill="#1D2430">GPIO8</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO10" data-side="L" data-net="EPD_DC"><circle cx="516.4" cy="260" r="3.6" fill="#3B5BA9" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="264" font-size="12" text-anchor="start" fill="#1D2430">GPIO10</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO2" data-side="L" data-net="EPD_RST"><circle cx="516.4" cy="403" r="3.6" fill="#0E8A6D" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="407" font-size="12" text-anchor="start" fill="#1D2430">GPIO2</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO5" data-side="L" data-net="EPD_BUSY"><circle cx="516.4" cy="312" r="3.6" fill="#7B4FA0" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="316" font-size="12" text-anchor="start" fill="#1D2430">GPIO5</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO1" data-side="L" data-net="I2C_SDA"><circle cx="516.4" cy="819" r="3.6" fill="#A0522D" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="823" font-size="12" text-anchor="start" fill="#1D2430">GPIO1</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO4" data-side="L" data-net="I2C_SCL"><circle cx="516.4" cy="871" r="3.6" fill="#00838F" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="875" font-size="12" text-anchor="start" fill="#1D2430">GPIO4</text></g>
+<g class="pin" data-part="MCU" data-pin="GPIO3" data-side="L" data-net="ACC_INT1"><circle cx="516.4" cy="780" r="3.6" fill="#5D6D7E" stroke="#FFFFFF" stroke-width="1"/><text x="525.4" y="784" font-size="12" text-anchor="start" fill="#1D2430">GPIO3</text></g>
+</g>
+<g class="part" data-part="EPD">
+<rect x="36" y="92.3" width="96" height="235.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">EPD</text>
+<g class="pin" data-part="EPD" data-pin="VCC" data-side="R" data-net="+3V3"><circle cx="132" cy="130" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="134" font-size="12" text-anchor="end" fill="#1D2430">VCC</text></g>
+<g class="pin" data-part="EPD" data-pin="GND" data-side="R" data-net="GND"><circle cx="132" cy="156" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="160" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="EPD" data-pin="CLK" data-side="R" data-net="EPD_SCK"><circle cx="132" cy="182" r="3.6" fill="#8C564B" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="186" font-size="12" text-anchor="end" fill="#1D2430">CLK</text></g>
+<g class="pin" data-part="EPD" data-pin="DIN" data-side="R" data-net="EPD_MOSI"><circle cx="132" cy="208" r="3.6" fill="#E377C2" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="212" font-size="12" text-anchor="end" fill="#1D2430">DIN</text></g>
+<g class="pin" data-part="EPD" data-pin="CS" data-side="R" data-net="EPD_CS"><circle cx="132" cy="234" r="3.6" fill="#7F7F00" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="238" font-size="12" text-anchor="end" fill="#1D2430">CS</text></g>
+<g class="pin" data-part="EPD" data-pin="DC" data-side="R" data-net="EPD_DC"><circle cx="132" cy="260" r="3.6" fill="#3B5BA9" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="264" font-size="12" text-anchor="end" fill="#1D2430">DC</text></g>
+<g class="pin" data-part="EPD" data-pin="RST" data-side="R" data-net="EPD_RST"><circle cx="132" cy="286" r="3.6" fill="#0E8A6D" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="290" font-size="12" text-anchor="end" fill="#1D2430">RST</text></g>
+<g class="pin" data-part="EPD" data-pin="BUSY" data-side="R" data-net="EPD_BUSY"><circle cx="132" cy="312" r="3.6" fill="#7B4FA0" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="316" font-size="12" text-anchor="end" fill="#1D2430">BUSY</text></g>
+</g>
+<g class="part" data-part="RPU1">
+<rect x="36" y="352.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="371.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RPU1</text>
+<g class="pin" data-part="RPU1" data-pin="1" data-side="R" data-net="+3V3"><circle cx="132" cy="390" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="394" font-size="12" text-anchor="end" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RPU1" data-pin="2" data-side="R" data-net="EPD_CS"><circle cx="132" cy="416" r="3.6" fill="#7F7F00" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="420" font-size="12" text-anchor="end" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="RPU2">
+<rect x="36" y="456.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="475.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RPU2</text>
+<g class="pin" data-part="RPU2" data-pin="1" data-side="R" data-net="+3V3"><circle cx="132" cy="494" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="498" font-size="12" text-anchor="end" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RPU2" data-pin="2" data-side="R" data-net="EPD_RST"><circle cx="132" cy="520" r="3.6" fill="#0E8A6D" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="524" font-size="12" text-anchor="end" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="ACC">
+<rect x="36" y="560.3" width="96" height="235.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="579.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">ACC</text>
+<g class="pin" data-part="ACC" data-pin="VDD" data-side="R" data-net="+3V3"><circle cx="132" cy="598" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="602" font-size="12" text-anchor="end" fill="#1D2430">VDD</text></g>
+<g class="pin" data-part="ACC" data-pin="VDD_IO" data-side="R" data-net="+3V3"><circle cx="132" cy="624" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="628" font-size="12" text-anchor="end" fill="#1D2430">VDD_IO</text></g>
+<g class="pin" data-part="ACC" data-pin="CS" data-side="R" data-net="+3V3"><circle cx="132" cy="650" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="654" font-size="12" text-anchor="end" fill="#1D2430">CS</text></g>
+<g class="pin" data-part="ACC" data-pin="GND" data-side="R" data-net="GND"><circle cx="132" cy="676" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="680" font-size="12" text-anchor="end" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="ACC" data-pin="SA0" data-side="R" data-net="GND"><circle cx="132" cy="702" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="706" font-size="12" text-anchor="end" fill="#1D2430">SA0</text></g>
+<g class="pin" data-part="ACC" data-pin="SDA" data-side="R" data-net="I2C_SDA"><circle cx="132" cy="728" r="3.6" fill="#A0522D" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="732" font-size="12" text-anchor="end" fill="#1D2430">SDA</text></g>
+<g class="pin" data-part="ACC" data-pin="SCL" data-side="R" data-net="I2C_SCL"><circle cx="132" cy="754" r="3.6" fill="#00838F" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="758" font-size="12" text-anchor="end" fill="#1D2430">SCL</text></g>
+<g class="pin" data-part="ACC" data-pin="INT1" data-side="R" data-net="ACC_INT1"><circle cx="132" cy="780" r="3.6" fill="#5D6D7E" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="784" font-size="12" text-anchor="end" fill="#1D2430">INT1</text></g>
+</g>
+<g class="part" data-part="RPU3">
+<rect x="36" y="820.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="839.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RPU3</text>
+<g class="pin" data-part="RPU3" data-pin="1" data-side="R" data-net="+3V3"><circle cx="132" cy="858" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="862" font-size="12" text-anchor="end" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RPU3" data-pin="2" data-side="R" data-net="I2C_SDA"><circle cx="132" cy="884" r="3.6" fill="#A0522D" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="888" font-size="12" text-anchor="end" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="RPU4">
+<rect x="36" y="924.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="84" y="943.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RPU4</text>
+<g class="pin" data-part="RPU4" data-pin="1" data-side="R" data-net="+3V3"><circle cx="132" cy="962" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="966" font-size="12" text-anchor="end" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RPU4" data-pin="2" data-side="R" data-net="I2C_SCL"><circle cx="132" cy="988" r="3.6" fill="#00838F" stroke="#FFFFFF" stroke-width="1"/><text x="123" y="992" font-size="12" text-anchor="end" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="USB">
+<rect x="959.4" y="92.3" width="96" height="183.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="111.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">USB</text>
+<g class="pin" data-part="USB" data-pin="VBUS" data-side="L" data-net="VBUS"><circle cx="959.4" cy="130" r="3.6" fill="#D62728" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="134" font-size="12" text-anchor="start" fill="#1D2430">VBUS</text></g>
+<g class="pin" data-part="USB" data-pin="GND" data-side="L" data-net="GND"><circle cx="959.4" cy="156" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="160" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="USB" data-pin="CC1" data-side="L" data-net="CC1"><circle cx="959.4" cy="182" r="3.6" fill="#1F77B4" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="186" font-size="12" text-anchor="start" fill="#1D2430">CC1</text></g>
+<g class="pin" data-part="USB" data-pin="CC2" data-side="L" data-net="CC2"><circle cx="959.4" cy="208" r="3.6" fill="#2CA02C" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="212" font-size="12" text-anchor="start" fill="#1D2430">CC2</text></g>
+<g class="pin" data-part="USB" data-pin="D-" data-side="L" data-net="USB_DN"><circle cx="959.4" cy="234" r="3.6" fill="#9467BD" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="238" font-size="12" text-anchor="start" fill="#1D2430">D-</text></g>
+<g class="pin" data-part="USB" data-pin="D+" data-side="L" data-net="USB_DP"><circle cx="959.4" cy="260" r="3.6" fill="#FF7F0E" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="264" font-size="12" text-anchor="start" fill="#1D2430">D+</text></g>
+</g>
+<g class="part" data-part="CHG">
+<rect x="959.4" y="300.3" width="96" height="183.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="319.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">CHG</text>
+<g class="pin" data-part="CHG" data-pin="VCC" data-side="L" data-net="VBUS"><circle cx="959.4" cy="338" r="3.6" fill="#D62728" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="342" font-size="12" text-anchor="start" fill="#1D2430">VCC</text></g>
+<g class="pin" data-part="CHG" data-pin="CE" data-side="L" data-net="VBUS"><circle cx="959.4" cy="364" r="3.6" fill="#D62728" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="368" font-size="12" text-anchor="start" fill="#1D2430">CE</text></g>
+<g class="pin" data-part="CHG" data-pin="GND" data-side="L" data-net="GND"><circle cx="959.4" cy="390" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="394" font-size="12" text-anchor="start" fill="#1D2430">GND</text></g>
+<g class="pin" data-part="CHG" data-pin="TEMP" data-side="L" data-net="GND"><circle cx="959.4" cy="416" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="420" font-size="12" text-anchor="start" fill="#1D2430">TEMP</text></g>
+<g class="pin" data-part="CHG" data-pin="PROG" data-side="L" data-net="PROG"><circle cx="959.4" cy="442" r="3.6" fill="#17BECF" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="446" font-size="12" text-anchor="start" fill="#1D2430">PROG</text></g>
+<g class="pin" data-part="CHG" data-pin="BAT" data-side="L" data-net="VBAT"><circle cx="959.4" cy="468" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="472" font-size="12" text-anchor="start" fill="#1D2430">BAT</text></g>
+</g>
+<g class="part" data-part="RCC1">
+<rect x="959.4" y="508.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="527.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RCC1</text>
+<g class="pin" data-part="RCC1" data-pin="1" data-side="L" data-net="CC1"><circle cx="959.4" cy="546" r="3.6" fill="#1F77B4" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="550" font-size="12" text-anchor="start" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RCC1" data-pin="2" data-side="L" data-net="GND"><circle cx="959.4" cy="572" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="576" font-size="12" text-anchor="start" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="RCC2">
+<rect x="959.4" y="612.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="631.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RCC2</text>
+<g class="pin" data-part="RCC2" data-pin="1" data-side="L" data-net="CC2"><circle cx="959.4" cy="650" r="3.6" fill="#2CA02C" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="654" font-size="12" text-anchor="start" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RCC2" data-pin="2" data-side="L" data-net="GND"><circle cx="959.4" cy="676" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="680" font-size="12" text-anchor="start" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="RPROG">
+<rect x="959.4" y="716.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="735.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">RPROG</text>
+<g class="pin" data-part="RPROG" data-pin="1" data-side="L" data-net="PROG"><circle cx="959.4" cy="754" r="3.6" fill="#17BECF" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="758" font-size="12" text-anchor="start" fill="#1D2430">1</text></g>
+<g class="pin" data-part="RPROG" data-pin="2" data-side="L" data-net="GND"><circle cx="959.4" cy="780" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="784" font-size="12" text-anchor="start" fill="#1D2430">2</text></g>
+</g>
+<g class="part" data-part="BAT">
+<rect x="959.4" y="820.3" width="96" height="79.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="839.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">BAT</text>
+<g class="pin" data-part="BAT" data-pin="+" data-side="L" data-net="VBAT"><circle cx="959.4" cy="858" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="862" font-size="12" text-anchor="start" fill="#1D2430">+</text></g>
+<g class="pin" data-part="BAT" data-pin="-" data-side="L" data-net="GND"><circle cx="959.4" cy="884" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="888" font-size="12" text-anchor="start" fill="#1D2430">-</text></g>
+</g>
+<g class="part" data-part="LDO">
+<rect x="959.4" y="924.3" width="96" height="105.3" rx="6" fill="#F7F5F0" stroke="#3A4250" stroke-width="1.4"/>
+<text x="1007.4" y="943.3" font-size="13" font-weight="bold" text-anchor="middle" fill="#1D2430">LDO</text>
+<g class="pin" data-part="LDO" data-pin="VIN" data-side="L" data-net="VBAT"><circle cx="959.4" cy="962" r="3.6" fill="#B0141E" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="966" font-size="12" text-anchor="start" fill="#1D2430">VIN</text></g>
+<g class="pin" data-part="LDO" data-pin="VSS" data-side="L" data-net="GND"><circle cx="959.4" cy="988" r="3.6" fill="#111111" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="992" font-size="12" text-anchor="start" fill="#1D2430">VSS</text></g>
+<g class="pin" data-part="LDO" data-pin="VOUT" data-side="L" data-net="+3V3"><circle cx="959.4" cy="1014" r="3.6" fill="#E8613C" stroke="#FFFFFF" stroke-width="1"/><text x="968.4" y="1018" font-size="12" text-anchor="start" fill="#1D2430">VOUT</text></g>
+</g>
+</g>
+<g id="net-labels">
+<text class="net-label" data-net="USB_DN" x="658.6" y="230" font-size="11" fill="#9467BD">USB_DN</text>
+<text class="net-label" data-net="USB_DP" x="658.6" y="256" font-size="11" fill="#FF7F0E">USB_DP</text>
+<text class="net-label" data-net="+3V3" x="658.6" y="1010" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="+3V3" x="482.3" y="594" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="GND" x="658.6" y="984" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="GND" x="484" y="529" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="EPD_SCK" x="457.7" y="178" font-size="11" fill="#8C564B">EPD_SCK</text>
+<text class="net-label" data-net="EPD_MOSI" x="451.2" y="204" font-size="11" fill="#E377C2">EPD_MOSI</text>
+<text class="net-label" data-net="EPD_CS" x="465.6" y="347" font-size="11" fill="#7F7F00">EPD_CS</text>
+<text class="net-label" data-net="EPD_DC" x="464.2" y="256" font-size="11" fill="#3B5BA9">EPD_DC</text>
+<text class="net-label" data-net="EPD_RST" x="458.7" y="399" font-size="11" fill="#0E8A6D">EPD_RST</text>
+<text class="net-label" data-net="EPD_BUSY" x="450.7" y="308" font-size="11" fill="#7B4FA0">EPD_BUSY</text>
+<text class="net-label" data-net="I2C_SDA" x="462.7" y="815" font-size="11" fill="#A0522D">I2C_SDA</text>
+<text class="net-label" data-net="I2C_SCL" x="463.9" y="867" font-size="11" fill="#00838F">I2C_SCL</text>
+<text class="net-label" data-net="ACC_INT1" x="455.2" y="776" font-size="11" fill="#5D6D7E">ACC_INT1</text>
+<text class="net-label" data-net="+3V3" x="140" y="126" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="GND" x="140" y="152" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="EPD_SCK" x="140" y="178" font-size="11" fill="#8C564B">EPD_SCK</text>
+<text class="net-label" data-net="EPD_MOSI" x="140" y="204" font-size="11" fill="#E377C2">EPD_MOSI</text>
+<text class="net-label" data-net="EPD_CS" x="140" y="230" font-size="11" fill="#7F7F00">EPD_CS</text>
+<text class="net-label" data-net="EPD_DC" x="140" y="256" font-size="11" fill="#3B5BA9">EPD_DC</text>
+<text class="net-label" data-net="EPD_RST" x="140" y="282" font-size="11" fill="#0E8A6D">EPD_RST</text>
+<text class="net-label" data-net="EPD_BUSY" x="140" y="308" font-size="11" fill="#7B4FA0">EPD_BUSY</text>
+<text class="net-label" data-net="+3V3" x="140" y="386" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="EPD_CS" x="140" y="412" font-size="11" fill="#7F7F00">EPD_CS</text>
+<text class="net-label" data-net="+3V3" x="140" y="490" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="EPD_RST" x="140" y="516" font-size="11" fill="#0E8A6D">EPD_RST</text>
+<text class="net-label" data-net="+3V3" x="140" y="594" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="+3V3" x="140" y="620" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="+3V3" x="140" y="646" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="GND" x="140" y="672" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="GND" x="140" y="698" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="I2C_SDA" x="140" y="724" font-size="11" fill="#A0522D">I2C_SDA</text>
+<text class="net-label" data-net="I2C_SCL" x="140" y="750" font-size="11" fill="#00838F">I2C_SCL</text>
+<text class="net-label" data-net="ACC_INT1" x="140" y="776" font-size="11" fill="#5D6D7E">ACC_INT1</text>
+<text class="net-label" data-net="+3V3" x="140" y="854" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="I2C_SDA" x="140" y="880" font-size="11" fill="#A0522D">I2C_SDA</text>
+<text class="net-label" data-net="+3V3" x="140" y="958" font-size="11" fill="#E8613C">+3V3</text>
+<text class="net-label" data-net="I2C_SCL" x="140" y="984" font-size="11" fill="#00838F">I2C_SCL</text>
+<text class="net-label" data-net="VBUS" x="921.8" y="126" font-size="11" fill="#D62728">VBUS</text>
+<text class="net-label" data-net="GND" x="926.9" y="152" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="CC1" x="930.4" y="178" font-size="11" fill="#1F77B4">CC1</text>
+<text class="net-label" data-net="CC2" x="930.4" y="204" font-size="11" fill="#2CA02C">CC2</text>
+<text class="net-label" data-net="USB_DN" x="905.5" y="230" font-size="11" fill="#9467BD">USB_DN</text>
+<text class="net-label" data-net="USB_DP" x="906.5" y="256" font-size="11" fill="#FF7F0E">USB_DP</text>
+<text class="net-label" data-net="VBUS" x="921.8" y="334" font-size="11" fill="#D62728">VBUS</text>
+<text class="net-label" data-net="VBUS" x="921.8" y="360" font-size="11" fill="#D62728">VBUS</text>
+<text class="net-label" data-net="GND" x="926.9" y="386" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="GND" x="926.9" y="412" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="PROG" x="919.9" y="438" font-size="11" fill="#17BECF">PROG</text>
+<text class="net-label" data-net="VBAT" x="923.6" y="464" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="CC1" x="930.4" y="542" font-size="11" fill="#1F77B4">CC1</text>
+<text class="net-label" data-net="GND" x="926.9" y="568" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="CC2" x="930.4" y="646" font-size="11" fill="#2CA02C">CC2</text>
+<text class="net-label" data-net="GND" x="926.9" y="672" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="PROG" x="919.9" y="750" font-size="11" fill="#17BECF">PROG</text>
+<text class="net-label" data-net="GND" x="926.9" y="776" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="VBAT" x="923.6" y="854" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="GND" x="926.9" y="880" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="VBAT" x="923.6" y="958" font-size="11" fill="#B0141E">VBAT</text>
+<text class="net-label" data-net="GND" x="926.9" y="984" font-size="11" fill="#111111">GND</text>
+<text class="net-label" data-net="+3V3" x="925.2" y="1010" font-size="11" fill="#E8613C">+3V3</text>
+</g>
+<g id="legend" font-size="11">
+<text x="36" y="1070" fill="#1D2430">图例 Legend:</text>
+<line x1="116.9" y1="1066" x2="138.9" y2="1066" stroke="#D62728" stroke-width="2.6"/>
+<text x="144.9" y="1070" fill="#1D2430">电源 Power</text>
+<line x1="223.2" y1="1066" x2="245.2" y2="1066" stroke="#111111" stroke-width="2.6"/>
+<text x="251.2" y="1070" fill="#1D2430">地 Ground</text>
+<line x1="324.4" y1="1066" x2="346.4" y2="1066" stroke="#1F77B4" stroke-width="2.6"/>
+<text x="352.4" y="1070" fill="#1D2430">信号 Signal（按网络着色 coloured per net）</text>
+</g>
+<g id="wire-table" font-size="11">
+<text x="58" y="1108.6" font-weight="bold" fill="#1D2430">#</text>
+<text x="89" y="1108.6" font-weight="bold" fill="#1D2430">从 From</text>
+<text x="175.6" y="1108.6" font-weight="bold" fill="#1D2430">到 To</text>
+<text x="262.2" y="1108.6" font-weight="bold" fill="#1D2430">网络 Net</text>
+<text x="337.9" y="1108.6" font-weight="bold" fill="#1D2430">类型 Kind</text>
+<text x="416.3" y="1108.6" font-weight="bold" fill="#1D2430">备注 Note</text>
+<line x1="36" y1="1113.6" x2="724.4" y2="1113.6" stroke="#C8CCD2"/>
+<g class="wire-row" data-row="1"><line x1="36" y1="1125.6" x2="52" y2="1125.6" stroke="#D62728" stroke-width="3"/>
+<text x="58" y="1129.6" fill="#1D2430">1</text>
+<text x="89" y="1129.6" fill="#1D2430">USB.VBUS</text>
+<text x="175.6" y="1129.6" fill="#1D2430">CHG.VCC</text>
+<text x="262.2" y="1129.6" fill="#1D2430">VBUS</text>
+<text x="337.9" y="1129.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1129.6" fill="#1D2430">USB-C 只取 5 V（不做 PD）</text>
+</g>
+<g class="wire-row" data-row="2"><line x1="36" y1="1146.6" x2="52" y2="1146.6" stroke="#D62728" stroke-width="3"/>
+<text x="58" y="1150.6" fill="#1D2430">2</text>
+<text x="89" y="1150.6" fill="#1D2430">USB.VBUS</text>
+<text x="175.6" y="1150.6" fill="#1D2430">CHG.CE</text>
+<text x="262.2" y="1150.6" fill="#1D2430">VBUS</text>
+<text x="337.9" y="1150.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1150.6" fill="#1D2430">CE 高电平=允许充电</text>
+</g>
+<g class="wire-row" data-row="3"><line x1="36" y1="1167.6" x2="52" y2="1167.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1171.6" fill="#1D2430">3</text>
+<text x="89" y="1171.6" fill="#1D2430">USB.GND</text>
+<text x="175.6" y="1171.6" fill="#1D2430">CHG.GND</text>
+<text x="262.2" y="1171.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1171.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1171.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="4"><line x1="36" y1="1188.6" x2="52" y2="1188.6" stroke="#1F77B4" stroke-width="3"/>
+<text x="58" y="1192.6" fill="#1D2430">4</text>
+<text x="89" y="1192.6" fill="#1D2430">USB.CC1</text>
+<text x="175.6" y="1192.6" fill="#1D2430">RCC1.1</text>
+<text x="262.2" y="1192.6" fill="#1D2430">CC1</text>
+<text x="337.9" y="1192.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1192.6" fill="#1D2430">5.1k 下拉（每个 CC 独立一个）</text>
+</g>
+<g class="wire-row" data-row="5"><line x1="36" y1="1209.6" x2="52" y2="1209.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1213.6" fill="#1D2430">5</text>
+<text x="89" y="1213.6" fill="#1D2430">RCC1.2</text>
+<text x="175.6" y="1213.6" fill="#1D2430">USB.GND</text>
+<text x="262.2" y="1213.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1213.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1213.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="6"><line x1="36" y1="1230.6" x2="52" y2="1230.6" stroke="#2CA02C" stroke-width="3"/>
+<text x="58" y="1234.6" fill="#1D2430">6</text>
+<text x="89" y="1234.6" fill="#1D2430">USB.CC2</text>
+<text x="175.6" y="1234.6" fill="#1D2430">RCC2.1</text>
+<text x="262.2" y="1234.6" fill="#1D2430">CC2</text>
+<text x="337.9" y="1234.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1234.6" fill="#1D2430">5.1k 下拉</text>
+</g>
+<g class="wire-row" data-row="7"><line x1="36" y1="1251.6" x2="52" y2="1251.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1255.6" fill="#1D2430">7</text>
+<text x="89" y="1255.6" fill="#1D2430">RCC2.2</text>
+<text x="175.6" y="1255.6" fill="#1D2430">USB.GND</text>
+<text x="262.2" y="1255.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1255.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1255.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="8"><line x1="36" y1="1272.6" x2="52" y2="1272.6" stroke="#9467BD" stroke-width="3"/>
+<text x="58" y="1276.6" fill="#1D2430">8</text>
+<text x="89" y="1276.6" fill="#1D2430">USB.D-</text>
+<text x="175.6" y="1276.6" fill="#1D2430">MCU.GPIO18</text>
+<text x="262.2" y="1276.6" fill="#1D2430">USB_DN</text>
+<text x="337.9" y="1276.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1276.6" fill="#1D2430">USB Serial/JTAG 烧录</text>
+</g>
+<g class="wire-row" data-row="9"><line x1="36" y1="1293.6" x2="52" y2="1293.6" stroke="#FF7F0E" stroke-width="3"/>
+<text x="58" y="1297.6" fill="#1D2430">9</text>
+<text x="89" y="1297.6" fill="#1D2430">USB.D+</text>
+<text x="175.6" y="1297.6" fill="#1D2430">MCU.GPIO19</text>
+<text x="262.2" y="1297.6" fill="#1D2430">USB_DP</text>
+<text x="337.9" y="1297.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1297.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="10"><line x1="36" y1="1314.6" x2="52" y2="1314.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1318.6" fill="#1D2430">10</text>
+<text x="89" y="1318.6" fill="#1D2430">CHG.TEMP</text>
+<text x="175.6" y="1318.6" fill="#1D2430">USB.GND</text>
+<text x="262.2" y="1318.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1318.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1318.6" fill="#1D2430">不用 NTC：TEMP 接地关闭温度检测</text>
+</g>
+<g class="wire-row" data-row="11"><line x1="36" y1="1335.6" x2="52" y2="1335.6" stroke="#17BECF" stroke-width="3"/>
+<text x="58" y="1339.6" fill="#1D2430">11</text>
+<text x="89" y="1339.6" fill="#1D2430">CHG.PROG</text>
+<text x="175.6" y="1339.6" fill="#1D2430">RPROG.1</text>
+<text x="262.2" y="1339.6" fill="#1D2430">PROG</text>
+<text x="337.9" y="1339.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1339.6" fill="#1D2430">RPROG=10k → 130 mA</text>
+</g>
+<g class="wire-row" data-row="12"><line x1="36" y1="1356.6" x2="52" y2="1356.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1360.6" fill="#1D2430">12</text>
+<text x="89" y="1360.6" fill="#1D2430">RPROG.2</text>
+<text x="175.6" y="1360.6" fill="#1D2430">USB.GND</text>
+<text x="262.2" y="1360.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1360.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1360.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="13"><line x1="36" y1="1377.6" x2="52" y2="1377.6" stroke="#B0141E" stroke-width="3"/>
+<text x="58" y="1381.6" fill="#1D2430">13</text>
+<text x="89" y="1381.6" fill="#1D2430">CHG.BAT</text>
+<text x="175.6" y="1381.6" fill="#1D2430">BAT.+</text>
+<text x="262.2" y="1381.6" fill="#1D2430">VBAT</text>
+<text x="337.9" y="1381.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1381.6" fill="#1D2430">电芯自带保护板（PCM）</text>
+</g>
+<g class="wire-row" data-row="14"><line x1="36" y1="1398.6" x2="52" y2="1398.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1402.6" fill="#1D2430">14</text>
+<text x="89" y="1402.6" fill="#1D2430">BAT.-</text>
+<text x="175.6" y="1402.6" fill="#1D2430">CHG.GND</text>
+<text x="262.2" y="1402.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1402.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1402.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="15"><line x1="36" y1="1419.6" x2="52" y2="1419.6" stroke="#B0141E" stroke-width="3"/>
+<text x="58" y="1423.6" fill="#1D2430">15</text>
+<text x="89" y="1423.6" fill="#1D2430">BAT.+</text>
+<text x="175.6" y="1423.6" fill="#1D2430">LDO.VIN</text>
+<text x="262.2" y="1423.6" fill="#1D2430">VBAT</text>
+<text x="337.9" y="1423.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1423.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="16"><line x1="36" y1="1440.6" x2="52" y2="1440.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1444.6" fill="#1D2430">16</text>
+<text x="89" y="1444.6" fill="#1D2430">LDO.VSS</text>
+<text x="175.6" y="1444.6" fill="#1D2430">BAT.-</text>
+<text x="262.2" y="1444.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1444.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1444.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="17"><line x1="36" y1="1461.6" x2="52" y2="1461.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1465.6" fill="#1D2430">17</text>
+<text x="89" y="1465.6" fill="#1D2430">LDO.VOUT</text>
+<text x="175.6" y="1465.6" fill="#1D2430">MCU.3V3</text>
+<text x="262.2" y="1465.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1465.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1465.6" fill="#1D2430">XC6206 3.3V</text>
+</g>
+<g class="wire-row" data-row="18"><line x1="36" y1="1482.6" x2="52" y2="1482.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1486.6" fill="#1D2430">18</text>
+<text x="89" y="1486.6" fill="#1D2430">MCU.GND</text>
+<text x="175.6" y="1486.6" fill="#1D2430">LDO.VSS</text>
+<text x="262.2" y="1486.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1486.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1486.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="19"><line x1="36" y1="1503.6" x2="52" y2="1503.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1507.6" fill="#1D2430">19</text>
+<text x="89" y="1507.6" fill="#1D2430">MCU.3V3</text>
+<text x="175.6" y="1507.6" fill="#1D2430">EPD.VCC</text>
+<text x="262.2" y="1507.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1507.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1507.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="20"><line x1="36" y1="1524.6" x2="52" y2="1524.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1528.6" fill="#1D2430">20</text>
+<text x="89" y="1528.6" fill="#1D2430">MCU.GND</text>
+<text x="175.6" y="1528.6" fill="#1D2430">EPD.GND</text>
+<text x="262.2" y="1528.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1528.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1528.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="21"><line x1="36" y1="1545.6" x2="52" y2="1545.6" stroke="#8C564B" stroke-width="3"/>
+<text x="58" y="1549.6" fill="#1D2430">21</text>
+<text x="89" y="1549.6" fill="#1D2430">MCU.GPIO6</text>
+<text x="175.6" y="1549.6" fill="#1D2430">EPD.CLK</text>
+<text x="262.2" y="1549.6" fill="#1D2430">EPD_SCK</text>
+<text x="337.9" y="1549.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1549.6" fill="#1D2430">SPI</text>
+</g>
+<g class="wire-row" data-row="22"><line x1="36" y1="1566.6" x2="52" y2="1566.6" stroke="#E377C2" stroke-width="3"/>
+<text x="58" y="1570.6" fill="#1D2430">22</text>
+<text x="89" y="1570.6" fill="#1D2430">MCU.GPIO7</text>
+<text x="175.6" y="1570.6" fill="#1D2430">EPD.DIN</text>
+<text x="262.2" y="1570.6" fill="#1D2430">EPD_MOSI</text>
+<text x="337.9" y="1570.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1570.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="23"><line x1="36" y1="1587.6" x2="52" y2="1587.6" stroke="#7F7F00" stroke-width="3"/>
+<text x="58" y="1591.6" fill="#1D2430">23</text>
+<text x="89" y="1591.6" fill="#1D2430">MCU.GPIO8</text>
+<text x="175.6" y="1591.6" fill="#1D2430">EPD.CS</text>
+<text x="262.2" y="1591.6" fill="#1D2430">EPD_CS</text>
+<text x="337.9" y="1591.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1591.6" fill="#1D2430">GPIO8 是 strapping：CS 加 10k 上拉</text>
+</g>
+<g class="wire-row" data-row="24"><line x1="36" y1="1608.6" x2="52" y2="1608.6" stroke="#3B5BA9" stroke-width="3"/>
+<text x="58" y="1612.6" fill="#1D2430">24</text>
+<text x="89" y="1612.6" fill="#1D2430">MCU.GPIO10</text>
+<text x="175.6" y="1612.6" fill="#1D2430">EPD.DC</text>
+<text x="262.2" y="1612.6" fill="#1D2430">EPD_DC</text>
+<text x="337.9" y="1612.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1612.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="25"><line x1="36" y1="1629.6" x2="52" y2="1629.6" stroke="#0E8A6D" stroke-width="3"/>
+<text x="58" y="1633.6" fill="#1D2430">25</text>
+<text x="89" y="1633.6" fill="#1D2430">MCU.GPIO2</text>
+<text x="175.6" y="1633.6" fill="#1D2430">EPD.RST</text>
+<text x="262.2" y="1633.6" fill="#1D2430">EPD_RST</text>
+<text x="337.9" y="1633.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1633.6" fill="#1D2430">GPIO2 是 strapping：RST 加 10k 上拉</text>
+</g>
+<g class="wire-row" data-row="26"><line x1="36" y1="1650.6" x2="52" y2="1650.6" stroke="#7B4FA0" stroke-width="3"/>
+<text x="58" y="1654.6" fill="#1D2430">26</text>
+<text x="89" y="1654.6" fill="#1D2430">MCU.GPIO5</text>
+<text x="175.6" y="1654.6" fill="#1D2430">EPD.BUSY</text>
+<text x="262.2" y="1654.6" fill="#1D2430">EPD_BUSY</text>
+<text x="337.9" y="1654.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1654.6" fill="#1D2430">高=忙</text>
+</g>
+<g class="wire-row" data-row="27"><line x1="36" y1="1671.6" x2="52" y2="1671.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1675.6" fill="#1D2430">27</text>
+<text x="89" y="1675.6" fill="#1D2430">RPU1.1</text>
+<text x="175.6" y="1675.6" fill="#1D2430">MCU.3V3</text>
+<text x="262.2" y="1675.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1675.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1675.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="28"><line x1="36" y1="1692.6" x2="52" y2="1692.6" stroke="#7F7F00" stroke-width="3"/>
+<text x="58" y="1696.6" fill="#1D2430">28</text>
+<text x="89" y="1696.6" fill="#1D2430">RPU1.2</text>
+<text x="175.6" y="1696.6" fill="#1D2430">MCU.GPIO8</text>
+<text x="262.2" y="1696.6" fill="#1D2430">EPD_CS</text>
+<text x="337.9" y="1696.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1696.6" fill="#1D2430">10k 上拉</text>
+</g>
+<g class="wire-row" data-row="29"><line x1="36" y1="1713.6" x2="52" y2="1713.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1717.6" fill="#1D2430">29</text>
+<text x="89" y="1717.6" fill="#1D2430">RPU2.1</text>
+<text x="175.6" y="1717.6" fill="#1D2430">MCU.3V3</text>
+<text x="262.2" y="1717.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1717.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1717.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="30"><line x1="36" y1="1734.6" x2="52" y2="1734.6" stroke="#0E8A6D" stroke-width="3"/>
+<text x="58" y="1738.6" fill="#1D2430">30</text>
+<text x="89" y="1738.6" fill="#1D2430">RPU2.2</text>
+<text x="175.6" y="1738.6" fill="#1D2430">MCU.GPIO2</text>
+<text x="262.2" y="1738.6" fill="#1D2430">EPD_RST</text>
+<text x="337.9" y="1738.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1738.6" fill="#1D2430">10k 上拉</text>
+</g>
+<g class="wire-row" data-row="31"><line x1="36" y1="1755.6" x2="52" y2="1755.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1759.6" fill="#1D2430">31</text>
+<text x="89" y="1759.6" fill="#1D2430">MCU.3V3</text>
+<text x="175.6" y="1759.6" fill="#1D2430">ACC.VDD</text>
+<text x="262.2" y="1759.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1759.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1759.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="32"><line x1="36" y1="1776.6" x2="52" y2="1776.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1780.6" fill="#1D2430">32</text>
+<text x="89" y="1780.6" fill="#1D2430">MCU.3V3</text>
+<text x="175.6" y="1780.6" fill="#1D2430">ACC.VDD_IO</text>
+<text x="262.2" y="1780.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1780.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1780.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="33"><line x1="36" y1="1797.6" x2="52" y2="1797.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1801.6" fill="#1D2430">33</text>
+<text x="89" y="1801.6" fill="#1D2430">MCU.3V3</text>
+<text x="175.6" y="1801.6" fill="#1D2430">ACC.CS</text>
+<text x="262.2" y="1801.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1801.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1801.6" fill="#1D2430">CS 高=I2C</text>
+</g>
+<g class="wire-row" data-row="34"><line x1="36" y1="1818.6" x2="52" y2="1818.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1822.6" fill="#1D2430">34</text>
+<text x="89" y="1822.6" fill="#1D2430">MCU.GND</text>
+<text x="175.6" y="1822.6" fill="#1D2430">ACC.GND</text>
+<text x="262.2" y="1822.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1822.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1822.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="35"><line x1="36" y1="1839.6" x2="52" y2="1839.6" stroke="#111111" stroke-width="3"/>
+<text x="58" y="1843.6" fill="#1D2430">35</text>
+<text x="89" y="1843.6" fill="#1D2430">MCU.GND</text>
+<text x="175.6" y="1843.6" fill="#1D2430">ACC.SA0</text>
+<text x="262.2" y="1843.6" fill="#1D2430">GND</text>
+<text x="337.9" y="1843.6" fill="#1D2430">地 ground</text>
+<text x="416.3" y="1843.6" fill="#1D2430">SA0 接地 → 地址 0x18</text>
+</g>
+<g class="wire-row" data-row="36"><line x1="36" y1="1860.6" x2="52" y2="1860.6" stroke="#A0522D" stroke-width="3"/>
+<text x="58" y="1864.6" fill="#1D2430">36</text>
+<text x="89" y="1864.6" fill="#1D2430">MCU.GPIO1</text>
+<text x="175.6" y="1864.6" fill="#1D2430">ACC.SDA</text>
+<text x="262.2" y="1864.6" fill="#1D2430">I2C_SDA</text>
+<text x="337.9" y="1864.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1864.6" fill="#1D2430">I2C 400 kHz</text>
+</g>
+<g class="wire-row" data-row="37"><line x1="36" y1="1881.6" x2="52" y2="1881.6" stroke="#00838F" stroke-width="3"/>
+<text x="58" y="1885.6" fill="#1D2430">37</text>
+<text x="89" y="1885.6" fill="#1D2430">MCU.GPIO4</text>
+<text x="175.6" y="1885.6" fill="#1D2430">ACC.SCL</text>
+<text x="262.2" y="1885.6" fill="#1D2430">I2C_SCL</text>
+<text x="337.9" y="1885.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1885.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="38"><line x1="36" y1="1902.6" x2="52" y2="1902.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1906.6" fill="#1D2430">38</text>
+<text x="89" y="1906.6" fill="#1D2430">RPU3.1</text>
+<text x="175.6" y="1906.6" fill="#1D2430">MCU.3V3</text>
+<text x="262.2" y="1906.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1906.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1906.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="39"><line x1="36" y1="1923.6" x2="52" y2="1923.6" stroke="#A0522D" stroke-width="3"/>
+<text x="58" y="1927.6" fill="#1D2430">39</text>
+<text x="89" y="1927.6" fill="#1D2430">RPU3.2</text>
+<text x="175.6" y="1927.6" fill="#1D2430">MCU.GPIO1</text>
+<text x="262.2" y="1927.6" fill="#1D2430">I2C_SDA</text>
+<text x="337.9" y="1927.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1927.6" fill="#1D2430">10k 上拉</text>
+</g>
+<g class="wire-row" data-row="40"><line x1="36" y1="1944.6" x2="52" y2="1944.6" stroke="#E8613C" stroke-width="3"/>
+<text x="58" y="1948.6" fill="#1D2430">40</text>
+<text x="89" y="1948.6" fill="#1D2430">RPU4.1</text>
+<text x="175.6" y="1948.6" fill="#1D2430">MCU.3V3</text>
+<text x="262.2" y="1948.6" fill="#1D2430">+3V3</text>
+<text x="337.9" y="1948.6" fill="#1D2430">电源 power</text>
+<text x="416.3" y="1948.6" fill="#1D2430"></text>
+</g>
+<g class="wire-row" data-row="41"><line x1="36" y1="1965.6" x2="52" y2="1965.6" stroke="#00838F" stroke-width="3"/>
+<text x="58" y="1969.6" fill="#1D2430">41</text>
+<text x="89" y="1969.6" fill="#1D2430">RPU4.2</text>
+<text x="175.6" y="1969.6" fill="#1D2430">MCU.GPIO4</text>
+<text x="262.2" y="1969.6" fill="#1D2430">I2C_SCL</text>
+<text x="337.9" y="1969.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1969.6" fill="#1D2430">10k 上拉</text>
+</g>
+<g class="wire-row" data-row="42"><line x1="36" y1="1986.6" x2="52" y2="1986.6" stroke="#5D6D7E" stroke-width="3"/>
+<text x="58" y="1990.6" fill="#1D2430">42</text>
+<text x="89" y="1990.6" fill="#1D2430">ACC.INT1</text>
+<text x="175.6" y="1990.6" fill="#1D2430">MCU.GPIO3</text>
+<text x="262.2" y="1990.6" fill="#1D2430">ACC_INT1</text>
+<text x="337.9" y="1990.6" fill="#1D2430">信号 signal</text>
+<text x="416.3" y="1990.6" fill="#1D2430">摇一摇中断 + 深睡唤醒（C3 只有 GPIO0–5 能唤醒深睡）</text>
+</g>
+</g>
+</svg>

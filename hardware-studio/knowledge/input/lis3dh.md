@@ -45,6 +45,25 @@
 | 自动睡眠/唤醒 | ACT_THS(3Eh)/ACT_DUR(3Fh)：加速度低于阈值自动切到低功耗 10 Hz，超过阈值恢复原 ODR | [LIS3DH DocID17530 Rev2 §3.2.4](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
 | 中断锁存 | CTRL_REG5 的 LIR_INT1 置 1 时中断锁存，读 INT1_SRC(31h) 才清除 | [LIS3DH DocID17530 Rev2 §8.12](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
 
+## 寄存器位（"摇一摇"中断配置用）
+
+2026-11-01 由 answer-box 产品补充：`firmware/templates/shake.py` 按下表写寄存器。位序一律 b7…b0。
+
+| 寄存器 | 位（b7 → b0）与要点 | 来源 |
+|---|---|---|
+| CTRL_REG1 (20h) | ODR3 ODR2 ODR1 ODR0 LPen Zen Yen Xen；ODR=0000 掉电，0001/0010/0011/0100/0101/0110/0111 = 1/10/25/50/100/200/400 Hz；LPen=1 低功耗模式；X/Y/Z 使能默认 1 | [LIS3DH DocID17530 Rev2 表 29–31](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| CTRL_REG2 (21h) | HPM1 HPM0 HPCF2 HPCF1 FDS HPCLICK HP_IA2 HP_IA1；HP_IA1=1 时中断 1 用高通滤波后的数据（去掉重力分量）；HPCF 截止频率表本次未读 | [LIS3DH DocID17530 Rev2 表 32–34](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| CTRL_REG3 (22h) | I1_CLICK I1_IA1 I1_IA2 I1_ZYXDA I1_321DA I1_WTM I1_OVERRUN –；I1_IA1（b6）把中断 1 送到 INT1 脚 | [LIS3DH DocID17530 Rev2 表 35–36](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| CTRL_REG4 (23h) | BDU BLE FS1 FS0 HR ST1 ST0 SIM；FS=00/01/10/11 → ±2/±4/±8/±16 g | [LIS3DH DocID17530 Rev2 表 37–38](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| CTRL_REG5 (24h) | BOOT FIFO_EN – – LIR_INT1 D4D_INT1 LIR_INT2 D4D_INT2；LIR_INT1（b3）=1 锁存中断 1，读 INT1_SRC 清除 | [LIS3DH DocID17530 Rev2 表 40–41](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| CTRL_REG6 (25h) | INT_POLARITY（b1）默认 0 = INT1/INT2 高有效，1 = 低有效 | [LIS3DH DocID17530 Rev2 表 42–43](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| INT1_CFG (30h) | AOI 6D ZHIE ZLIE YHIE YLIE XHIE XLIE；AOI=0、6D=0 为各事件"或"组合；"摇一摇"用 XHIE/YHIE/ZHIE = 0x2A | [LIS3DH DocID17530 Rev2 表 53–55](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| INT1_SRC (31h) | 0 IA ZH ZL YH YL XH XL（只读）；读这个寄存器清 IA 位和 INT1 脚（锁存模式时） | [LIS3DH DocID17530 Rev2 表 56–57](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| INT1_THS (32h) | THS[6:0]（b7 固定 0，最大 127）；1 LSb = 16 / 32 / 62 / 186 mg @ ±2 / ±4 / ±8 / ±16 g | [LIS3DH DocID17530 Rev2 表 58–59](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| INT1_DURATION (33h) | D[6:0]，1 LSb = 1/ODR：事件持续 N/ODR 才算 | [LIS3DH DocID17530 Rev2 表 60–61](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| OUT_X_L (28h) … OUT_Z_H (2Dh) | 二进制补码、左对齐；多字节读要把子地址最高位置 1（自动递增） | [LIS3DH DocID17530 Rev2 §8.16–8.18、§6.1.1](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+| 不用高通时的阈值 | 推论：静止时某一轴始终约 1 g（重力），HP_IA1=0 时 INT1_THS 必须高于 1 g，否则静置也会一直触发；或者打开 HP_IA1（滤波参数本次未读，待核实） | [LIS3DH DocID17530 Rev2 表 33、表 59](https://github.com/sparkfun/SparkFun_Triple_Axis_Acclerometer-LIS3DH/blob/7d6bde80688871b4ce9355815a1cfc40219b901d/Documentation/lis3dh.pdf) · S（镜像）· 2026-11-01 · 待核实 |
+
 ## 易踩的坑
 
 | 坑 | 说明 / 对策 | 来源 |

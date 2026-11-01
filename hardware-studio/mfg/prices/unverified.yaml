@@ -38,3 +38,23 @@
     搜索摘要："1+ $2.9982 … 650+ $2.0326，库存 715"；另一摘要是 1+ 约 $2.62、100+ 约 $2.52。
     取第一组，因为它有完整的首档和末档；中间档位未知，按首档计。
   note: 待核实；中间档位缺失
+- key: lcsc:C5374685
+  mpn: Waveshare 1.54inch e-Paper Module（200x200，SSD1681 类，黑白，SPI，带转接板）
+  manufacturer: Waveshare
+  package: 模块 48x33mm
+  currency: USD
+  moq: 1
+  breaks:
+  - {qty: 1, price: 8.05}
+  - {qty: 10, price: 6.85}
+  - {qty: 100, price: 5.50}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://www.lcsc.com/product-detail/C5374685.html
+  date: '2026-11-01'
+  basis: >-
+    数字取自 knowledge/display/selection.md 记录的 LCSC 商品页搜索摘要（1 / 10+ / 100+ = $8.05 / $6.85 / $5.50，
+    摘要同时显示缺货，快照日期未知）。jlcparts 镜像里没有这个编号（2026-11-01 查过，C1600000–C6299999 区间缺失）。
+    另一个 Waveshare 1.54 寸模块 LCSC C359939 的摘要参考价 $10.6492 起（0 库存），说明同类模块价格波动大。
+  note: 待核实；模块不贴片（手工装配），没有焊点数；1000 台以上应改用裸屏 + 主板驱动电路

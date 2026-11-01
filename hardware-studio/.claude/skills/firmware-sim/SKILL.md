@@ -1,6 +1,6 @@
 ---
 name: firmware-sim
-description: 在电脑上不改代码运行 MicroPython 显示固件（SSD1306 OLED、ST7789 彩屏、SSD1680/SSD1681 墨水屏），用虚拟时钟出 PNG/GIF 模拟图，并使用 firmware/templates 里的状态机、按键/触摸消抖、低功耗休眠、开机自检模板。Use when previewing what MicroPython firmware shows on a small display, checking firmware logic (timing, buttons, sleep/wake, self-test) without hardware, producing sim_*.png/gif screen mockups for a product, or starting new MicroPython firmware from a template.
+description: 在电脑上不改代码运行 MicroPython 显示固件（SSD1306 OLED、ST7789 彩屏、SSD1680/SSD1681 墨水屏），用虚拟时钟出 PNG/GIF 模拟图，并使用 firmware/templates 里的状态机、按键/触摸消抖、摇一摇（加速度计）、低功耗休眠、开机自检模板。Use when previewing what MicroPython firmware shows on a small display, checking firmware logic (timing, buttons, shake/accelerometer, sleep/wake, self-test) without hardware, producing sim_*.png/gif screen mockups for a product, or starting new MicroPython firmware from a template.
 ---
 
 # 固件模拟与模板
@@ -9,7 +9,7 @@ description: 在电脑上不改代码运行 MicroPython 显示固件（SSD1306 O
 
 - 有一份 MicroPython 固件（`inputs/` 里用户给的，或新写的），想看屏幕上会显示什么、动画节奏对不对；
 - 新产品流程里"屏幕和交互模拟"这一步：出 `sim_*.gif` / `sim_*.png`；
-- 写新固件时从 `firmware/templates/` 起步（状态机、按键/触摸、休眠、自检）；
+- 写新固件时从 `firmware/templates/` 起步（状态机、按键/触摸、摇一摇、休眠、自检）；
 - 不用于：证明真机能跑、测功耗、测真实刷新时间。这些要上真机。
 
 ## 怎么跑
@@ -43,6 +43,7 @@ python sim/run_firmware.py sim/examples/lcd_dashboard.py --display st7789 --seco
 | `state_machine.py` | `python sim/run_firmware.py firmware/templates/state_machine.py --seconds 20 --out /tmp/sim_fsm.png` | 退出码 0，SSD1306 出帧 |
 | `power.py` | `python sim/run_firmware.py firmware/templates/power.py --seconds 20 --out /tmp/sim_power.png` | 退出码 0 |
 | `selftest.py` | `python sim/run_firmware.py firmware/templates/selftest.py --seconds 10 --out /tmp/sim_selftest.png` | 退出码 0；没给 ADC 输入时警告"ADC pin 1 has no stimulus"，电池项显示 0 V |
+| `shake.py` | `python sim/run_firmware.py firmware/templates/shake.py --inputs evals/tasks/c04_gap_shake_template/stimulus.json --seconds 5 --out /tmp/sim_shake.png` | 退出码 0，打印 `SELFTEST accel OK addr=0x18`；在 stimulus 的 `pins` 里给 INT1 脚（默认 3）脉冲，每个上升沿打印 `EVENT shake n`（800 ms 冷却内的脉冲被忽略） |
 | `buttons.py` | `python sim/run_firmware.py firmware/templates/buttons.py --inputs btn.json --seconds 6` | **没有屏幕**，只在控制台打印 `EVENT button click/double/long/hold_end`；因为没帧，退出码是 1，这是正常的。**不要加 `--out`**，否则会抛 `ValueError: no frames captured` 的回溯 |
 
 `btn.json` 例子（单击、长按各一次）：`{"buttons": [{"pin": 0, "at_ms": 1000, "hold_ms": 80, "active_level": 0, "bounce_ms": 4}, {"pin": 0, "at_ms": 3000, "hold_ms": 1500, "active_level": 0, "bounce_ms": 4}]}`

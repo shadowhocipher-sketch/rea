@@ -1,0 +1,267 @@
+{
+ "label": "run-2026-11-01-0416",
+ "date": "2026-11-01 04:16",
+ "max": 20,
+ "total": 16.5101,
+ "by_line": {
+  "A": {
+   "score": 2.85,
+   "n": 4
+  },
+  "B": {
+   "score": 2.0,
+   "n": 2
+  },
+  "C": {
+   "score": 3.0,
+   "n": 4
+  },
+  "D": {
+   "score": 2.2445,
+   "n": 3
+  },
+  "E": {
+   "score": 2.4522,
+   "n": 3
+  },
+  "F": {
+   "score": 2.0,
+   "n": 2
+  },
+  "G": {
+   "score": 1.9634,
+   "n": 2
+  }
+ },
+ "by_kind": {
+  "capability": 14.8134,
+  "gap": 1.6966999999999999
+ },
+ "seconds": 10.8,
+ "env": {
+  "python": "3.13.16",
+  "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39"
+ },
+ "tasks": [
+  {
+   "dir": "a01_esp32s3_strapping",
+   "id": "a01",
+   "line": "A",
+   "title": "ESP32-S3 strapping 引脚带来源",
+   "kind": "capability",
+   "score": 0.85,
+   "reason": "✓ strapping 引脚 [0, 3, 45, 46]，标准答案 [0, 3, 45, 46]；✓ strapping 行带链接+级别+日期；✓ GPIO45 = VDD_SPI 电压选择并带来源；✗ GPIO3 = JTAG 信号源选择并带来源（当前库写的是'未查到'则不得分）",
+   "crashed": false,
+   "seconds": 0.0
+  },
+  {
+   "dir": "a02_lipo_charge_protect",
+   "id": "a02",
+   "line": "A",
+   "title": "锂电随身设备充电与保护方案",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 选型表推荐充电芯片 TP4056 并带来源；✓ 选型表推荐保护 IC DW01 并带来源；✓ CC 下拉 5.1 kΩ 并带来源；✓ 充电芯片恒压电压含 4.2 V 并带来源；✓ 保护 IC 过充 4.20–4.35 V、过放 2.3–2.9 V 并带来源",
+   "crashed": false,
+   "seconds": 0.0
+  },
+  {
+   "dir": "a03_gap_mcp73831_fuelgauge",
+   "id": "a03",
+   "line": "A",
+   "title": "【缺口】MCP73831 与电量计器件页",
+   "kind": "gap",
+   "score": 0.0,
+   "reason": "✗ MCP73831 器件页：没有；✗ 电量计器件页：没有",
+   "crashed": false,
+   "seconds": 0.0
+  },
+  {
+   "dir": "a04_epaper_controller_facts",
+   "id": "a04",
+   "line": "A",
+   "title": "墨水屏控制器 BUSY/深睡/命令字",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ busy_high；✓ sleep_exit_hw_reset；✓ cmd_deep_sleep_10h；✓ cmd_master_activation_20h",
+   "crashed": false,
+   "seconds": 0.0
+  },
+  {
+   "dir": "b01_usbc_battery_enclosure",
+   "id": "b01",
+   "line": "B",
+   "title": "USB-C + 电池仓外壳：干涉 0、插头插到底",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 退出码 0，ok=True，干涉为 0=True，插头插到底=True；✓ 外形 [70.0, 45.0, 22.0]，应为 [70.0, 45.0, 22.0]；✓ USB 开孔探针被挡 0/112；✓ 对照点在侧壁实体内（探针有效）；✓ 电池仓探针被挡 0/252",
+   "crashed": false,
+   "seconds": 4.3
+  },
+  {
+   "dir": "b02_interference_detect",
+   "id": "b02",
+   "line": "B",
+   "title": "干涉检查报对碰撞对和体积",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 退出码 1，ok=False；✓ module_a×module_b = 400.0（应 400）；✓ bottom×module_d = 100.0（应 100）；✓ 多报的对 []，总量 500.0（应 500，接触不算）",
+   "crashed": false,
+   "seconds": 3.3
+  },
+  {
+   "dir": "c01_epaper_refresh",
+   "id": "c01",
+   "line": "C",
+   "title": "墨水屏固件刷新次数与节奏",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 退出码 0，stop_reason=finished，done 10=True；✓ 全刷 3（应 3）；✓ 局刷 8（应 8）；✓ 刷新耗时 10700 ms（应 10700）；✓ 虚拟时间 610720.0 ms（应 610700±100）；✓ 帧 11 [200, 200]（应 11 [200, 200]）",
+   "crashed": false,
+   "seconds": 0.5
+  },
+  {
+   "dir": "c02_button_events",
+   "id": "c02",
+   "line": "C",
+   "title": "按键/触摸消抖模板事件时序",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 事件序列 [('button', 'click'), ('button', 'double'), ('button', 'long'), ('button', 'hold_end'), ('touch', 'click')]；✓ button click t=1412（应 1405±50）；✓ button double t=3310（应 3305±50）；✓ button long t=5737（应 5725±50）；✓ button hold_end t=6232（应 6225±50）；✓ touch click t=8476（应 8475±50）",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "c03_gap_uasyncio",
+   "id": "c03",
+   "line": "C",
+   "title": "【缺口】模拟器支持 uasyncio",
+   "kind": "gap",
+   "score": 0.0,
+   "reason": "✗ 退出码 1，stop_reason=exception，unsupported=['uasyncio.run']；✗ count=None（应 5）；✗ blinks=None（应 20–21）；✗ 帧数 1（应 5）",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "c04_gap_shake_template",
+   "id": "c04",
+   "line": "C",
+   "title": "【缺口】加速度计摇一摇固件模板",
+   "kind": "gap",
+   "score": 1.0,
+   "reason": "✓ 模板 firmware/templates/shake.py；✓ 文件头有验证状态；✓ 模拟器 stop_reason=time_limit",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "d01_cost_hand_calc",
+   "id": "d01",
+   "line": "D",
+   "title": "BOM 成本 100/1000 台与手算核对",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 退出码 0，缺价格行 [0, 0]；✓ 100 台单台 5.8642（应 5.86416）；✓ 1000 台单台 5.2316（应 5.2316）；✓ 实查/待核实/估算金额：100: [250.62, 225.8, 110.0] 应 [250.616, 225.8, 110.0]；1000: [2176.6, 1955.0, 1100.0] 应 [2176.6, 1955.0, 1100.0]",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "d02_gap_real_quote_share",
+   "id": "d02",
+   "line": "D",
+   "title": "【缺口】成本实查占比 ≥ 50%",
+   "kind": "gap",
+   "score": 0.2445,
+   "reason": "实查占比 100 台 12.5%，1000 台 11.9%（目标 ≥ 50%；得分 = min(1, 占比/0.5)，两档平均）",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "d03_price_cache_rules",
+   "id": "d03",
+   "line": "D",
+   "title": "价格缓存来源规则校验",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 坏缓存退出码 2（应 2）；✓ 点名 e:no-url；✓ 点名 e:no-basis；✓ 点名 e:no-date；✓ 点名 e:bad-status；✓ 合格条目 e:ok 没被点名；✓ 库价格缓存检查退出码 0",
+   "crashed": false,
+   "seconds": 0.2
+  },
+  {
+   "dir": "e01_wifi_desk_checklist",
+   "id": "e01",
+   "line": "E",
+   "title": "Wi-Fi 桌面摆件合规清单 必含/不得含",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "共 15 条；必须包含 8/8，缺 []；不得包含 6/6 干净，误含 {}",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "e02_coin_cell_toy_checklist",
+   "id": "e02",
+   "line": "E",
+   "title": "BLE 纽扣电池玩具合规清单 必含/不得含",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "共 21 条；必须包含 8/8，缺 []；不得包含 5/5 干净，误含 {}",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "e03_gap_unverified_ratio",
+   "id": "e03",
+   "line": "E",
+   "title": "【缺口】法规待核实比例 ≤ 20%",
+   "kind": "gap",
+   "score": 0.4522,
+   "reason": "待核实 23/52 = 44.2%（目标 ≤ 20%；得分 = min(1, 0.2/比例)）",
+   "crashed": false,
+   "seconds": 0.1
+  },
+  {
+   "dir": "f01_wiring_check",
+   "id": "f01",
+   "line": "F",
+   "title": "接线图与 pins.csv 一一对应",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ wiring.py 退出码 0；✓ 图中 15 根线，表中 15 根；缺 0，多 0；✓ 删一根线后核对：退出码 1，报 MISSING=True；✓ 多画一根线后核对：退出码 1，报 EXTRA=True",
+   "crashed": false,
+   "seconds": 0.6
+  },
+  {
+   "dir": "f02_render_label",
+   "id": "f02",
+   "line": "F",
+   "title": "渲染图标注、命名、尺寸、可见",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 退出码 0；✓ 文件 render_f02_studio_iso.png 尺寸 [480, 360]；✓ 元数据 Label='渲染图 / Render'；✓ 红色物体像素占比 0.32101851851851854；✓ 右下角标注深色像素 0.2189429012345679，左上角 0.0",
+   "crashed": false,
+   "seconds": 0.9
+  },
+  {
+   "dir": "g01_checker_catches_missing",
+   "id": "g01",
+   "line": "G",
+   "title": "来源检查器抓出缺来源的行",
+   "kind": "capability",
+   "score": 1.0,
+   "reason": "✓ 报出 深睡电流；✓ 报出 最大频率；✓ 报出 封装；✓ 报出 典型电流；✓ 报出 输入电压；✓ 没误报 工作电压；✓ 没误报 参考价；✓ 没误报 内部上拉；✓ 没误报 论坛说法；✓ 没误报 代码块示例",
+   "crashed": false,
+   "seconds": 0.0
+  },
+  {
+   "dir": "g02_library_source_audit",
+   "id": "g02",
+   "line": "G",
+   "title": "全库事实记录来源合规率",
+   "kind": "capability",
+   "score": 0.9634,
+   "reason": "合规 684/710；不合规最多：[('mfg/esp32s3-min-system.md', 20), ('cad/DFM.md', 6)]",
+   "crashed": false,
+   "seconds": 0.1
+  }
+ ]
+}

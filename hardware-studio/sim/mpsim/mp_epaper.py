@@ -149,7 +149,10 @@ class _EPD(framebuf.FrameBuffer):
         rgb[red] = (255, 0, 0)
         st = rt.stats.setdefault("epaper", {})
         s = st.setdefault(self._sim_id, {"full": 0, "partial": 0, "refresh_ms": 0})
-        s["full"], s["partial"], s["refresh_ms"] = self.full_refreshes, self.partial_refreshes, self.refresh_ms_total
+        # accumulate per panel id: after a deep-sleep reboot the firmware builds a new driver object
+        # (its own counters restart at 0) but it is the same physical panel
+        s["partial" if partial else "full"] += 1
+        s["refresh_ms"] += dur
         rt.record("epaper_refresh", id=self._sim_id, mode="partial" if partial else "full", ms=dur)
         rt.record_frame(self._sim_id, "epaper", rgb,
                         {"event": "refresh", "refresh": "partial" if partial else "full",
