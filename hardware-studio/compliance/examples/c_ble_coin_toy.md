@@ -2,7 +2,7 @@
 
 > **这是资料整理，不是法律意见。** 清单只根据你给出的产品特征，从 `compliance/data/requirements.yaml` 里挑出可能相关的法规条目；是否适用、怎么做，以法规原文和认证机构/检测机构的书面意见为准。标"待核实"的条目尤其要确认。
 
-数据查询日期：2026-11-01。数据来源：`compliance/data/requirements.yaml`（共 52 条）。
+数据查询日期：2026-11-01。数据来源：`compliance/data/requirements.yaml`（共 57 条）。
 
 ## 产品特征
 
@@ -19,7 +19,7 @@
 
 - 产品有无线但标为不联网：如果它通过手机 App 间接上网，欧盟 RED 网络安全条款、CRA、英国 PSTI、澳洲智能设备规则都可能适用，请把 connected 设为 true 再跑一次对比（待核实）。
 
-共 34 条，其中待核实 13 条。
+共 39 条，其中待核实 14 条。
 
 ## CN · 中国
 
@@ -82,6 +82,26 @@
 - **来源**：[国家标准全文公开系统（建议在此按'纽扣电池'检索）](https://openstd.samr.gov.cn/) · S · 2026-11-01
 - **疑点 / 待核实**：查过：WebSearch 中文检索"纽扣电池 强制性国家标准 儿童 误吞"，结果只有澳大利亚和美国的资料。不能据此认为中国没有要求，需要认证机构确认。
 - **备注**：即便没有专门要求，也建议参照 AU-05 / US-05 的做法设计电池仓（螺丝固定）和警示。
+
+### CN-10 锂电池出口：出境危险货物运输包装使用鉴定（"危包证"）与 UN 38.3　✅ 已核实
+
+- **依据**：《中华人民共和国进出口商品检验法》第十七条；UN《试验和标准手册》第三部分 38.3；海运按《国际海运危险货物规则》（IMDG Code）
+- **要求**：进出口商品检验法第十七条：为出口危险货物生产包装容器的企业，须申请商检机构（现为海关）做包装容器的性能鉴定；生产出口危险货物的企业，须申请包装容器的使用鉴定；使用未经鉴定合格的包装容器的危险货物，不准出口。按海关答疑（媒体转述），大部分锂电池属于危险货物，出口前要完成 UN 38.3 测试，由电池生产厂或出口商向属地海关申请 《出境危险货物运输包装使用鉴定结果单》（俗称危包证），海运订舱和危险品申报时都要提供；包装要有 UN 包装标记、锂电池标记 / 9 类危险品标签，电池须标额定能量（Wh）。
+- **适用条件**：产品含锂离子电池或锂金属纽扣电池，从中国出口（空运、海运、快递）。
+- **证据形式**：认证 / 型号核准（由认证机构或主管部门发证）。危包证由属地海关出具；UN 38.3 测试报告和测试摘要向电芯/电池组供应商索取，整机出口时由货代/承运人核对。
+- **来源**：[香港工业贸易署转载：《中华人民共和国进出口商品检验法》全文（2018 年修正文本，节录自全国人大信息中心网站）](https://www.tid.gov.hk/english/aboutus/tradecircular/cic/asia/2019/files/ci201952a.pdf) · A · 2026-11-01<br>[维基文库：中华人民共和国进出口商品检验法（2021 年）](https://zh.wikisource.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E8%BF%9B%E5%87%BA%E5%8F%A3%E5%95%86%E5%93%81%E6%A3%80%E9%AA%8C%E6%B3%95_(2021%E5%B9%B4)) · C · 2026-11-01<br>[人民日报海外版：锂电池出口有哪些要求？（海关答疑，2024-07-20）](https://paper.people.com.cn/hwbwap/html/2024-07/20/content_26070303.htm) · C · 2026-11-01
+- **疑点 / 待核实**：已核实的只是第十七条"出口危险货物包装须经使用鉴定"（A 级转载为 2018 年修正文本，2021 年修正后的现行文本只在第三方转载里见到，条文一致）。以下只有第三方或媒体来源：危包证办理流程和材料；锂电池哪些情况算危险货物、哪些按 UN 特殊规定 188（小电芯 ≤20 Wh、小电池 ≤100 Wh、锂金属电芯 ≤1 g 等，第三方资料）可以免除危险品包装要求；装在设备里的小电池（UN 3481 / UN 3091）出口时是否仍需危包证。海关总署原文（customs.gov.cn）本次无法访问，需要向属地海关或货代确认。
+- **备注**：中国境内运输和空运要求见 CN-11；进口国在途要求见 EU-15、UK-12、US-08、AU-09。
+
+### CN-11 锂电池航空运输（中国民航）：MH/T 1020 与 UN 38.3；运输安全国标 GB 21966　⚠️ **待核实**
+
+- **依据**：民航行业标准 MH/T 1020-2018《锂电池航空运输规范》；国际民航组织《危险物品安全航空运输技术细则》（ICAO TI，Doc 9284）；GB 21966-2008《锂原电池和蓄电池在运输中的安全要求》
+- **要求**：按第三方提供的 MH/T 1020-2018 译本：锂电池（芯）交付航空运输前须通过 UN《试验和标准手册》第三部分 38.3 的系列试验。ICAO 技术细则把锂电池列为危险物品，按包装说明（例如装在设备中的锂离子电池为 PI 967、与设备包装在一起为 PI 966）规定数量限制和包装要求。GB 21966-2008 等同采用 IEC 62281:2004，规定锂电池运输中的安全试验方法和要求。
+- **适用条件**：产品含锂离子电池或锂金属纽扣电池，在中国境内空运、快递，或从中国空运出口。
+- **证据形式**：第三方测试（指定或认可的实验室出报告）。UN 38.3 测试报告 / 测试摘要向电池供应商索取；空运还要货代按承运人要求出具运输条件鉴定或危险品申报，所需文件以承运人为准。
+- **来源**：[codeofchina：MH/T 1020-2018 英文译本页面](https://codeofchina.com/standard/MHT1020-2018.html) · C · 2026-11-01<br>[chinesestandard.net：GB 21966-2008 英文译本](https://www.chinesestandard.net/PDF-EN/GB21966-2008EN-P06P-H4752H-175950.pdf) · C · 2026-11-01<br>[ICAO DGP 工作文件（中文）：锂电池客货运相关修订](https://www.icao.int:443/safety/DangerousGoods/DGP25/DGP.25.WP.033.5.ch.pdf) · A · 2026-11-01
+- **疑点 / 待核实**：民航局（caac.gov.cn）原文和 MH/T 1020 现行版本本次都没读到，只有第三方译本；MH/T 1020 是否已有 2018 版之后的修订未查到。GB 21966-2008 是否现行、是否为强制性标准、是否会按 IEC 62281 新版修订，搜索结果没有直接说明。ICAO 工作文件只是修订讨论材料，不是技术细则现行文本；IATA 2026 版锂电池指南（PI 965–970、Section II 变化、30% 荷电状态）本次只见到第三方摘要。快递（邮政）渠道对含锂电池物品的收寄规定未查。
+- **备注**：选电芯时就要求供应商提供 UN 38.3 测试报告和测试摘要，型号要与实物一致。
 
 ## EU · 欧盟 CE
 
@@ -180,6 +200,16 @@
 - **来源**：[EUR-Lex：Regulation (EU) 2023/988（GPSR）](https://eur-lex.europa.eu/eli/reg/2023/988/oj) · S · 2026-11-01（链接按官方 URL 规则拼出，未在搜索中见到，请打开核对）
 - **疑点 / 待核实**：是否有欧盟层面的纽扣电池专门标准化委托或协调标准正在实施，没查到官方页面。
 
+### EU-15 锂电池运输：ADR（经 2008/68/EC 在欧盟境内适用）与 UN 38.3 测试摘要　✅ 已核实
+
+- **依据**：Directive 2008/68/EC（内陆危险货物运输）附件 I 第 I.1 节 = ADR；Commission Delegated Directive (EU) 2025/149（适用 ADR 2025）；空运 ICAO TI / IATA DGR，海运 IMDG Code
+- **要求**：Directive 2008/68/EC 规定欧盟境内公路、铁路、内河危险货物运输适用 ADR / RID / ADN；2025/149 号授权指令把附件更新为 2025-01-01 起适用的 ADR 版本（过渡期到 2025-06-30）。锂电池在 ADR 中属于第 9 类危险货物：运输前须通过 UN 38.3 测试，制造商和后续分销商须提供测试摘要（第三方资料：ADR 2.2.9.1.7，2020-01-01 起）。小电芯/小电池按特殊规定 188 可以简化包装和文件。进出欧盟的空运按 ICAO 技术细则 / IATA DGR，海运按 IMDG Code。
+- **适用条件**：产品含锂离子电池或锂金属纽扣电池，运进欧盟或在欧盟境内运输（含电商发货、退货）。
+- **证据形式**：第三方测试（指定或认可的实验室出报告）。UN 38.3 测试报告和测试摘要向电池供应商索取；包装、标记、文件按承运人和货代要求。
+- **来源**：[EU-OSHA：Directive 2008/68/EC on the inland transport of dangerous goods](https://osha.europa.eu/en/legislation/directives/directive-2008-68-ec) · A · 2026-11-01<br>[EUR-Lex：Commission Delegated Directive (EU) 2025/149](https://eur-lex.europa.eu/eli/dir_del/2025/149/oj/eng/pdf) · S · 2026-11-01<br>[TÜV Rheinland：Lithium batteries transport（2025-01）](https://tuv.com/content-media-files/germany/bs-products/pdfs/other/tuev-rheinland-lithiumbatteries-transport-01-2025-en.pdf) · C · 2026-11-01
+- **疑点 / 待核实**：已核实的是"欧盟境内运输适用 ADR，且已更新到 ADR 2025"。ADR 中锂电池的具体条款号（2.2.9.1.7、测试摘要义务、特殊规定 188 的 Wh / 锂含量门限）只来自第三方资料，UNECE ADR 原文本次没有读到。2027 年起 ADR 是否再改锂电池条款未查。
+- **备注**：测试摘要义务与美国 US-08 相同，可以共用一份供应商文件。
+
 ## US · 美国 FCC / CPSC
 
 ### US-01 FCC Part 15 Subpart C 有意辐射体：设备认证（Certification）　✅ 已核实
@@ -238,7 +268,7 @@
 - **证据形式**：第三方测试（指定或认可的实验室出报告）。向电池供应商索取 UN 38.3 测试报告和测试摘要；整机包装按承运方要求。
 - **来源**：[eCFR：49 CFR 173.185 Lithium cells and batteries](https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-173/subpart-E/section-173.185) · S · 2026-11-01<br>[PHMSA：Lithium Battery Test Summary (2024)](https://www.phmsa.dot.gov/sites/phmsa.dot.gov/files/2024-09/Lithium-Battery-Test-Summary-2024.pdf) · A · 2026-11-01
 - **疑点 / 待核实**：小型消费设备的例外条款（173.185(c) 等）现行文本没有读到；空运还要看 IATA DGR，本库未展开。碱性/锌空纽扣电池不属于锂电池。
-- **备注**：运输要求实际上在所有市场都适用（国际空运按 IATA/ICAO），这里只列美国法规。
+- **备注**：运输要求在所有市场都适用：中国出口和空运见 CN-10、CN-11，欧盟 EU-15，英国 UK-12，澳大利亚 AU-09。
 
 ## UK · 英国 UKCA
 
@@ -305,6 +335,15 @@
 - **来源**：[GOV.UK：OPSS supports new standard for battery safety](https://www.gov.uk/government/news/opss-support-new-standard-for-battery-safety) · A · 2026-11-01
 - **疑点 / 待核实**：《产品监管与计量法》2025 授权的二级立法中是否已有纽扣电池规则，未查到。
 
+### UK-12 锂电池运输：Carriage of Dangerous Goods Regulations 2009（ADR 适用于国内运输）与 UN 38.3　✅ 已核实
+
+- **依据**：The Carriage of Dangerous Goods and Use of Transportable Pressure Equipment Regulations 2009（SI 2009/1348）；ADR；空运 ICAO TI，海运 IMDG Code
+- **要求**：SI 2009/1348 把 ADR（公路）、RID（铁路）、ADN（内河）的适用范围扩大到英国国内运输（"按不时修订的版本"）。锂电池在 ADR 中属于第 9 类危险货物，运输前须通过 UN 38.3 测试并由制造商和后续分销商提供测试摘要（第三方资料，见 EU-15）。进出英国的空运按 ICAO 技术细则 / IATA DGR，海运按 IMDG Code。
+- **适用条件**：产品含锂离子电池或锂金属纽扣电池，运进英国或在英国境内运输。
+- **证据形式**：第三方测试（指定或认可的实验室出报告）。同 EU-15：UN 38.3 测试报告和测试摘要向电池供应商索取。
+- **来源**：[legislation.gov.uk：SI 2009/1348 The Carriage of Dangerous Goods and Use of Transportable Pressure Equipment Regulations 2009](https://www.legislation.gov.uk/uksi/2009/1348/contents) · S · 2026-11-01<br>[TÜV Rheinland：Lithium batteries transport（2025-01）](https://tuv.com/content-media-files/germany/bs-products/pdfs/other/tuev-rheinland-lithiumbatteries-transport-01-2025-en.pdf) · C · 2026-11-01
+- **疑点 / 待核实**：已核实的是 SI 2009/1348 让 ADR 适用于英国国内运输；legislation.gov.uk 提示修订文本可能未完全更新，现行版本没有逐条核对。锂电池具体条款同 EU-15，只有第三方资料。英国民航局（CAA）空运危险品规定本次没查。
+
 ## AU · 澳大利亚 RCM
 
 ### AU-01 ACMA 低干扰潜力设备（LIPD）类别许可（使用条件）　✅ 已核实
@@ -352,6 +391,16 @@
 - **来源**：[Product Safety Australia：Toys for children up to and including 36 months of age（强制标准）](https://www.productsafety.gov.au/product-safety-laws/safety-standards-bans/mandatory-standards/toys-for-children-up-to-and-including-36-months-of-age) · A · 2026-11-01
 - **疑点 / 待核实**：面向更大年龄儿童的玩具适用哪些强制标准（例如含磁铁、弹射、水上玩具等专项标准）本次没有逐一检索。
 - **备注**：带纽扣电池的玩具同时看 AU-05。
+
+### AU-09 锂电池运输：空运按 CASR Part 92 + ICAO 技术细则；陆运按 ADG Code　✅ 已核实
+
+- **依据**：Civil Aviation Safety Regulations 1998 Part 92（危险物品航空运输）；ICAO《危险物品安全航空运输技术细则》；Australian Dangerous Goods Code（ADG Code 7.8，公路 / 铁路）
+- **要求**：航空运输危险物品受 CASR Part 92 管辖，其中"技术细则"指 ICAO《危险物品安全航空运输技术细则》；锂电池在技术细则中是危险物品，有包装说明和数量限制，运输前须通过 UN 38.3 测试（第三方资料，澳大利亚原文未单独核实）。公路 / 铁路运输按 ADG Code（第三方资料：7.8 版向国际规则靠拢、增加了锂电池 UN 编号；按特殊规定 188 运输的小电池仍属危险货物，单件含 2 个以上电池或 4 个以上电芯的设备需随附特殊规定 188 要求的文件）。
+- **适用条件**：产品含锂离子电池或锂金属纽扣电池，运进澳大利亚或在澳大利亚境内运输。
+- **证据形式**：第三方测试（指定或认可的实验室出报告）。UN 38.3 测试报告和测试摘要向电池供应商索取；包装和文件按承运人要求。
+- **来源**：[Federal Register of Legislation：F2022N00318（引用 CASR Part 92 与 ICAO 技术细则的 CASA 文书）](https://www.legislation.gov.au/F2022N00318/asmade/2022-12-20/text/original/pdf) · S · 2026-11-01<br>[Master Instruments：Sea and road freight compliance summary（锂电池，IMDG 2018 / ADG）](https://www.master-instruments.com.au/files/knowledge-centre/transportation/lithium_battery_summary_for_sea__road_imdg2018_v3___2020_edn.pdf) · C · 2026-11-01<br>[TT Club：TT Talk - Lithium complexities](https://www.ttclub.com/news-and-resources/news/article/tt-talk-lithium-complexities/) · C · 2026-11-01
+- **疑点 / 待核实**：已核实的是"空运受 CASR Part 92 管辖、技术细则指 ICAO 文件"（来自一份引用 Part 92 的 CASA 文书，不是 Part 92 本身）。ADG Code 现行版本和锂电池条款本次没有在 ntc.gov.au 读到，只有第三方摘要；UN 38.3 测试摘要在澳大利亚陆运中的要求未单独核实。
+- **备注**：澳大利亚市场的产品安全（非运输）要求见 AU-08。
 
 ## 必须找认证机构 / 检测机构确认的事项
 

@@ -125,6 +125,27 @@ def test_battery_items_only_with_battery():
     assert "CN-05" not in coin  # 锂离子 CCC 不出
 
 
+TRANSPORT = {"CN-10", "CN-11", "EU-15", "US-08", "UK-12", "AU-09"}
+
+
+def test_lithium_transport_every_market():
+    """锂电池（含锂金属纽扣电池）运输：每个市场都有条目；没有电池时一条都不出。"""
+    assert {BY_ID[i]["market"] for i in TRANSPORT} == set(DATA["markets"])
+    assert not (ids_for({}) & TRANSPORT)
+    assert not (ids_for({"wireless": ["wifi"], "adapter": True}) & TRANSPORT)
+    assert TRANSPORT <= ids_for({"batteries": ["lithium"]})
+    assert TRANSPORT <= ids_for({"batteries": ["coin"]})
+    assert {r["id"] for r in checklist.select(DATA, checklist.make_product(
+        {"batteries": ["lithium"], "markets": ["CN"]}))} >= {"CN-05", "CN-10", "CN-11"}
+
+
+def test_transport_entries_cite_un383_and_mark_doubts():
+    for i in TRANSPORT:
+        r = BY_ID[i]
+        assert "38.3" in (r["name"] + r["instrument"] + r["requirement"]), i
+        assert r.get("doubts"), f"{i} 运输条目要写明哪些细节只有第三方来源"
+
+
 def test_toy_items_only_for_children():
     assert not (ids_for({}) & TOY_ONLY)
     assert TOY_ONLY <= ids_for({"children": True})
@@ -233,7 +254,7 @@ def test_example_a_wifi_desk():
 
 def test_example_b_pocket_offline():
     got = _example_ids("b_pocket_lithium_offline")
-    assert {"CN-05", "EU-10", "EU-11", "US-08", "EU-05", "UK-02"} <= got
+    assert {"CN-05", "EU-10", "EU-11", "US-08", "EU-05", "UK-02"} | TRANSPORT <= got
     assert not (got & (WIRELESS_ONLY | CONNECTED_ONLY | TOY_ONLY | ADAPTER_ONLY | {"EU-02", "EU-03", "EU-04"}))
 
 

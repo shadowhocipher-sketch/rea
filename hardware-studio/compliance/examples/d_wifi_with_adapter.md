@@ -2,7 +2,7 @@
 
 > **这是资料整理，不是法律意见。** 清单只根据你给出的产品特征，从 `compliance/data/requirements.yaml` 里挑出可能相关的法规条目；是否适用、怎么做，以法规原文和认证机构/检测机构的书面意见为准。标"待核实"的条目尤其要确认。
 
-数据查询日期：2026-11-01。数据来源：`compliance/data/requirements.yaml`（共 52 条）。
+数据查询日期：2026-11-01。数据来源：`compliance/data/requirements.yaml`（共 57 条）。
 
 ## 产品特征
 
