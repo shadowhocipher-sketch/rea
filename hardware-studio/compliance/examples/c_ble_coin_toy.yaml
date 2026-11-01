@@ -1,0 +1,8 @@
+name: "(c) 带 BLE 和纽扣电池的儿童玩具"
+note: BLE 只与手机近距离通信；是否经 App 间接联网按产品实际情况再判断
+wireless: [ble]
+connected: false
+batteries: [coin]
+adapter: false
+children: true
+markets: [CN, EU, US, UK, AU]

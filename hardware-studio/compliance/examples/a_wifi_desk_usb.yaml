@@ -1,0 +1,8 @@
+name: "(a) Wi-Fi 桌面摆件（USB 供电，无电池）"
+note: 用户自备 USB 电源，包装内不含适配器
+wireless: [wifi]
+connected: true
+batteries: []
+adapter: false
+children: false
+markets: [CN, EU, US, UK, AU]

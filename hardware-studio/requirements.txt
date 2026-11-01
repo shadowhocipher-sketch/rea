@@ -7,3 +7,5 @@ pytest==9.2.0
 PyYAML==6.0.3
 trimesh==5.2.0
 imageio==2.38.1
+-r cad/requirements.txt
+-r compliance/requirements.txt
