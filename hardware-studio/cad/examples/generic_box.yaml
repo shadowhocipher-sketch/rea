@@ -1,0 +1,59 @@
+# 通用示例外壳（不是任何具体产品）：一块 PCB + 一块小屏 + 一颗软包电池 + USB-C + 两种按键。
+# 用来演示参数文件格式、跑通生成与检查流程。所有尺寸单位 mm；坐标约定见 cad/README.md。
+name: generic-box-example
+process: fdm            # fdm / sla / mjf / im，决定默认壁厚、配合间隙和最小壁厚检查
+printer: prusa_mk4s     # 或 {bed: [X, Y, Z]}；平台尺寸待核实，见 DFM.md BED-1
+
+shell:
+  size: [96, 60, 30]    # 外形 X(长) Y(宽) Z(高)
+  wall: 2.7           # FDM：止口 1.2 + 间隙 0.3 + 上壳剩余 1.2，三者都 ≥ 最小壁厚 1.2
+  corner_radius: 6
+  edge_radius: 1.5
+  split_z: 14.93        # 分模面高度（从底面外表面量）；取 USB 插座中心高度，避免开孔在分模面处留下薄片
+  style: top_bottom     # top_bottom（上下壳）或 front_back（前后壳），只影响零件命名
+  lip: {height: 2.0, thickness: 1.2, clearance: 0.3}
+
+# 两半壳之间的螺丝：上壳倒挂螺丝柱，下壳过孔柱 + 底面沉头孔
+fasteners:
+  - {x: 42,  y: 24,  kind: self_tap, thread: M3}
+  - {x: -42, y: 24,  kind: self_tap, thread: M3}
+  - {x: 42,  y: -24, kind: self_tap, thread: M3}
+  - {x: -42, y: -24, kind: self_tap, thread: M3}
+
+# PCB 支柱（下壳底板上）
+standoffs:
+  - {x: 34,  y: 15,  part: lower, kind: self_tap, thread: M2, height: 9}
+  - {x: -34, y: 15,  part: lower, kind: self_tap, thread: M2, height: 9}
+  - {x: 34,  y: -15, part: lower, kind: self_tap, thread: M2, height: 9}
+  - {x: -34, y: -15, part: lower, kind: self_tap, thread: M2, height: 9}
+
+screen_windows:
+  - {name: display, face: top, u: -12, v: 0, shape: rect, width: 28, height: 16, corner_radius: 1,
+     step: {width: 36, height: 28, depth: 0.8}}
+
+buttons:
+  - {name: btn_a, face: top, u: 28, v: 10, type: hole, diameter: 6, sleeve_length: 4, plunger_length: 3.0}
+  - {name: btn_b, face: top, u: 28, v: -12, type: cantilever, length: 12, width: 7, slot: 0.8,
+     tongue_thickness: 1.2, nub_height: 1.5, travel: 0.5}
+
+usb_c:
+  - {name: usb, face: -x, u: 0, v: 14.93, recess: 1.0}   # 插座中心高度 = PCB 顶面 13.3 + 插座半高 1.63
+
+snaps:
+  - {name: snap_py, face: +y, u: 0, length: 10, thickness: 1.2, width: 6, undercut: 0.8, gap: 0.2}
+  - {name: snap_ny, face: -y, u: 0, length: 10, thickness: 1.2, width: 6, undercut: 0.8, gap: 0.2}
+
+battery:
+  x: 0
+  y: 0
+  cell: [40, 30, 5]     # 软包电芯 长 宽 厚（示例数值）
+  swell: 0.10           # 厚度膨胀余量（估算，见 DFM.md BAT-1）
+  xy_clearance: 0.5
+  rib_height: 3
+  wire_side: +x
+
+# 元器件包络（由内而外设计：先放这些，再定外壳）。center 为 XY 中心，z 为底面高度。
+components:
+  - {name: pcb, size: [76, 38, 1.6], center: [0, 0], z: 11.7}     # 底板内表面 2.7 + 支柱 9
+  - {name: display_module, size: [36, 28, 4], center: [-12, 0], z: 24.1}  # 顶面嵌进台阶：27.3 + 0.8 - 4
+  - {name: tact_switch, size: [6, 6, 5], center: [28, 10], z: 13.3}

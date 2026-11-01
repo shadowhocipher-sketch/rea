@@ -1,0 +1,92 @@
+# 加工费（PCB、贴片、3D 打印）。来源都是 JLCPCB / JLC3DP 官方页面，
+# 但本会话打不开这些页面（jlcpcb.com、jlc3dp.com 被代理拦截），数字取自 WebSearch 摘要，
+# 而且不同页面、不同日期的数字互相矛盾，所以全部标 status: unverified（待核实）。
+# 计价规则经常调整，下单前用官方计价器复核（见 mfg/pricing.md 第 4 节）。
+- key: jlcpcb:pcba-setup
+  mpn: JLCPCB 贴片工程费（单面，经济型）
+  currency: USD
+  unit: 次/批
+  breaks:
+  - {qty: 1, price: 8.0}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlcpcb.com/help/article/pcb-assembly-faqs
+  alt_url: https://jlcpcb.com/help/article/pcb-assembly-price
+  date: '2026-11-01'
+  basis: >-
+    摘要：PCB Assembly FAQ（页面标注更新于 2025-11-24）写 setup fee $8.00、stencil $1.50；
+    较早的 pcb-assembly-price 文章写单面 $25 / 双面 $50。取较新的 $8。
+  note: 待核实；两份官方页面数字冲突
+- key: jlcpcb:pcba-stencil
+  mpn: JLCPCB 贴片钢网费（经济型）
+  currency: USD
+  unit: 次/批
+  breaks:
+  - {qty: 1, price: 1.5}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlcpcb.com/help/article/pcb-assembly-faqs
+  date: '2026-11-01'
+  basis: 摘要：PCB Assembly FAQ（2025-11-24）stencil charge $1.50
+  note: 待核实
+- key: jlcpcb:smt-joint
+  mpn: JLCPCB 贴片焊点费
+  currency: USD
+  unit: 焊点
+  breaks:
+  - {qty: 1, price: 0.0017}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlcpcb.com/help/article/pcb-assembly-price
+  date: '2026-11-01'
+  basis: >-
+    摘要：一处写 SMT Assembly $0.0017/joint，价格文章另写 1–50,000 焊点 $0.0016/joint 的分档。
+    取 $0.0017（较高）。
+  note: 待核实；分档细节未取到
+- key: jlcpcb:extended-part-loading
+  mpn: JLCPCB 扩展库换料费（每种扩展料）
+  currency: USD
+  unit: 种/批
+  breaks:
+  - {qty: 1, price: 3.0}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlcpcb.com/help/article/pcb-assembly-faqs
+  date: '2026-11-01'
+  basis: >-
+    摘要：FAQ 写"每种扩展库元件收 $3"；一篇第三方文章（C 级）称 2025-12-19 调整为约 $1.5。
+    取官方页面的 $3（较高）。Preferred Extended 料在经济型贴片中免此费。
+  note: 待核实；可能已调价
+- key: jlcpcb:pcb-2l-proto-100x100
+  mpn: JLCPCB 2 层板打样（≤100×100 mm，绿油，1 oz，5 片）
+  currency: USD
+  unit: 片
+  breaks:
+  - {qty: 1, price: 0.40}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlcpcb.com/blog/free-assembly-for-1-6-layer-pcbs-and-discounts-on-8-20-layer-pcba
+  date: '2026-11-01'
+  basis: >-
+    摘要：官方博客价格表"1-2 Layers | 100x100mm | 5 pcs | $2"（页面标注更新于 2025-12-26，
+    每个订单限一次优惠）。$2 ÷ 5 片 = $0.40/片。批量板价未查到（计价器打不开），
+    100 片以上实际单价应更低，这里按 $0.40 上限计。
+  note: 待核实；批量价未查到，按打样价折算偏高
+- key: jlc3dp:mjf-pa12-per-gram
+  mpn: JLC3DP MJF PA12 尼龙材料费
+  currency: USD
+  unit: g
+  breaks:
+  - {qty: 1, price: 0.275}
+  status: unverified
+  level: B
+  access: search-snippet
+  source_url: https://jlc3dp.com/blog/drastic-material-price-cuts-and-adjusted-post-processing-service-fees
+  date: '2026-11-01'
+  basis: 摘要：JLC3DP 2025-08-13 调价公告，MJF-PA12 材料价从 $0.35/g 降到 $0.275/g（不含税）
+  note: 待核实；只是材料费，后处理（染色、打磨）另计；官方另写起步价 $0.30/件
