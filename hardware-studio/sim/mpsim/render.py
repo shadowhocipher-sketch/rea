@@ -127,7 +127,9 @@ def style_epaper(rgb, meta, scale=3, seed=1):
     out[red] = _RED_INK
     big = _upscale(out, scale)
     rng = np.random.default_rng(seed)
-    noise = rng.normal(0.0, 3.0, big.shape[:2])[:, :, None]
+    # paper grain at 2x2-pixel blocks: looks like paper, compresses much better
+    gh, gw = (big.shape[0] + 1) // 2, (big.shape[1] + 1) // 2
+    noise = _upscale(rng.normal(0.0, 2.5, (gh, gw)), 2)[: big.shape[0], : big.shape[1], None]
     big = np.clip(big + noise, 0, 255).astype(np.uint8)
     img = Image.fromarray(big).filter(ImageFilter.GaussianBlur(radius=0.35 * scale / 3))
     return _bezel(img, max(10, scale * 6), (214, 212, 204))

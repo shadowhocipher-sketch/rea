@@ -5,6 +5,7 @@ Wake sources configured here are used by machine.lightsleep()/deepsleep() in
 the simulator to decide when the chip wakes (see mp_machine._wake_fn).
 """
 
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 WAKEUP_ALL_LOW = False
@@ -115,4 +116,4 @@ class NVS:
 
 
 def __getattr__(name):
-    raise current().unsupported_api("esp32", name)
+    raise _r_unsupported("esp32", name)

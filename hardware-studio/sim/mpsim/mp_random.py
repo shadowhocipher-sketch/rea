@@ -10,6 +10,7 @@ uses the Yasmarang PRNG and, on esp32, seeds it from the hardware RNG at boot).
 
 import random as _pyrandom
 
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 _gen = _pyrandom.Random(0)
@@ -55,4 +56,4 @@ def choice(seq):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("random", name)
+    raise _r_unsupported("random", name)

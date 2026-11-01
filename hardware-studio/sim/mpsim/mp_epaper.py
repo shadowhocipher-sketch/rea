@@ -49,6 +49,7 @@ refresh (an illustration, not a physical model).
 import numpy as np
 
 from . import mp_framebuf as framebuf
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 WHITE = 1
@@ -190,4 +191,4 @@ class SSD1681(_EPD):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("epaper", name)
+    raise _r_unsupported("epaper", name)

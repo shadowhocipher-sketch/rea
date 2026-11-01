@@ -35,6 +35,7 @@ recorded but not rendered.
 import numpy as np
 
 from . import mp_framebuf as framebuf
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 BLACK = 0x0000
@@ -262,7 +263,7 @@ class ST7789:
             current().record_frame(self._sim_id, "lcd", self._sim_rgb(), {"event": "idle"})
 
     def __getattr__(self, name):
-        raise current().unsupported_api("st7789.ST7789", name)
+        raise _r_unsupported("st7789.ST7789", name)
 
 
 class ST7789_FB(framebuf.FrameBuffer):
@@ -295,4 +296,4 @@ class ST7789_FB(framebuf.FrameBuffer):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("st7789", name)
+    raise _r_unsupported("st7789", name)

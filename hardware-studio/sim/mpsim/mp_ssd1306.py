@@ -21,6 +21,7 @@ import numpy as np
 
 from . import mp_framebuf as framebuf
 from . import mp_time as time
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 SET_CONTRAST = 0x81
@@ -187,4 +188,4 @@ class SSD1306_SPI(SSD1306):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("ssd1306", name)
+    raise _r_unsupported("ssd1306", name)

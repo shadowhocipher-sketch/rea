@@ -74,6 +74,7 @@ def test_frame_limit_stops_while_true_even_with_except_exception(tmp_path):
     """)
     r = run(p, display="ssd1306", max_frames=7, echo=False)
     assert r.stop_reason == "frame_limit" and len(r.frames) == 7
+    assert not r.rt.parked and r.warnings == []
 
 
 def test_time_limit_and_bare_except_cannot_swallow_stop(tmp_path):
@@ -87,6 +88,7 @@ def test_time_limit_and_bare_except_cannot_swallow_stop(tmp_path):
     """)
     r = run(p, max_seconds=2.5, echo=False)
     assert r.stop_reason == "time_limit" and r.virtual_ms == 2500
+    assert r.rt.parked and any("parked" in w for w in r.warnings)
 
 
 def test_wall_timeout_on_pure_python_loop(tmp_path):

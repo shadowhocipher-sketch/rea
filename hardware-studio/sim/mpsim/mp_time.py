@@ -17,6 +17,7 @@ Behaviour follows https://docs.micropython.org/en/latest/library/time.html :
 
 import datetime as _dt
 
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 TICKS_PERIOD = 1 << 30
@@ -109,4 +110,4 @@ def mktime(t):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("time", name)
+    raise _r_unsupported("time", name)

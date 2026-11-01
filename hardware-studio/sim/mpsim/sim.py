@@ -16,7 +16,6 @@ import builtins
 import io
 import os
 import shutil
-import signal
 import sys
 import tempfile
 import threading
@@ -28,6 +27,7 @@ from . import runtime as _rt
 from . import stimulus as _stim
 from . import mp_time, mp_random, mp_framebuf, mp_machine, mp_esp32, mp_misc
 from . import mp_ssd1306, mp_st7789, mp_epaper, mp_fonts, render
+from .runtime import unsupported as _r_unsupported
 from .runtime import SimRuntime, SimStop, SimReboot
 
 SIM_MODULES = {
@@ -71,9 +71,28 @@ def _unsupported_module(name):
     m.__doc__ = "mpsim: module %r is not simulated" % name
 
     def __getattr__(attr):
-        raise _rt.current().unsupported_api(name, attr)
+        raise _r_unsupported(name, attr)
     m.__getattr__ = __getattr__
     return m
+
+
+_SANDBOXES = []
+
+
+def _new_sandbox():
+    """Temporary device filesystem; removed when the Python process exits."""
+    d = tempfile.mkdtemp(prefix="mpsim_fs_")
+    if not _SANDBOXES:
+        import atexit
+        atexit.register(lambda: [shutil.rmtree(x, ignore_errors=True) for x in _SANDBOXES])
+    _SANDBOXES.append(d)
+    return d
+
+
+def _inject(thread, exc):
+    """Raise ``exc`` asynchronously in ``thread`` (best effort, CPython only)."""
+    import ctypes
+    ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_ulong(thread.ident), ctypes.py_object(exc))
 
 
 class _Tee(io.TextIOBase):
@@ -326,7 +345,7 @@ class session:
                  paths=(), echo=True, tick_poll_us=50, wall_timeout_s=60.0):
         self.rt, _ = _make_runtime(inputs, display, max_frames, max_seconds, seed,
                                    wall_timeout_s, tick_poll_us)
-        self.sandbox = tempfile.mkdtemp(prefix="mpsim_fs_")
+        self.sandbox = _new_sandbox()
         self.env = _SimEnv(self.rt, self.sandbox, echo, [str(Path(p).resolve()) for p in paths])
 
     def __enter__(self):
@@ -358,30 +377,26 @@ def run(firmware, *, display=None, max_frames=None, max_seconds=None, seed=0, in
     rt, kind = _make_runtime(inputs, display, max_frames, max_seconds, seed, wall_timeout_s, tick_poll_us)
 
     own_sandbox = fs_dir is None
-    sandbox = tempfile.mkdtemp(prefix="mpsim_fs_") if own_sandbox else str(Path(fs_dir).resolve())
+    sandbox = _new_sandbox() if own_sandbox else str(Path(fs_dir).resolve())
     if own_sandbox:
         _copy_firmware_dir(str(firmware.parent), sandbox)
     before = _snapshot(sandbox)
-
-    use_alarm = threading.current_thread() is threading.main_thread() and hasattr(signal, "setitimer") \
-        and wall_timeout_s
-    old_handler = None
-    error = None
-
-    def on_alarm(signum, frame):
-        if rt.stop_reason is None:
-            rt.stop_reason = "wall_timeout"
-        raise SimStop("wall_timeout")
 
     scripts = [firmware]
     if firmware.name == "main.py" and (Path(sandbox) / "boot.py").exists():
         scripts = [Path(sandbox) / "boot.py", firmware]
     env = _SimEnv(rt, sandbox, echo)
-    with env:
+    state = {"error": None}
+    done = threading.Event()
+
+    def worker():
+        # The firmware runs in its own daemon thread so that the run can always
+        # end: if firmware swallows SimStop with a bare ``except:`` the thread is
+        # parked (see SimRuntime.check), and a pure-Python endless loop is
+        # interrupted by an injected SimStop or, at worst, abandoned.
+        rt.firmware_thread = threading.current_thread()
+        rt.on_park = done.set
         try:
-            if use_alarm:
-                old_handler = signal.signal(signal.SIGALRM, on_alarm)
-                signal.setitimer(signal.ITIMER_REAL, wall_timeout_s + 1.0)
             while True:
                 rt.boot_count += 1
                 rt.record("boot", n=rt.boot_count, cause=rt.reset_cause, wake=rt.wake_reason)
@@ -411,14 +426,29 @@ def run(firmware, *, display=None, max_frames=None, max_seconds=None, seed=0, in
                     rt.stop_reason = "sys_exit"
                     break
                 except Exception:
-                    error = traceback.format_exc()
-                    env.tee.write(error)
+                    state["error"] = traceback.format_exc()
+                    env.tee.write(state["error"])
                     rt.stop_reason = "exception"
                     break
+        except BaseException as e:  # SimStop injected outside the try above
+            rt.stop_reason = rt.stop_reason or getattr(e, "reason", "wall_timeout")
         finally:
-            if use_alarm:
-                signal.setitimer(signal.ITIMER_REAL, 0)
-                signal.signal(signal.SIGALRM, old_handler or signal.SIG_DFL)
+            done.set()
+
+    with env:
+        th = threading.Thread(target=worker, name="mpsim-firmware", daemon=True)
+        th.start()
+        finished = done.wait(wall_timeout_s + 1.0 if wall_timeout_s else None)
+        if not finished:
+            if rt.stop_reason is None:
+                rt.stop_reason = "wall_timeout"
+            _inject(th, SimStop)
+            if not done.wait(2.0):
+                rt.warn("firmware thread did not stop after wall timeout; abandoned")
+        th.join(0.5)
+        if rt.parked:
+            rt.warn("firmware kept catching the stop signal (bare except?); its thread was parked")
+    error = state["error"]
 
     after = _snapshot(sandbox)
     written = sorted(k for k, v in after.items() if before.get(k) != v)

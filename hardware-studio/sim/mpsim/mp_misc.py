@@ -8,12 +8,13 @@
 import gc as _pygc
 import types
 
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 
 def _unsupported(modname):
     def __getattr__(name):
-        raise current().unsupported_api(modname, name)
+        raise _r_unsupported(modname, name)
     return __getattr__
 
 

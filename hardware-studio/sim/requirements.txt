@@ -1,0 +1,6 @@
+# sim/ (mpsim) dependencies - all already pinned in the top-level requirements.txt.
+# No extra packages beyond these are needed.
+numpy==2.5.4      # framebuf bulk operations, frame arrays
+pillow==13.0.0    # PNG / GIF output
+PyYAML==6.0.3     # optional: .yaml stimulus files
+pytest==9.2.0     # sim/tests, firmware/tests

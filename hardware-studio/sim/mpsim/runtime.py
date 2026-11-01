@@ -8,6 +8,7 @@ Time is kept in integer microseconds since power-on of the first boot.
 """
 
 import heapq
+import threading
 import itertools
 import time as _real_time  # real clock, only for the wall-clock guard
 
@@ -32,7 +33,7 @@ class SimStop(BaseException):
     not swallow it.  Once raised, every later simulated call raises it again.
     """
 
-    def __init__(self, reason):
+    def __init__(self, reason="wall_timeout"):
         super().__init__(reason)
         self.reason = reason
 
@@ -89,6 +90,10 @@ class SimRuntime:
 
         self.frames = []
         self.stop_reason = None
+        self._stop_raises = 0
+        self.firmware_thread = None
+        self.on_park = None
+        self.parked = False
         self.log = []
         self.log_counts = {}
         self.warnings = []
@@ -171,6 +176,13 @@ class SimRuntime:
     def check(self):
         """Called by every simulated API: re-raise a pending stop, wall guard."""
         if self.stop_reason is not None:
+            self._stop_raises += 1
+            if self._stop_raises > 200 and self.firmware_thread is threading.current_thread():
+                # the firmware keeps catching SimStop (bare except): park this thread
+                self.parked = True
+                if self.on_park:
+                    self.on_park()
+                threading.Event().wait()
             raise SimStop(self.stop_reason)
         if self.wall_timeout_s and _real_time.monotonic() - self._wall_start > self.wall_timeout_s:
             self.stop("wall_timeout")
@@ -322,3 +334,10 @@ def current():
 def set_current(rt):
     global _CURRENT
     _CURRENT = rt
+
+
+def unsupported(module, name):
+    """Exception for a missing API: recorded when a run is active."""
+    if _CURRENT is None or name.startswith("__"):
+        return AttributeError("module %r has no attribute %r" % (module, name))
+    return _CURRENT.unsupported_api(module, name)

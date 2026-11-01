@@ -22,6 +22,7 @@ attributes (drivers such as ssd1306 set their own).
 import numpy as np
 
 from . import font8x8
+from .runtime import unsupported as _r_unsupported
 from .runtime import current
 
 MONO_VLSB = 0
@@ -535,4 +536,4 @@ def FrameBuffer1(buffer, width, height, stride=None):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("framebuf", name)
+    raise _r_unsupported("framebuf", name)

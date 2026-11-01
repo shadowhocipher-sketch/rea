@@ -23,7 +23,11 @@ import bisect
 
 
 def _key(pin):
-    return str(pin)
+    """Normalise pin ids: 4, "4" -> 4; named pins ("D4") stay strings."""
+    if isinstance(pin, int):
+        return pin
+    s = str(pin)
+    return int(s) if s.lstrip("-").isdigit() else s
 
 
 class Stimulus:

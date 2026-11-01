@@ -12,6 +12,7 @@ stimulus (see stimulus.py).  Attributes that are not implemented raise
 """
 
 from . import runtime as _r
+from .runtime import unsupported as _r_unsupported
 from .runtime import current, SimReboot
 
 # ---------------------------------------------------------------- constants
@@ -173,7 +174,7 @@ class Pin:
         return "Pin(%r)" % (self._id,)
 
     def __getattr__(self, name):
-        raise current().unsupported_api("machine.Pin", name)
+        raise _r_unsupported("machine.Pin", name)
 
 
 class _IRQ:
@@ -309,7 +310,7 @@ class I2C:
         return len(buf)
 
     def __getattr__(self, name):
-        raise current().unsupported_api("machine.I2C", name)
+        raise _r_unsupported("machine.I2C", name)
 
 
 class SoftI2C(I2C):
@@ -362,7 +363,7 @@ class SPI:
             read_buf[i] = 0
 
     def __getattr__(self, name):
-        raise current().unsupported_api("machine.SPI", name)
+        raise _r_unsupported("machine.SPI", name)
 
 
 class SoftSPI(SPI):
@@ -610,7 +611,7 @@ class RTC:
         return None
 
     def __getattr__(self, name):
-        raise current().unsupported_api("machine.RTC", name)
+        raise _r_unsupported("machine.RTC", name)
 
 
 # ---------------------------------------------------------------- UART
@@ -853,4 +854,4 @@ def bitstream(pin, encoding, timing, data):
 
 
 def __getattr__(name):
-    raise current().unsupported_api("machine", name)
+    raise _r_unsupported("machine", name)
