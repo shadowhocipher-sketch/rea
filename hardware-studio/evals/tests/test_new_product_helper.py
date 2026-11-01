@@ -49,3 +49,12 @@ def test_filled_brief_passes_and_compliance_yaml_roundtrips(tmp_path):
     b["features"]["wireless"] = ["zigbee"]
     (d / "brief.yaml").write_text(yaml.safe_dump(b, allow_unicode=True), encoding="utf-8")
     assert run("compliance-yaml", d).returncode == 2
+
+
+def test_check_accepts_product_name_as_well_as_path():
+    """`check answer-box` 和 `check products/answer-box` 结果一致（迁移测试里按名字调用失败过）。"""
+    by_path = run("check", "products/_template", "--step", "1")
+    by_name = run("check", "_template", "--step", "1")
+    assert "没有目录" not in by_name.stdout + by_name.stderr
+    assert by_name.returncode == by_path.returncode
+    assert by_name.stdout.splitlines()[-1] == by_path.stdout.splitlines()[-1]

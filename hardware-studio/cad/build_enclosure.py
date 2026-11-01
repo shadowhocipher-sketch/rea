@@ -62,13 +62,15 @@ def run_checks(res: BuildResult, wall_samples: int = 1500) -> dict:
     rep["checks"] = {
         "geometry_valid": all(r["valid"] for r in rep["parts"].values()),
         "interference_zero": rep["interference"]["ok"],
-        "usb_plug_fully_inserts": all(v["ok"] for v in rep["usb_plug_insertion"].values()),
+        # 没有 USB 口时为 None（不适用），不能显示成"通过"
+        "usb_plug_fully_inserts": (all(v["ok"] for v in rep["usb_plug_insertion"].values())
+                                   if rep["usb_plug_insertion"] else None),
         "fits_printer_bed": (all(r["bed"]["ok"] for r in rep["parts"].values()) if res.printer_bed else None),
         "spec_warnings": len(res.warnings),
         "wall_fraction_below_min": wall_flags,
     }
     c = rep["checks"]
-    rep["ok"] = bool(c["geometry_valid"] and c["interference_zero"] and c["usb_plug_fully_inserts"]
+    rep["ok"] = bool(c["geometry_valid"] and c["interference_zero"] and c["usb_plug_fully_inserts"] is not False
                      and c["fits_printer_bed"] is not False and c["spec_warnings"] == 0)
     return rep
 
@@ -81,7 +83,7 @@ def _md(rep: dict, files: dict, elapsed: float) -> str:
     c = rep["checks"]
     L += [f"| 几何有效 | {c['geometry_valid']} |",
           f"| 干涉体积为 0（零件 + 包络体两两） | {c['interference_zero']}（总 {rep['interference']['total']} mm³） |",
-          f"| USB 插头能插到底 | {c['usb_plug_fully_inserts']} |",
+          f"| USB 插头能插到底 | {'不适用（没有 USB 口）' if c['usb_plug_fully_inserts'] is None else c['usb_plug_fully_inserts']} |",
           f"| 能放上打印平台 | {c['fits_printer_bed']} |",
           f"| 参数警告数 | {c['spec_warnings']} |", ""]
     L += ["## 零件", "", "| 零件 | 尺寸 X×Y×Z (mm) | 体积 (mm³) | 壁厚抽样 p01 / 中位 (mm) | 低于最小壁厚比例 |", "|---|---|---|---|---|"]

@@ -262,6 +262,15 @@ def cmd_check(pdir, steps, as_json):
     return 0 if r.ok() else 1
 
 
+def _resolve_product_dir(arg: str) -> Path:
+    """接受路径（products/answer-box）或产品名（answer-box）。"""
+    p = Path(arg)
+    p = p if p.is_absolute() else (Path.cwd() / p)
+    if not p.is_dir() and (ROOT / "products" / arg).is_dir():
+        return ROOT / "products" / arg
+    return p
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="new-product skill helper")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -276,8 +285,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.cmd == "new":
         return cmd_new(a.name)
-    pdir = Path(a.product_dir)
-    pdir = pdir if pdir.is_absolute() else (Path.cwd() / pdir)
+    pdir = _resolve_product_dir(a.product_dir)
     if a.cmd == "compliance-yaml":
         return cmd_compliance_yaml(pdir)
     return cmd_check(pdir, a.step, a.json)
