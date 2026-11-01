@@ -1,0 +1,4 @@
+qty,currency,total,per_unit,one_time,quote_amount,unverified_amount,estimate_amount,quote_share,unverified_share,estimate_share,missing_lines,cat_electronic,cat_mechanical,cat_module,cat_packaging,cat_process
+10,USD,137.48,13.7477,0,56.83,42.08,38.57,0.4134,0.3061,0.2806,0,0.0,42.08,82.9,5.5,7.0
+100,USD,1208.35,12.0835,0,453.42,420.75,334.18,0.3752,0.3482,0.2766,0,0.0,420.75,666.6,51.0,70.0
+1000,USD,11420.51,11.4205,0,4534.21,4207.5,2678.8,0.397,0.3684,0.2346,0,0.0,4207.5,6207.01,306.0,700.0

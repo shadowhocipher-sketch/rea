@@ -803,3 +803,32 @@
   date: '2026-11-01'
   basis: ''
   note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C20626143
+  mpn: LCKFB-ESP32S3R8N8
+  manufacturer: LCSC boards
+  package: '-'
+  jlc_class: Extended
+  joints: 40
+  description: '- Development Boards & Kits ROHS'
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 5.8844
+  - qty: 10
+    price: 5.1665
+  - qty: 30
+    price: 4.7993
+  - qty: 100
+    price: 4.4453
+  stock: 241
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C20626143
+  alt_url: https://www.lcsc.com/product-detail/C20626143.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；立创自有品牌开发板（ESP32-S3，型号名含 R8N8，具体板载配置以商品页为准）；镜像里
+    102/104 档与 100 档同价，已省略；库存 241

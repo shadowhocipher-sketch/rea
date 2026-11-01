@@ -9,3 +9,4 @@ trimesh==5.2.0
 imageio==2.38.1
 -r cad/requirements.txt
 -r compliance/requirements.txt
+-r mfg/requirements.txt
