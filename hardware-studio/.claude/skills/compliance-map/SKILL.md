@@ -47,7 +47,10 @@ python compliance/checklist.py --product products/<产品名>/compliance.yaml --
 python compliance/checklist.py --wireless ble --battery coin --children --markets CN,EU
 ```
 
-输入值不合法时退出码为 2 并给出提示。
+输入值不合法时退出码为 2 并给出提示。检查数据和总表是否一致（不改文件）：`python compliance/build_map.py --check`（退出码 0 = 一致）。
+
+怎么检查结果：清单开头"共 N 条，其中待核实 M 条"；逐条看标题是否符合产品特征——例如没有电池却出现电池法规、
+有无线却出现单独的 EMC 指令（无线产品的 EMC 由 RED 覆盖），说明特征写错了，回去改产品 YAML。
 
 特征怎么判断：
 

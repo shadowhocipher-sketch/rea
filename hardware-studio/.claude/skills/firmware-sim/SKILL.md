@@ -28,8 +28,24 @@ python sim/run_firmware.py <固件.py> --display ssd1306|st7789|epaper \
 - 输出放 `products/<产品名>/`，文件名必须 `sim_` 开头（工具会自动补）。
 - Python 里：`from run_firmware import run_firmware` 或 `from mpsim import run, session`。
 
+可直接复制运行的例子（2026-11-01 实测，每条几秒）：
+
+```bash
+python sim/run_firmware.py products/desk-creature-standin/eyes.py --display ssd1306 --seconds 12 --seed 1 --out /tmp/sim_eyes.gif
+python sim/run_firmware.py sim/examples/epaper_card.py --display epaper --seconds 400 --speed 10 --out /tmp/sim_card.gif --log /tmp/card.json
+python sim/run_firmware.py sim/examples/lcd_dashboard.py --display st7789 --seconds 5 --out /tmp/sim_lcd.png
+```
+
 模板：`firmware/templates/*.py`，改开头的 `CONFIG` 或在设备上放 `config.json`。
-每个模板可直接 `python sim/run_firmware.py firmware/templates/<模板>.py ...` 看演示。
+
+| 模板 | 演示命令 | 预期 |
+|---|---|---|
+| `state_machine.py` | `python sim/run_firmware.py firmware/templates/state_machine.py --seconds 20 --out /tmp/sim_fsm.png` | 退出码 0，SSD1306 出帧 |
+| `power.py` | `python sim/run_firmware.py firmware/templates/power.py --seconds 20 --out /tmp/sim_power.png` | 退出码 0 |
+| `selftest.py` | `python sim/run_firmware.py firmware/templates/selftest.py --seconds 10 --out /tmp/sim_selftest.png` | 退出码 0；没给 ADC 输入时警告"ADC pin 1 has no stimulus"，电池项显示 0 V |
+| `buttons.py` | `python sim/run_firmware.py firmware/templates/buttons.py --inputs btn.json --seconds 6` | **没有屏幕**，只在控制台打印 `EVENT button click/double/long/hold_end`；因为没帧，退出码是 1，这是正常的。**不要加 `--out`**，否则会抛 `ValueError: no frames captured` 的回溯 |
+
+`btn.json` 例子（单击、长按各一次）：`{"buttons": [{"pin": 0, "at_ms": 1000, "hold_ms": 80, "active_level": 0, "bounce_ms": 4}, {"pin": 0, "at_ms": 3000, "hold_ms": 1500, "active_level": 0, "bounce_ms": 4}]}`
 
 ## 支持哪些 API
 
@@ -43,7 +59,7 @@ Timer、WDT、RTC、UART、light/deepsleep、reset、reset_cause、wake_reason�
 ## 不支持的会怎样
 
 访问未实现的属性 → `SimUnsupported`（AttributeError），摘要里列出 `unsupported`；
-`asyncio`、`bluetooth`、`urequests`、`neopixel`、`dht` 等能 import、一用就报同样的错。
+`asyncio`/`uasyncio`、`bluetooth`、`urequests`、`neopixel`、`dht` 等能 import、一用就报同样的错（所以用 uasyncio 写的固件目前不能模拟，`evals/` 的 c04 题在跟踪这个缺口）。
 遇到时：先看是否能在固件外层用配置绕开；需要的话在 `sim/mpsim/` 里补模拟并加测试，不要改用户固件。
 
 ## 怎么检查结果
@@ -51,6 +67,8 @@ Timer、WDT、RTC、UART、light/deepsleep、reset、reset_cause、wake_reason�
 1. 摘要里 `stop_reason` 应为 `frame_limit`/`time_limit`/`finished`/`sleep_forever`；
    `exception` 时看 `firmware raised`；`frames` > 0，`frame_size` 与面板一致。
 2. 用 Read 工具打开 PNG 拼图（`--png-mode sheet`）逐帧看内容；GIF 抽帧看。
+   墨水屏看摘要里的 `epaper` 行（如 `{'ssd1680#0': {'full': 2, 'partial': 5, 'refresh_ms': 7500}}`），
+   或 `--log x.json` 后读 `summary.stats.epaper`：刷新次数和自己按固件逻辑手算的一致，才算节奏对。
 3. 看 `warnings`（浮空引脚、未配置的 ADC/触摸、三色屏局刷、裸 except 吞掉停止信号等）。
 4. 报告里写清：模拟图标"模拟"、哪些是模型/估算（ADC 线性、刷新时间、字体、随机数）、未在真机验证。
 5. 改了 `sim/` 或模板就跑 `python -m pytest sim/tests firmware/tests -q`。

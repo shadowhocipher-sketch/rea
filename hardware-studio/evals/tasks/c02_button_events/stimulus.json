@@ -1,0 +1,10 @@
+{
+  "buttons": [
+    {"pin": 0, "at_ms": 1000, "hold_ms": 80,   "active_level": 0, "bounce_ms": 4},
+    {"pin": 0, "at_ms": 3000, "hold_ms": 80,   "active_level": 0, "bounce_ms": 4},
+    {"pin": 0, "at_ms": 3200, "hold_ms": 80,   "active_level": 0, "bounce_ms": 4},
+    {"pin": 0, "at_ms": 5000, "hold_ms": 1200, "active_level": 0, "bounce_ms": 4},
+    {"pin": 0, "at_ms": 7000, "hold_ms": 10,   "active_level": 0, "bounce_ms": 0}
+  ],
+  "touch": {"7": {"idle": 20000, "touched": 60000, "windows": [[8000, 8150]]}}
+}

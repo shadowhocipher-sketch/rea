@@ -29,14 +29,27 @@ description: 写 BOM、查元器件和加工价格、算多数量档成本、选
 2. 没有就按 `mfg/pricing.md` 的顺序查：立创商城 / JLCPCB → LCSC → DigiKey/Mouser。记全部数量档、链接、日期。
 3. 打不开分销商网站时：用 `mfg/jlcparts_import.py` 从 jlcparts 镜像导出（`pricing.md` 第 3 节），镜像里没有的用搜索摘要记成 `unverified`。
 4. 实在没有 B 级价格：写 `status: estimate`，basis 写依据和公式；或者干脆不写，让工具报"缺价格"。**不要凭记忆写价格。**
-5. 写完跑 `python mfg/cost.py --check-prices`。
+5. 写完跑 `python mfg/cost.py --check-prices`（不合格时退出码 2，并列出哪个 key 缺什么字段）。
+
+jlcparts 镜像导出（2026-11-01 实测可用，只拉目录树）：
+
+```bash
+git clone --depth 1 --filter=blob:none --no-checkout -b gh-pages https://github.com/yaqwsx/jlcparts.git /tmp/jlcparts
+python mfg/jlcparts_import.py --repo /tmp/jlcparts C82942 C725790 > /tmp/new_prices.yaml   # 检查后再并入 mfg/prices/
+```
 
 ## 3. 跑成本
 
 ```bash
-. .venv/bin/activate
+cd hardware-studio && . .venv/bin/activate
+python mfg/cost.py --check-prices                      # 先确认价格缓存合法（退出码 0）
 python mfg/cost.py products/<产品名>/bom.csv --qty 10 100 1000 --out products/<产品名>/cost
+# 自检（用库里的通用示例，几秒）：
+python mfg/cost.py mfg/examples/generic-esp32s3-gadget.bom.csv --qty 100 1000 --out /tmp/cost_selftest
 ```
+
+输出 `cost.md`（人看）、`summary.csv`（每档一行：`per_unit`、`quote_share`/`unverified_share`/`estimate_share`、`missing_lines`，程序读）、`cost_<数量>.csv`（明细）。
+退出码：0 正常；2 BOM/价格缓存格式错误（看报错行号）；3 有缺价格行且加了 `--strict`。
 
 - 默认损耗 2%（`--attrition`），按行可覆盖；加工费不计损耗。
 - 混用人民币和美元时必须给 `--fx CNY=<汇率>`，并在报告里写汇率来源和日期。
@@ -46,7 +59,7 @@ python mfg/cost.py products/<产品名>/bom.csv --qty 10 100 1000 --out products
 
 打开 `cost.md`：
 
-- [ ] **缺价格行 = 0**，或者在报告里列出缺哪些、为什么；
+- [ ] **缺价格行 = 0**（`summary.csv` 的 `missing_lines` 列，或加 `--strict` 看退出码不是 3），或者在报告里列出缺哪些、为什么；
 - [ ] 看"实查 / 待核实 / 估算"三列。实查占比低时，在结论里写明"这是估算"，并列出金额最大的几项待核实/估算项，建议先核实它们；
 - [ ] 明细里每行都有来源链接和日期（估算行有依据，在价格缓存的 basis 里）；
 - [ ] 采购量明显大于需求量的行（MOQ 或多买到下一档），看一下 `leftover` 是否合理；
@@ -57,12 +70,15 @@ python mfg/cost.py products/<产品名>/bom.csv --qty 10 100 1000 --out products
 ## 5. KiCad 检查
 
 ```bash
+# 本机装了 KiCad 8+ 时：
 python mfg/kicad_check.py products/<产品名>/kicad/ --out products/<产品名>/kicad-report
-# 本机只有 KiCad 7 或没有 KiCad 时：
-python mfg/kicad_check.py products/<产品名>/kicad/ --docker kicad/kicad:9.0
+# 本机只有 KiCad 7（Ubuntu 24.04 源里是 7.0.11，2026-11-01 的云端环境就是这样）或没有 KiCad 时，用 Docker 镜像：
+python mfg/kicad_check.py products/<产品名>/kicad/ --docker kicad/kicad:9.0 --out products/<产品名>/kicad-report
+# 自检（库里的最小工程，预期 ERC 0 错误、DRC 0 错误 2 个 track_dangling 警告，退出码 0）：
+python mfg/kicad_check.py mfg/kicad/minimal/ --docker kicad/kicad:9.0 --out /tmp/kicad_selftest
 ```
 
-需要 KiCad 8+（7.x 的 `kicad-cli` 没有 erc/drc）。找不到时脚本会打印安装方法并返回 4。有错误级违规返回 1；`--fail-on warning` 让警告也算失败。KiCad 是 GPL，只当外部程序调用。
+需要 KiCad 8+（7.x 的 `kicad-cli` 没有 erc/drc）。找不到时脚本会打印安装方法并返回 4（第一条命令在只有 KiCad 7 的机器上就是这个结果，换 `--docker`）。有错误级违规返回 1；`--fail-on warning` 让警告也算失败。结果看 `--out` 目录里的 `summary.md`。KiCad 是 GPL，只当外部程序调用。
 
 ## 6. 选路线
 

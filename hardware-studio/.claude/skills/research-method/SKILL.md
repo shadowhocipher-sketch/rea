@@ -7,6 +7,14 @@ description: 查元器件参数、价格、法规时使用的研究方法：资�
 
 目的：写进能力库的每一条事实，以后的人都能顺着链接核对，而且知道它有多可靠。
 
+## 什么时候用
+
+- 往 `knowledge/`、`mfg/prices/`、`compliance/data/` 写任何参数、价格、法规之前；
+- 回答新产品的选型、价格、合规问题时（答案里的每个数字都要能追到来源）；
+- 审查别人写的资料时（用第 6 节检查清单和自动检查命令）。
+
+怎么用：按第 1–2 节找来源并交叉核实 → 按第 3 节格式写 → 拿不准按第 4 节标记 → 写完跑第 6 节的检查。
+
 ## 1. 来源分级
 
 | 级别 | 来源 | 例子 | 用法 |
@@ -71,4 +79,14 @@ description: 查元器件参数、价格、法规时使用的研究方法：资�
 - [ ] 模块参数和芯片参数分开写了；
 - [ ] 没有"一般""大约"之类不带来源的说法。
 
-`evals/` 里有检查脚本，会扫描 `knowledge/`、`mfg/`、`compliance/` 下的表格，找出缺少链接或日期的行。
+自动检查：
+
+```bash
+cd hardware-studio && . .venv/bin/activate
+python knowledge/check_sources.py [文件或目录]   # 事实表格每行：链接 + 日期 + 级别，或 未查到/估算/待核实
+python mfg/cost.py --check-prices                # 价格缓存：status、source_url、date、basis
+python compliance/build_map.py --check           # 合规数据与 map.md 一致；字段规则见 compliance/tests
+python evals/run.py --only g01 g02               # 自测：检查器能抓出缺来源的行；全库事实记录的来源合规率
+```
+
+`check_sources.py` 只适用于事实页，说明性表格（README、许可证表）会被误报，不要拿它扫那些文件。

@@ -1,0 +1,17 @@
+from_part,from_pin,to_part,to_pin,net,kind,note
+# Eval fixture (generic, not a real product): SPI e-paper + I2C accelerometer + one button.
+MCU,3V3,EPD,VCC,+3V3,power,
+MCU,GND,EPD,GND,GND,ground,
+MCU,GPIO12,EPD,SCK,EPD_SCK,signal,
+MCU,GPIO11,EPD,MOSI,EPD_MOSI,signal,
+MCU,GPIO10,EPD,CS,EPD_CS,signal,
+MCU,GPIO9,EPD,DC,EPD_DC,signal,
+MCU,GPIO8,EPD,RST,EPD_RST,signal,
+MCU,GPIO7,EPD,BUSY,EPD_BUSY,signal,
+MCU,3V3,ACC,VCC,+3V3,power,
+MCU,GND,ACC,GND,GND,ground,
+MCU,GPIO5,ACC,SDA,I2C_SDA,signal,
+MCU,GPIO6,ACC,SCL,I2C_SCL,signal,
+MCU,GPIO4,ACC,INT1,ACC_INT,signal,
+MCU,GPIO0,BTN,A,BTN,signal,
+MCU,GND,BTN,B,GND,ground,

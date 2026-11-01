@@ -1,0 +1,20 @@
+# Eval fixture: two component envelopes that overlap on purpose, plus one that only touches.
+# Hand-computed answer (see grade.py):
+#   module_a  x -10..10, y -10..10, z 5..9
+#   module_b  x   0..20, y -10..10, z 7..11  -> overlap with a: 10 x 20 x 2 = 400 mm^3
+#   module_c  x -22..-10, y -10..10, z 5..9  -> touches a on the x = -10 face only: 0 mm^3
+#   module_d  x 20..30, y -5..5, z 1..5      -> sinks 1 mm into the flat 2 mm floor (z 0..2): 10 x 10 x 1 = 100 mm^3 with 'bottom'
+name: eval-b02-interference
+process: fdm
+shell:
+  size: [70, 40, 20]
+  wall: 2.0
+  corner_radius: 3
+  edge_radius: 1
+  split_z: 10
+  lip: {height: 0}
+components:
+  - {name: module_a, size: [20, 20, 4], center: [0, 0], z: 5}
+  - {name: module_b, size: [20, 20, 4], center: [10, 0], z: 7}
+  - {name: module_c, size: [12, 20, 4], center: [-16, 0], z: 5}
+  - {name: module_d, size: [10, 10, 4], center: [25, 0], z: 1}

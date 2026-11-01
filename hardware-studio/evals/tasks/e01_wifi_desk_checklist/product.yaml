@@ -1,0 +1,7 @@
+name: eval-e01 Wi-Fi 桌面摆件（USB 供电，无电池）
+wireless: [wifi]
+connected: true
+batteries: []
+adapter: false
+children: false
+markets: [EU, US, UK]

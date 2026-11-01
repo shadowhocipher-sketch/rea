@@ -45,7 +45,9 @@ fc-list :lang=zh | head -1 || sudo apt-get install -y fonts-noto-cjk   # 中文�
    ```
 
    或写 YAML 场景文件（格式见 `render/README.md`，例子 `render/examples/generic_box.yaml`）后
-   `python render/render.py --config <文件>`。
+   `python render/render.py --config <文件>`；命令行参数会覆盖 YAML。
+   自检（渲染库里示例外壳，草稿 2 张约 15 s，输出到临时目录，不覆盖示例输出）：
+   `python render/render.py --config render/examples/generic_box.yaml --quality draft --size 400x300 --views iso --exploded-views iso --out /tmp/render_selftest`
 3. 场景：`studio`（浅灰背景，看造型）、`desk`（木桌 + 书/铅笔，体现尺寸，书是 A5 148×210 mm）、`plain`。
    视角：`front/side(=right)/left/back/top/iso/iso-left/iso-back/hero` 或 `azXXelYY`。
    材质：`matte satin gloss rubber metal glass paper`。爆炸位移是每个零件第 4 段 `DX,DY,DZ`（mm）。
@@ -66,7 +68,8 @@ python diagrams/wiring.py products/<产品名>/pins.csv --out products/<产品�
 渲染图：
 - [ ] 文件名 `render_` 开头，尺寸等于 `--size`；
 - [ ] 用 Read 工具打开 PNG 看：右下角有"渲染图 / Render"标签；零件颜色、位置、爆炸方向对；没有缺面/黑块；
-- [ ] 需要机器检查时：`RenderedImage.label`（文字、位置、是否中文）或 PNG 元数据 `Label` 字段；
+- [ ] 需要机器检查时：`RenderedImage.label`（文字、位置、是否中文）或 PNG 元数据 `Label` 字段：
+      `python -c "from PIL import Image; im=Image.open('render_x.png'); print(im.size, im.info['Label'])"`；
 - [ ] `pytest render/tests` 通过。
 
 接线图：

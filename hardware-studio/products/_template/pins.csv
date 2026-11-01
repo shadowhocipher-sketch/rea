@@ -1,0 +1,4 @@
+from_part,from_pin,to_part,to_pin,net,kind,note
+# 第 3 步：每行一根线，格式见 CONVENTIONS.md 第 2 节；kind = power / ground / signal。下面是写法示例，换成真实接线。
+MCU,3V3,PART,VCC,+3V3,power,TODO
+MCU,GND,PART,GND,GND,ground,

@@ -44,7 +44,11 @@ sudo apt-get install -y --no-install-recommends prusa-slicer
    python cad/build_enclosure.py products/<产品名>/enclosure.yaml --out products/<产品名>/cad_out
    ```
 
-5. **读报告** `cad_out/check_report.md`，不通过就回到第 2–3 步改参数，重新生成。
+   退出码 0 = 全部检查通过，1 = 有检查没通过（文件照样写出），2 = 参数错误。
+   改参数反复试时加 `--no-slice --no-preview` 快很多；定稿再完整跑一遍。
+   自检（库里的通用示例，约 12 s，含切片）：
+   `python cad/build_enclosure.py cad/examples/generic_box.yaml --out /tmp/encl_selftest`
+5. **读报告** `cad_out/check_report.md`（程序读 `check_report.json` 的 `ok` 和 `checks`），不通过就回到第 2–3 步改参数，重新生成。
 
 ## 在 Python 里直接用模块
 
@@ -61,7 +65,7 @@ loc = Location(face_plane(spec.size, "-x", u=0, v=10))
 halves["lower"] = halves["lower"] - usb.cut.moved(loc)
 ```
 
-工具都能单独用：
+工具都能单独用（`a.step` 等换成你的文件，例如上面自检输出的 `/tmp/encl_selftest/bottom.step`）：
 
 ```bash
 python cad/tools/measure.py a.step b.step --min-wall 1.2 --bed 250 210 220

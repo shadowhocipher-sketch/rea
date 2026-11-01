@@ -1,0 +1,68 @@
+# Eval fixture price cache (made-up numbers, NOT real quotes; only used to test the arithmetic of mfg/cost.py).
+- key: t:mcu
+  currency: USD
+  moq: 1
+  joints: 40
+  jlc_class: Extended
+  breaks: [{qty: 1, price: 3.00}, {qty: 10, price: 2.70}, {qty: 100, price: 2.40}, {qty: 1000, price: 2.10}]
+  status: quote
+  source_url: https://example.invalid/eval-mcu
+  date: '2026-11-01'
+- key: t:res
+  currency: USD
+  joints: 2
+  jlc_class: Basic
+  breaks: [{qty: 100, price: 0.002}, {qty: 1000, price: 0.0012}, {qty: 5000, price: 0.0008}]
+  status: quote
+  source_url: https://example.invalid/eval-res
+  date: '2026-11-01'
+- key: t:cap
+  currency: USD
+  moq: 1
+  joints: 2
+  jlc_class: Basic
+  breaks: [{qty: 1, price: 0.05}, {qty: 50, price: 0.03}, {qty: 500, price: 0.01}]
+  status: quote
+  source_url: https://example.invalid/eval-cap
+  date: '2026-11-01'
+- key: t:oled
+  currency: USD
+  moq: 1
+  breaks: [{qty: 1, price: 2.50}, {qty: 100, price: 2.00}, {qty: 500, price: 1.80}]
+  status: unverified
+  source_url: https://example.invalid/eval-oled
+  basis: eval fixture
+  date: '2026-11-01'
+- key: t:pcb
+  currency: USD
+  breaks: [{qty: 1, price: 0.80}]
+  status: estimate
+  basis: eval fixture
+  date: '2026-11-01'
+- key: t:setup
+  currency: USD
+  breaks: [{qty: 1, price: 8.00}]
+  status: unverified
+  source_url: https://example.invalid/eval-setup
+  basis: eval fixture
+  date: '2026-11-01'
+- key: t:joint
+  currency: USD
+  breaks: [{qty: 1, price: 0.002}]
+  status: unverified
+  source_url: https://example.invalid/eval-joint
+  basis: eval fixture
+  date: '2026-11-01'
+- key: t:ext
+  currency: USD
+  breaks: [{qty: 1, price: 3.00}]
+  status: unverified
+  source_url: https://example.invalid/eval-ext
+  basis: eval fixture
+  date: '2026-11-01'
+- key: t:pkg
+  currency: USD
+  breaks: [{qty: 1, price: 0.30}]
+  status: estimate
+  basis: eval fixture
+  date: '2026-11-01'

@@ -18,10 +18,12 @@ description: 查询和维护 hardware-studio/knowledge/ 元器件知识库（ESP
 ## 怎么查
 
 1. 打开 `knowledge/README.md` 找类别和页面（README 也解释了级别 S / S（镜像）/ A / B / C 和三个标记的含义）。
-2. 用 grep 定位具体参数，例如：
+2. 用 grep 定位具体参数（在 `hardware-studio/` 下运行），例如：
    ```bash
-   grep -rn "strapping\|Strapping" hardware-studio/knowledge/mcu/
-   grep -rn "深睡" hardware-studio/knowledge/
+   cd hardware-studio
+   grep -rn "strapping\|Strapping" knowledge/mcu/
+   grep -rn "深睡" knowledge/
+   grep -rln "MCP73831\|电量计" knowledge/ || echo "库里没有，按下面'新增一个器件页'补"
    ```
 3. 读数时看最后一列：
    - 带"待核实"的行（大多数非乐鑫器件，因为数据手册是从第三方镜像读的；以及全部价格）在定稿 BOM、量产前要按链接回原厂核对；
@@ -49,10 +51,11 @@ description: 查询和维护 hardware-studio/knowledge/ 元器件知识库（ESP
 
 ```bash
 cd hardware-studio && . .venv/bin/activate
-python knowledge/check_sources.py           # 全库；也可传文件或目录：python knowledge/check_sources.py knowledge/input/bmi270.md
-pytest knowledge/tests -q
+python knowledge/check_sources.py           # 全库；也可传文件或目录：python knowledge/check_sources.py knowledge/power/
+python -m pytest knowledge/tests -q
 ```
 
 - `check_sources.py` 扫描每个 Markdown 表格的数据行（跳过表头、分隔行、``` 代码块）。合格条件：同时有 http 链接、合法的 YYYY-MM-DD 日期、来源级别（`· S/A/B/C`），或者含"未查到/估算/待核实"之一。输出不合格行的 `文件:行号: 原因`，退出码 0 合格、1 有不合格行、2 路径不存在。
 - pytest 包含一个故意缺来源的反例，并要求六类各有 ≥2 个器件页和 1 张 selection.md、全库检查通过。
+- `check_sources.py` 是给**事实页**用的：拿它扫 `mfg/README.md`、许可证表这类说明性表格会报大量"不合格"，那是正常的，不要据此改说明表。
 - 脚本只检查"有没有来源"，不检查"来源对不对"。新增内容后，随机抽几条打开链接核对数值，把核对结果写进你的报告。
