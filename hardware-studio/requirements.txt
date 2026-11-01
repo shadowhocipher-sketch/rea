@@ -1,0 +1,9 @@
+# 公共依赖。各工作线的额外依赖写在各自目录的 requirements.txt 里，并在下面用 -r 引用。
+build123d==0.13.0
+numpy==2.5.4
+matplotlib==3.11.2
+pillow==13.0.0
+pytest==9.2.0
+PyYAML==6.0.3
+trimesh==5.2.0
+imageio==2.38.1

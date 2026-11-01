@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+# 中间文件；需要留存的产出放在各自目录的 out/ 或 products/ 下
+tmp/

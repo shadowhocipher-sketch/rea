@@ -1,0 +1,5 @@
+from_part,from_pin,to_part,to_pin,net,kind,note
+MCU,3V3,OLED,VCC,+3V3,power,替身数据
+MCU,GND,OLED,GND,GND,ground,
+MCU,GPIO8,OLED,SDA,I2C_SDA,signal,I2C 400kHz
+MCU,GPIO9,OLED,SCL,I2C_SCL,signal,
