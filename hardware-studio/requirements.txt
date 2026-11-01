@@ -13,3 +13,4 @@ imageio==2.38.1
 -r render/requirements.txt
 -r diagrams/requirements.txt
 -r sim/requirements.txt
+-r knowledge/requirements.txt

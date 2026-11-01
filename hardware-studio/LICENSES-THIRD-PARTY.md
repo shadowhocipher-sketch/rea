@@ -43,3 +43,16 @@
 | jlcparts（yaqwsx/jlcparts）的数据导出 | 代码 MIT；数据来自 JLCPCB，数据使用条款**待核实** | 只读，`mfg/prices/` 里只存 25 条价格 |
 | 乐鑫硬件设计指南（espressif/esp-hardware-design-guidelines） | 文档 CC BY-SA 4.0 | `mfg/esp32s3-min-system.md` 是摘要和翻译，页内已署名，并声明该页按 CC BY-SA 4.0 发布 |
 | MicroPython 文档和源码、micropython-lib ssd1306、st7789py_mpy | MIT | 只作为 API 行为参考，模拟器是重新实现的，没有复制代码 |
+
+## 知识库 `knowledge/` 引用的资料
+
+知识库里**没有复制第三方代码**；数据手册 PDF 只在临时目录里读取，没有放进仓库。
+
+| 名称（固定到的提交） | 许可证 | 怎么用 |
+|---|---|---|
+| espressif/esp-hardware-design-guidelines @a727293 | 文档 CC BY-SA 4.0，代码 Apache-2.0 | 中文转述设计要点，附链接署名；转述段落如被视为改编作品，适用相同方式共享 |
+| espressif/esp-idf @d445e94 | Apache-2.0 | 引用文档、`soc_caps.h`、`io_mux_reg.h` 里的数值 |
+| espressif/esp-iot-solution @d2d935d | Apache-2.0 | 引用 button 组件的默认消抖参数 |
+| STMicroelectronics/lis3dh-pid @8c0588b | BSD-3-Clause | 核对器件 ID、I2C 地址常量 |
+| ZinggJM/GxEPD2 @de82887 | **GPL-3.0** | 只把两个墨水屏刷新时间常量的**数值**当作 C 级线索引用（标"待核实"），没有复制任何代码 |
+| 原厂数据手册、USB Type-C 规范 | 版权归原厂 / USB 3.0 Promoter Group | 只引用参数并附链接，没有再分发；经第三方 GitHub 镜像读取的已在各页注明 |

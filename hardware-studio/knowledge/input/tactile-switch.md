@@ -22,7 +22,7 @@
 |---|---|---|
 | 接法 | 一端接 GPIO（开内部或外部上拉），一端接地，按下读低电平；额定最小 1 mA / 5 V 是开关厂的测试条件，3.3 V 小电流读取的可靠性未在手册中给出 | [Omron B3U Ratings/Characteristics](https://github.com/femtoduino/femto-usb/blob/3b0757e438f7e71c113634b8b79e3e4c98cc137e/omron_ultra-small_tactile_switch_%28SMT%29_en-b3u.pdf) · S（镜像）· 2026-11-01 · 待核实 |
 | ESP32 内部上拉阻值 | 未查到（在芯片数据手册中，站点不可达） | https://documentation.espressif.com/esp32-s3_datasheet_en.pdf · 未查到 |
-| 深睡唤醒按键 | C3 只有 GPIO0–5 能唤醒深睡；S3 用 RTC GPIO（GPIO0–21）；C6 用 LP GPIO（GPIO0–7） | [ESP-IDF gpio/esp32c3.inc](https://github.com/espressif/esp-idf/blob/d445e947156f276dfe0db5804e4edf6ae90fe6fb/docs/en/api-reference/peripherals/gpio/esp32c3.inc) · A · 2026-11-01 |
+| 深睡唤醒按键 | C3：只有 GPIO0–5 能唤醒深睡（IDF GPIO 文档）；S3：22 个 RTC IO（GPIO0–21）可用 ext0/ext1 唤醒；C6：8 个 RTC/LP IO（GPIO0–7）可用 ext1 唤醒 | [ESP-IDF sleep_modes.rst](https://github.com/espressif/esp-idf/blob/d445e947156f276dfe0db5804e4edf6ae90fe6fb/docs/en/api-reference/system/sleep_modes.rst) · A · 2026-11-01；[soc_caps.h SOC_RTCIO_PIN_COUNT](https://github.com/espressif/esp-idf/tree/d445e947156f276dfe0db5804e4edf6ae90fe6fb/components/soc) · A · 2026-11-01 |
 | 兼作 BOOT 键 | S3 用 GPIO0、C3/C6 用 GPIO9 做下载键；这些脚不要并大电容 | [HDG 原理图清单 Strapping Pins](https://github.com/espressif/esp-hardware-design-guidelines/blob/a727293ef28136766f6fcc1ea8cc670e59c6ae1a/docs/en/schematic-checklist.rst) · S · 2026-11-01 |
 
 ## 电压、电流
