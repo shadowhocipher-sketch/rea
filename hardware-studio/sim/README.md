@@ -30,7 +30,9 @@ python sim/run_firmware.py products/desk-creature-standin/eyes.py \
 | `--log 文件.json` | 写入运行摘要和调用记录 |
 | `--wall-timeout` | 真实时间安全上限（默认 60 s） |
 
-退出码：正常结束且有帧 → 0；固件抛异常或没有帧 → 1。
+退出码：正常结束且有帧 → 0；固件抛异常或没有帧 → 1。给了 `--out` 但没有帧（固件没调 show/刷新、
+只刷了别的屏、或出帧前就抛异常）时不写图片，打印一行 `error: 未生成图片：…` 说明原因（没有回溯），退出码 1；
+Python 接口里同样不抛异常，原因在 `res.no_output_reason`。
 
 Python 里使用：
 
@@ -99,13 +101,14 @@ ADC 电压是**引脚上**的电压（分压后），线性插值。
 | `machine.UART` | write、read、readline、any、readinto | 接收数据来自 stimulus |
 | `machine` 函数 | lightsleep、deepsleep、sleep、reset、soft_reset、reset_cause、wake_reason、wake_pins、freq、unique_id、idle、disable_irq/enable_irq、time_pulse_us、bitstream（只记录） | 唤醒：定时、ext0、ext1、gpio、Pin.irq(wake=)、触摸 |
 | `esp32` | wake_on_touch/ext0/ext1/gpio/ulp、gpio_deep_sleep_hold、WAKEUP_ALL_LOW/ANY_HIGH、NVS（set/get_i32、set/get_blob、erase_key、commit）、raw_temperature、mcu_temperature、idf_heap_info | [esp32 文档](https://docs.micropython.org/en/latest/library/esp32.html)；温度、堆信息是固定假值；ULP 不模拟 |
+| `asyncio` / `uasyncio` | run、create_task、current_task、sleep、sleep_ms、wait_for、wait_for_ms、gather（含 return_exceptions）、Task（cancel、done、await）、Event、ThreadSafeFlag、Lock（含 `async with`）、CancelledError、TimeoutError、get_event_loop/new_event_loop、Loop（create_task、run_forever、run_until_complete、stop、close、set/get/call/default_exception_handler） | [asyncio 文档](https://github.com/micropython/micropython/blob/master/docs/library/asyncio.rst)；在**虚拟时钟**上调度，不真等，帧数/时间上限照常停止。细节按 MicroPython `extmod/asyncio`（MIT）的行为重写：sleep 毫秒精度、同时到点先进先出、`run()` 在主任务结束即返回（其余任务留在队列）、没人 await 的任务异常交给异常处理器打印、cancel 自己报 `RuntimeError`、等别的任务时 cancel 转发给被等的任务、wait_for 超时先取消并等内层任务处理完再抛 TimeoutError、gather 第一个异常抛给调用者而其他任务继续。`ThreadSafeFlag.set()` 可在 Pin IRQ / Timer 回调里用；`Event.set()` 在 IRQ 里用会给警告（真机不安全）。所有任务都在等且没有东西能唤醒时给警告并跑完时钟。调度本身不耗虚拟时间。**不支持** TCP 流（open_connection、start_server、Stream）→ `SimUnsupported` |
 | `micropython` | const、schedule、native/viper（原样返回）、opt_level、alloc_emergency_exception_buf、mem_info、heap_lock/unlock 等 | |
 | `gc` | collect、mem_free/mem_alloc（固定假值）、enable/disable/threshold | |
 | `network` | WLAN 存根：active、connect（不记录密码）、isconnected（由 stimulus 决定）、ifconfig、status、scan | 不联网 |
 | `ssd1306` | SSD1306_I2C、SSD1306_SPI：show、poweroff、poweron、contrast、invert、rotate，及 buffer/width/height/pages | 与 [micropython-lib ssd1306](https://github.com/micropython/micropython-lib/blob/master/micropython/drivers/display/ssd1306/ssd1306.py) 同 API；注意 `rotate(True)` 是正常方向、`rotate(False)` 旋转 180° |
 | `st7789` / `st7789py` | ST7789（[st7789py_mpy](https://github.com/russhughes/st7789py_mpy) API）：fill、pixel、hline、vline、line、rect、fill_rect、blit_buffer、text(font,…)、polygon、rotation、sleep_mode、inversion_mode、init、color565、颜色常量；ST7789_FB（framebuf RGB565 + show()） | 直接绘图的屏在固件 sleep 时出帧；blit_buffer 按大端解释（与面板一致，所以 framebuf 小端数据要先换字节序） |
 | 字体模块 `vga1_8x8`、`vga1_8x16`、`vga1_bold_16x32` 等 | 固件目录没有时提供替代 | 由 font8x8 放大，字形与原字体不同 |
-| `epaper` / `ssd1680` / `ssd1681` | SSD1680、SSD1681（FrameBuffer MONO_HLSB，1=白 0=黑；`red=True` 时 `.red` 层 1=红）：show/display/refresh（全刷）、show_partial/display_partial/partial（局刷）、clear、sleep、init；计数 full_refreshes/partial_refreshes/refresh_ms_total | MicroPython 没有标准墨水屏驱动，这是模拟器自定义 API；刷新阻塞虚拟时间；局刷后显示残影（示意） |
+| `epaper` / `ssd1680` / `ssd1681` / `ssd168x` | SSD1680、SSD1681（FrameBuffer MONO_HLSB，1=白 0=黑；`red=True` 时 `.red` 层 1=红）：show/display/refresh（全刷）、show_partial/display_partial/partial（局刷）、clear、sleep、init、wait_busy；参数 full_refresh_ms/partial_refresh_ms/busy_timeout_ms；计数 full_refreshes/partial_refreshes/refresh_ms_total；`BusyTimeout` | MicroPython 没有标准墨水屏驱动；这套 API 的**真机驱动**是 `firmware/drivers/ssd168x.py`（同名同参，未在真机运行，见 `firmware/README.md`），同一份固件两边都能跑。刷新阻塞虚拟时间；局刷后显示残影（示意）。和真机驱动一致的检查：没接 rst 时 `sleep()` 抛 ValueError；深睡后再刷新自动重新 init 并警告；一个驱动对象的第一次刷新是局刷时警告（真机驱动假定面板是白的） |
 | `ustruct ujson ubinascii ucollections uerrno uio uos uhashlib uarray ure uzlib uselect usys` | 映射到 CPython 同名模块 | 细节差异未逐一核对 |
 
 墨水屏默认刷新时间（不是控制器数据手册值，取决于面板波形）：
@@ -121,7 +124,8 @@ ADC 电压是**引脚上**的电压（分压后），线性插值。
 - 访问模拟模块里没有的属性（如 `machine.mem32`、`machine.I2S`、`st7789.ST7789.bitmap`）
   → 抛 `SimUnsupported`（是 `AttributeError` 子类），消息写明"not implemented by the simulator"，
   并列入结果的 `unsupported_apis`。固件若不捕获，运行以 `stop_reason = exception` 结束，已出的帧照常输出。
-- 已知但未模拟的模块：`asyncio`/`uasyncio`、`bluetooth`、`aioble`、`usocket`、`urequests`、`umqtt`、
+- `asyncio` 的 TCP 流（`open_connection`、`start_server`、`StreamReader/Writer`）同样报 `SimUnsupported`。
+- 已知但未模拟的模块：`bluetooth`、`aioble`、`usocket`、`urequests`、`umqtt`、
   `espnow`、`webrepl`、`ntptime`、`dht`、`onewire`、`ds18x20`、`neopixel`、`btree`、`deflate`、`cryptolib`、
   `uctypes`：可以 import，用到任何属性就报 `SimUnsupported`。
 - `sys` 没有替换（`sys.platform` 是电脑的值）；`os` 用电脑的（在临时文件系统目录里）。
@@ -146,7 +150,7 @@ ADC 电压是**引脚上**的电压（分压后），线性插值。
 ## 文件
 
 - `run_firmware.py` 命令行入口；`mpsim/` 模拟包（`runtime.py` 时钟与调度、`stimulus.py` 输入、
-  `mp_*.py` 各模块、`render.py` 出图、`sim.py` 运行器）；`examples/` 示例固件，`examples/out/` 示例输出；
+  `mp_*.py` 各模块（`mp_asyncio.py` = asyncio/uasyncio）、`render.py` 出图、`sim.py` 运行器）；`examples/` 示例固件，`examples/out/` 示例输出；
   `tests/` pytest。
 
 ## 第三方资源与许可证
@@ -155,6 +159,7 @@ ADC 电压是**引脚上**的电压（分压后），线性插值。
 |---|---|---|---|
 | font8x8（font8x8_basic.h，Daniel Hepper；源自 Marcel Sondaar / IBM 公有领域 VGA 字体） | `framebuf.text` 字形、st7789 替代字体 | 公有领域（Public Domain） | <https://github.com/dhepper/font8x8>，2026-11-01 获取 |
 | MicroPython 文档与 `extmod/modframebuf.c` | 行为参考（未复制代码，按算法重写） | MIT | <https://github.com/micropython/micropython> |
+| MicroPython `docs/library/asyncio.rst` 与 `extmod/asyncio/*.py` | `mp_asyncio.py` 的行为参考（未复制代码，自己实现调度器） | MIT | <https://github.com/micropython/micropython/tree/master/extmod/asyncio>，2026-11-01 读取（master，commit 321fba0） |
 | micropython-lib ssd1306 驱动 | API 参考 | MIT | <https://github.com/micropython/micropython-lib> |
 | st7789py_mpy | API 参考 | MIT | <https://github.com/russhughes/st7789py_mpy> |
 | 系统 CJK 字体（如 Noto Sans CJK） | 图上"模拟"字样，运行时从系统读取，不随库分发 | SIL OFL 1.1（Noto） | 系统自带；找不到时只写 "SIMULATED" |

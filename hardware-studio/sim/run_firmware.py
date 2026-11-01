@@ -14,7 +14,8 @@ Import use::
 
 Exit status: 0 when frames were captured and the run ended normally (frame/time
 limit, firmware finished, or slept forever), 1 when the firmware raised an
-exception or nothing was captured, 2 for usage errors.
+exception or nothing was captured (with ``--out`` and no frames, a plain
+message says that no image was written - no traceback), 2 for usage errors.
 """
 
 import argparse
@@ -31,6 +32,18 @@ from mpsim import run  # noqa: E402
 OK_REASONS = ("frame_limit", "time_limit", "finished", "sleep_forever", "sys_exit", "max_boots")
 
 
+def no_frames_message(res):
+    """Plain explanation of why a run produced no image for the selected display."""
+    kinds = sorted({f.kind for f in res.all_frames})
+    if res.error and not res.all_frames:
+        why = "固件在产生任何帧之前抛出了异常（见 firmware raised）"
+    elif kinds:
+        why = "没有 --display %s 的帧（固件只刷新了 %s 类屏幕）" % (res.display_kind, "/".join(kinds))
+    else:
+        why = "固件没有调用 show()/刷新，没有产生任何帧"
+    return "未生成图片：%s；--out 已忽略 (no frames captured, nothing written)" % why
+
+
 def run_firmware(firmware, display=None, width=None, height=None, frames=None, seconds=None,
                  out=None, seed=0, inputs=None, png_mode="sheet", speed=1.0, scale=None,
                  oled_color="white", glow=True, epaper_flash=True, wall_timeout=60.0,
@@ -38,7 +51,13 @@ def run_firmware(firmware, display=None, width=None, height=None, frames=None, s
     """Run firmware, write outputs (list or single path), return the SimResult."""
     res = run(firmware, display=display, max_frames=frames, max_seconds=seconds, seed=seed,
               inputs=inputs, wall_timeout_s=wall_timeout, echo=echo, width=width, height=height)
-    outs = [out] if isinstance(out, str) else list(out or [])
+    outs = [out] if isinstance(out, (str, os.PathLike)) else list(out or [])
+    res.no_output_reason = None
+    if outs and not res.frames:
+        # nothing to draw: explain instead of letting SimResult.save raise ValueError
+        res.no_output_reason = no_frames_message(res)
+        res.warnings.append(res.no_output_reason)
+        outs = []
     for o in outs:
         res.save(o, png_mode=png_mode, speed=speed, scale=scale, oled_color=oled_color,
                  glow=glow, epaper_flash=epaper_flash)
@@ -90,11 +109,15 @@ def main(argv=None):
     if s["stats"].get("epaper"):
         print("%-12s %s" % ("epaper", s["stats"]["epaper"]), file=sys.stderr)
     for w in s["warnings"]:
+        if w == res.no_output_reason:
+            continue          # printed below as the error line
         print("warning:     %s" % w, file=sys.stderr)
     if s["unsupported_apis"]:
         print("unsupported: %s" % ", ".join(s["unsupported_apis"]), file=sys.stderr)
     if res.error:
         print("firmware raised:\n" + res.error, file=sys.stderr)
+    if res.no_output_reason:
+        print("error:       " + res.no_output_reason, file=sys.stderr)
     ok = res.stop_reason in OK_REASONS and res.frames
     return 0 if ok else 1
 

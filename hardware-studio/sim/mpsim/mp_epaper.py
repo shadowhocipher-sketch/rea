@@ -9,14 +9,22 @@ simulated ``machine.SPI`` (it will run, but no frames are captured).
 API::
 
     epd = SSD1680(spi, cs, dc, rst, busy, width=122, height=250,
-                  red=False, rotation=0, full_refresh_ms=None, partial_refresh_ms=None)
+                  red=False, rotation=0, full_refresh_ms=None, partial_refresh_ms=None,
+                  busy_timeout_ms=None)
     epd.fill(WHITE); epd.text("hi", 0, 0, BLACK)    # FrameBuffer drawing, MONO_HLSB
     epd.red.fill_rect(...)                          # red layer (only when red=True), 1 = red
     epd.show()            # full refresh   (aliases: display(), refresh())
     epd.show_partial()    # partial refresh (aliases: display_partial(), partial())
     epd.clear()           # fill white + full refresh
-    epd.sleep()           # deep sleep; init() must be called before the next refresh
+    epd.sleep()           # deep sleep; the next refresh re-initialises (needs rst, else ValueError)
+    epd.init()            # hardware reset + init sequence (the constructor calls it)
+    epd.wait_busy(ms)     # BUSY wait (never busy here; returns 0)
     epd.full_refreshes, epd.partial_refreshes, epd.refresh_ms_total
+    BusyTimeout           # OSError subclass raised by the real driver when BUSY sticks
+
+The real-hardware driver with the same API is ``firmware/drivers/ssd168x.py``
+(module name ``ssd168x`` also maps to this simulated model), so the same firmware
+runs here and on the board.
 
 Pixel values follow the controller RAM: in the black/white RAM 1 = white and
 0 = black; in the red RAM 1 = red.  ``rotation`` 1/3 swaps the logical width
@@ -57,6 +65,10 @@ BLACK = 0
 RED = 1
 
 
+class BusyTimeout(OSError):
+    """Same name as in firmware/drivers/ssd168x.py; the simulated BUSY never sticks."""
+
+
 class _EPD(framebuf.FrameBuffer):
     _sim_kind = "epaper"
     PHYS_W = 122
@@ -67,7 +79,8 @@ class _EPD(framebuf.FrameBuffer):
     CHIP = "ssd168x"
 
     def __init__(self, spi=None, cs=None, dc=None, rst=None, busy=None, width=None, height=None,
-                 *, red=False, rotation=0, full_refresh_ms=None, partial_refresh_ms=None):
+                 *, red=False, rotation=0, full_refresh_ms=None, partial_refresh_ms=None,
+                 busy_timeout_ms=None):
         rt = current()
         rt.check()
         pw = width or self.PHYS_W
@@ -88,6 +101,7 @@ class _EPD(framebuf.FrameBuffer):
             full_refresh_ms = self.RED_FULL_MS if red else self.FULL_MS
         self.full_refresh_ms = full_refresh_ms
         self.partial_refresh_ms = self.PARTIAL_MS if partial_refresh_ms is None else partial_refresh_ms
+        self.busy_timeout_ms = busy_timeout_ms
         self.full_refreshes = 0
         self.partial_refreshes = 0
         self.refresh_ms_total = 0
@@ -109,9 +123,17 @@ class _EPD(framebuf.FrameBuffer):
         self._asleep = False
         rt.record("epaper_init", id=self._sim_id)
 
+    def wait_busy(self, timeout_ms=None):
+        current().check()
+        return 0
+
     def sleep(self):
         rt = current()
         rt.check()
+        if self.rst is None:
+            # same check as firmware/drivers/ssd168x.py: deep sleep is left only by RES#
+            raise ValueError("%s.sleep(): only a hardware reset (RST pin) leaves deep sleep"
+                             % self._sim_id)
         self._asleep = True
         rt.record("epaper_sleep", id=self._sim_id)
 
@@ -119,8 +141,9 @@ class _EPD(framebuf.FrameBuffer):
         rt = current()
         rt.check()
         if self._asleep:
-            rt.warn("%s: refresh after sleep() without init(); a real panel ignores commands "
-                    "in deep sleep until reset. Simulator re-initialised it." % self._sim_id,
+            rt.warn("%s: refresh after sleep(): a real panel ignores commands in deep sleep "
+                    "until a hardware reset; the simulator and firmware/drivers/ssd168x.py "
+                    "re-initialise automatically (other drivers may not)" % self._sim_id,
                     key=self._sim_id + "sleep")
             self.init()
         if partial and self.has_red:
@@ -129,6 +152,10 @@ class _EPD(framebuf.FrameBuffer):
             partial = False
         black = self._sim_pixels() == 0
         red = (self.red._sim_pixels() != 0) if self.has_red else np.zeros_like(black)
+        if partial and self._shown is None:
+            rt.warn("%s: first refresh of this driver object is partial: the real driver "
+                    "(firmware/drivers/ssd168x.py) assumes the panel shows white, so after a "
+                    "reboot do one full refresh first" % self._sim_id, key=self._sim_id + "firstpartial")
         if partial:
             self.partial_refreshes += 1
             dur = self.partial_refresh_ms

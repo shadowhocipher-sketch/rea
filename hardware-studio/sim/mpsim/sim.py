@@ -8,7 +8,7 @@ Usage from Python::
 
 The firmware is executed unmodified with ``__name__ == "__main__"``.  While it
 runs, ``sys.modules`` maps MicroPython module names (machine, time, utime,
-random, framebuf, micropython, esp32, gc, network, ssd1306, st7789, epaper ...)
+random, framebuf, micropython, esp32, gc, network, asyncio, ssd1306, st7789, epaper ...)
 to the simulated implementations; the originals are restored afterwards.
 """
 
@@ -26,7 +26,7 @@ from pathlib import Path
 from . import runtime as _rt
 from . import stimulus as _stim
 from . import mp_time, mp_random, mp_framebuf, mp_machine, mp_esp32, mp_misc
-from . import mp_ssd1306, mp_st7789, mp_epaper, mp_fonts, render
+from . import mp_ssd1306, mp_st7789, mp_epaper, mp_fonts, mp_asyncio, render
 from .runtime import unsupported as _r_unsupported
 from .runtime import SimRuntime, SimStop, SimReboot
 
@@ -41,7 +41,8 @@ SIM_MODULES = {
     "network": mp_misc.network,
     "ssd1306": mp_ssd1306,
     "st7789": mp_st7789, "st7789py": mp_st7789,
-    "epaper": mp_epaper, "ssd1680": mp_epaper, "ssd1681": mp_epaper,
+    "epaper": mp_epaper, "ssd1680": mp_epaper, "ssd1681": mp_epaper, "ssd168x": mp_epaper,
+    "asyncio": mp_asyncio, "uasyncio": mp_asyncio,
 }
 
 # MicroPython "u"-prefixed names that behave like the CPython module closely enough.
@@ -54,7 +55,7 @@ ALIASES = {
 # MicroPython modules that are known but NOT simulated: importing works, any use
 # raises SimUnsupported with a clear message (and is listed in the result).
 UNSUPPORTED_MODULES = (
-    "asyncio", "uasyncio", "bluetooth", "ubluetooth", "aioble", "usocket", "urequests",
+    "bluetooth", "ubluetooth", "aioble", "usocket", "urequests",
     "requests", "umqtt", "umqtt.simple", "espnow", "aioespnow", "webrepl", "ntptime", "dht",
     "onewire", "ds18x20", "neopixel", "machine.I2S", "uctypes", "btree", "deflate", "cryptolib",
 )

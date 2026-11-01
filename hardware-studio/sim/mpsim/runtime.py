@@ -138,6 +138,7 @@ class SimRuntime:
         self.touch_threshold = {}
         self.boot_us = self.now_us
         self.displays = []              # same panel after reboot keeps the same display id
+        self.asyncio_state = None       # mp_asyncio scheduler (RAM: lost on reset)
         for t_us, pin, level in self.stim.pin_edges():
             if t_us >= self.now_us:
                 self.schedule_at(t_us, self._make_edge_cb(pin, level), tag="edge")

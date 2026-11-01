@@ -188,3 +188,35 @@ def test_cli_end_to_end(tmp_path):
     rc = run_firmware.main([EYES, "--display", "ssd1306", "--seconds", "3", "--out", out,
                             "--seed", "2", "--log", log, "--quiet"])
     assert rc == 0 and os.path.getsize(out) > 1000 and os.path.exists(log)
+
+
+def test_cli_out_without_frames_explains_and_exits_1(tmp_path):
+    """--out on firmware that never shows anything: message + exit 1, no ValueError traceback."""
+    import subprocess
+    p = fw(tmp_path, """
+        print("no display here")
+    """)
+    out = tmp_path / "sim_none.png"
+    log = tmp_path / "log.json"
+    cp = subprocess.run([sys.executable, os.path.join(SIM, "run_firmware.py"), str(p),
+                         "--out", str(out), "--log", str(log)],
+                        capture_output=True, text=True, timeout=60)
+    assert cp.returncode == 1
+    assert "Traceback" not in cp.stderr and "ValueError" not in cp.stderr
+    assert "未生成图片" in cp.stderr and "没有调用 show()" in cp.stderr
+    assert not out.exists() and log.exists()
+    # frames only for another display kind: says which kind was drawn
+    q = fw(tmp_path, """
+        from machine import Pin, I2C
+        import ssd1306
+        ssd1306.SSD1306_I2C(128, 64, I2C(0, scl=Pin(9), sda=Pin(8))).show()
+    """, name="oled.py")
+    stim = tmp_path / "stim.json"
+    stim.write_text('{"i2c_devices": [60]}', encoding="utf-8")
+    rc = run_firmware.main([str(q), "--display", "epaper", "--seconds", "1", "--quiet",
+                            "--inputs", str(stim), "--out", str(tmp_path / "sim_x.png")])
+    assert rc == 1 and not (tmp_path / "sim_x.png").exists()
+    res = run_firmware.run_firmware(str(q), display="epaper", seconds=1, echo=False,
+                                    inputs=str(stim), out=str(tmp_path / "sim_y.png"))
+    assert res.error is None
+    assert "oled" in res.no_output_reason and not (tmp_path / "sim_y.png").exists()

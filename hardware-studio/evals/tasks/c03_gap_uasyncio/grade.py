@@ -28,5 +28,7 @@ def score(ans):
          f"退出码 {ans.get('exit')}，stop_reason={ans.get('stop_reason')}，unsupported={ans.get('unsupported')}"),
         (0.3, ans.get("count") == 5, f"count={ans.get('count')}（应 5）"),
         (0.1, ans.get("blinks") in (20, 21), f"blinks={ans.get('blinks')}（应 20–21）"),
-        (0.2, ans.get("frames") == 5, f"帧数 {ans.get('frames')}（应 5）"),
+        # 6 = 驱动构造时 init_display() 末尾的一次 show()（micropython-lib ssd1306.py@660ddd8 第 77 行）
+        #     + 计数任务的 5 次重画。2026-11-01 由统筹更正：原标准答案漏算了构造时这一帧。
+        (0.2, ans.get("frames") == 6, f"帧数 {ans.get('frames')}（应 6 = 构造时 1 + 重画 5）"),
     ])
