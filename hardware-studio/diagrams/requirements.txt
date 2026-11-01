@@ -1,0 +1,2 @@
+# diagrams/ (F 线) 没有额外依赖：只用顶层的 pillow（画 PNG）和标准库（写/解析 SVG、读 CSV）。
+# 中文字体查找复用 render/prender/fonts.py；系统需装中文字体，见 render/README.md。

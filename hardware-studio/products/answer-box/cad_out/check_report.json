@@ -1,0 +1,325 @@
+{
+  "name": "answer-box",
+  "process": "mjf",
+  "parts": {
+    "bottom": {
+      "bbox": {
+        "min": [
+          -29.0,
+          -21.0,
+          -0.0
+        ],
+        "max": [
+          29.0,
+          21.0,
+          13.53
+        ],
+        "size": [
+          58.0,
+          42.0,
+          13.53
+        ]
+      },
+      "volume_mm3": 9511.45,
+      "valid": true,
+      "wall": {
+        "n": 1500,
+        "min_wall_required": 1.0,
+        "min": 0.716,
+        "p01": 0.999,
+        "p05": 1.0,
+        "median": 2.4,
+        "fraction_below": 0.0007,
+        "thinnest_points": [
+          {
+            "xyz": [
+              1.78,
+              18.73,
+              12.24
+            ],
+            "t": 0.716
+          },
+          {
+            "xyz": [
+              19.24,
+              -11.64,
+              5.56
+            ],
+            "t": 0.998
+          },
+          {
+            "xyz": [
+              19.31,
+              -12.63,
+              2.91
+            ],
+            "t": 0.998
+          },
+          {
+            "xyz": [
+              20.09,
+              10.45,
+              3.16
+            ],
+            "t": 0.998
+          },
+          {
+            "xyz": [
+              -19.48,
+              -11.04,
+              7.29
+            ],
+            "t": 0.999
+          }
+        ],
+        "note": "抽样估计；卡钩尖、圆角边缘等趋近 0 的几何也会计入，请看最薄点位置判断"
+      },
+      "bed": {
+        "part_size_sorted": [
+          13.53,
+          42.0,
+          58.0
+        ],
+        "bed_sorted": [
+          284.0,
+          380.0,
+          380.0
+        ],
+        "ok": true
+      }
+    },
+    "top": {
+      "bbox": {
+        "min": [
+          -29.0,
+          -21.0,
+          9.93
+        ],
+        "max": [
+          29.0,
+          21.0,
+          16.6
+        ],
+        "size": [
+          58.0,
+          42.0,
+          6.67
+        ]
+      },
+      "volume_mm3": 4223.46,
+      "valid": true,
+      "wall": {
+        "n": 1500,
+        "min_wall_required": 1.0,
+        "min": 0.007,
+        "p01": 1.099,
+        "p05": 1.1,
+        "median": 2.4,
+        "fraction_below": 0.0027,
+        "thinnest_points": [
+          {
+            "xyz": [
+              -2.86,
+              18.75,
+              12.04
+            ],
+            "t": 0.007
+          },
+          {
+            "xyz": [
+              0.95,
+              -18.81,
+              12.04
+            ],
+            "t": 0.007
+          },
+          {
+            "xyz": [
+              1.46,
+              18.88,
+              12.03
+            ],
+            "t": 0.007
+          },
+          {
+            "xyz": [
+              2.29,
+              -18.96,
+              12.04
+            ],
+            "t": 0.007
+          },
+          {
+            "xyz": [
+              -28.02,
+              16.83,
+              9.96
+            ],
+            "t": 1.099
+          }
+        ],
+        "note": "抽样估计；卡钩尖、圆角边缘等趋近 0 的几何也会计入，请看最薄点位置判断"
+      },
+      "bed": {
+        "part_size_sorted": [
+          6.67,
+          42.0,
+          58.0
+        ],
+        "bed_sorted": [
+          284.0,
+          380.0,
+          380.0
+        ],
+        "ok": true
+      }
+    }
+  },
+  "warnings": [],
+  "interference": {
+    "pairs": [],
+    "total": 0.0,
+    "ok": true
+  },
+  "usb_plug_insertion": {
+    "usb_plug_overmold": {
+      "ok": true,
+      "interferes_with": []
+    }
+  },
+  "features": {
+    "display": {
+      "shape": "rect",
+      "opening": [
+        28.6,
+        28.6
+      ],
+      "warnings": [],
+      "step": [
+        48.6,
+        33.6,
+        0.8
+      ],
+      "bezel_thickness": 1.6
+    },
+    "usb": {
+      "recess": 0.6,
+      "opening": [
+        13.0,
+        7.1
+      ],
+      "rule": "recess>0：让开插头外壳 overmold",
+      "overmold_enters_wall_by": 0.6,
+      "defaults_note": "插座 / 插头外壳默认尺寸为估算或待核实，见 hwcad/usbc.py 与 DFM.md",
+      "warnings": []
+    },
+    "snap_py": {
+      "deflection": 0.2,
+      "root_strain_est": 0.02315,
+      "strain_formula": "ε = 1.5·t·y/(L²·Q)（DFM:SNAP-1/2，估算）",
+      "hook_z_range": [
+        12.237,
+        13.53
+      ],
+      "pocket_depth_into_wall": 0.4,
+      "wall_remaining_at_pocket": 2.0,
+      "warnings": []
+    },
+    "snap_ny": {
+      "deflection": 0.2,
+      "root_strain_est": 0.02315,
+      "strain_formula": "ε = 1.5·t·y/(L²·Q)（DFM:SNAP-1/2，估算）",
+      "hook_z_range": [
+        12.237,
+        13.53
+      ],
+      "pocket_depth_into_wall": 0.4,
+      "wall_remaining_at_pocket": 2.0,
+      "warnings": []
+    },
+    "battery": {
+      "cell": [
+        30.0,
+        20.0,
+        4.0
+      ],
+      "swell": 0.1,
+      "swollen_thickness": 4.4,
+      "required_height": 4.7,
+      "pocket_inner": [
+        31.0,
+        21.0
+      ],
+      "frame_outer": [
+        33.0,
+        23.0,
+        2.5
+      ],
+      "wire_side": "-x",
+      "source": "swell / xy_clearance / top_gap 为估算，见 DFM:BAT-1"
+    }
+  },
+  "fasteners": [
+    {
+      "name": "standoff_0",
+      "x": 21.0,
+      "y": 12.0,
+      "part": "lower",
+      "height": 4.9,
+      "kind": "plain",
+      "outer_d": 3.6,
+      "hole_d": 1.6
+    },
+    {
+      "name": "standoff_1",
+      "x": -21.0,
+      "y": 12.0,
+      "part": "lower",
+      "height": 4.9,
+      "kind": "plain",
+      "outer_d": 3.6,
+      "hole_d": 1.6
+    },
+    {
+      "name": "standoff_2",
+      "x": 21.0,
+      "y": -12.0,
+      "part": "lower",
+      "height": 4.9,
+      "kind": "plain",
+      "outer_d": 3.6,
+      "hole_d": 1.6
+    },
+    {
+      "name": "standoff_3",
+      "x": -21.0,
+      "y": -12.0,
+      "part": "lower",
+      "height": 4.9,
+      "kind": "plain",
+      "outer_d": 3.6,
+      "hole_d": 1.6
+    }
+  ],
+  "printer": {
+    "name": "jlc3dp-mjf-assumed",
+    "bed": [
+      380.0,
+      284.0,
+      380.0
+    ]
+  },
+  "checks": {
+    "geometry_valid": true,
+    "interference_zero": true,
+    "usb_plug_fully_inserts": true,
+    "fits_printer_bed": true,
+    "spec_warnings": 0,
+    "wall_fraction_below_min": {
+      "bottom": 0.0007,
+      "top": 0.0027
+    }
+  },
+  "ok": true,
+  "elapsed_s": 4.7
+}

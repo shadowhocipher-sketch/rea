@@ -1,0 +1,47 @@
+# 产品简报（new-product skill 第 1 步）。复制整个 products/_template/ 目录后填写：
+#   python .claude/skills/new-product/product.py new <产品名>
+# 把所有 TODO 换成内容；不知道的写 "待定" 并在 open_questions 里列出，不要留 TODO。
+# 检查：python .claude/skills/new-product/product.py check products/<产品名> --step 1
+
+name: TODO-product-name          # 目录名，小写字母、数字、连字符
+one_liner: TODO 一句话：给谁、解决什么、为什么是它
+
+scenario:                        # 场景和感受：这一节决定后面所有取舍
+  who: TODO 谁用（年龄段、身份；是不是儿童）
+  where: TODO 在哪用（桌面 / 床头 / 口袋 / 户外 …）
+  when: TODO 什么时候用、每天用多久、多久充一次电
+  feeling: [TODO]                # 想要的感受，3 个以内的词：安静、俏皮、可靠、像纸一样 …
+  interaction: TODO 怎么跟它互动（看、按、摸、摇、语音、手机 App …）
+  not_doing: [TODO]              # 明确不做的事（防止范围膨胀）
+
+market:
+  regions: [CN]                  # CN / EU / US / UK / AU，可多选（决定合规）
+  channel: TODO 卖给谁 / 怎么卖（自用、众筹、电商、外贸订单 …）
+
+price:
+  currency: USD
+  target_retail: 0               # TODO 目标零售价
+  target_unit_cost: 0            # TODO 目标单台成本上限（BOM + 加工 + 包装）
+  quantities: [100, 1000]        # 至少两档数量，用于 BOM 成本
+
+features:                        # 直接决定合规清单（product.py compliance-yaml 会转成 compliance.yaml）
+  wireless: []                   # wifi / ble / other；没有写 []
+  connected: false               # 直接或经手机 App 间接上网就写 true
+  batteries: []                  # lithium（可充电锂电）/ coin（纽扣电池）；没有写 []
+  adapter: false                 # 包装里是否随附电源适配器
+  children: false                # 是否给儿童用 / 玩具
+
+hardware_intent:                 # 选型前的意图，不是结论（结论写进 selection.md）
+  display: none                  # none / oled / lcd / epaper
+  inputs: []                     # button / touch / accel / encoder / mic …
+  outputs: []                    # buzzer / speaker / led / vibration …
+  power: usb                     # usb / lithium / coin
+  battery_life_target: 待定       # 例：充一次用 7 天；纽扣电池 6 个月
+  size_limit_mm: [0, 0, 0]       # TODO 外形上限 长 宽 高（0 = 不限）
+
+enclosure_intent:
+  process: fdm                   # fdm / sla / mjf / im（第一版通常 fdm 打样）
+  look: TODO 颜色、材质、表面感觉
+
+constraints: []                  # 其他硬约束：必须防水、必须用某个现成开发板 …
+open_questions: []               # 还没决定的问题，每条写谁来定、什么时候定

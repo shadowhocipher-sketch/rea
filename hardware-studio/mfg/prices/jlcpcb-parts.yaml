@@ -1,0 +1,834 @@
+# JLCPCB / LCSC 元件阶梯价缓存（B 级数据）
+# 获取方式：本会话无法直接打开 jlcpcb.com / lcsc.com（代理 403），
+# 改用 mfg/jlcparts_import.py 从 yaqwsx/jlcparts gh-pages 镜像（提交 028c436，快照 2026-10-31）读取 JLCPCB 元件库数据。
+# 价格为 JLCPCB 元件库单价（USD，贴片下单用），breaks[].qty 为该档起始数量。
+# 查询日期 2026-11-01。下单前请按 mfg/pricing.md 打开 source_url 复核。
+- key: lcsc:C22356044
+  mpn: ESP32-S3-MINI-1U-N4R2
+  manufacturer: Espressif Systems
+  package: SMD,15.4x15.4mm
+  jlc_class: Extended
+  joints: 73
+  description: -40℃~+85℃ -98.2dBm 2.4GHz 20.5dBm 355mA 3V~3.6V 95mA ESP32-S3FH4R2
+    UART、SPI、I2C、I2S、USB SMD,15.4x15.4mm WiFi Modules ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 4.8698
+  - qty: 10
+    price: 4.36
+  - qty: 30
+    price: 4.0568
+  - qty: 100
+    price: 3.806
+  - qty: 650
+    price: 3.6356
+  - qty: 1300
+    price: 3.5585
+  stock: 142
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C22356044
+  alt_url: https://www.lcsc.com/product-detail/C22356044.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；1U = IPEX 外接天线版本；PCB 天线版本 ESP32-S3-MINI-1-N4R2
+    / WROOM-1 不在镜像中
+- key: lcsc:C41349510
+  mpn: ESP32-C3-MINI-1-H4X
+  manufacturer: Espressif Systems
+  package: SMD,16.6x13.2mm
+  jlc_class: Extended
+  joints: 61
+  description: -104dBm -40℃~+105℃ 2.4GHz 20.5dBm 350mA 3V~3.6V 82mA ESP32-C3FH4 Integrated
+    Bluetooth function On-board PCB Antenna UART、SPI、I2C、GPIO、I2S、USB SMD,16.6x13.2mm
+    WiFi Modules ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 2.9717
+  - qty: 10
+    price: 2.6423
+  - qty: 30
+    price: 2.4472
+  - qty: 100
+    price: 2.285
+  - qty: 650
+    price: 2.1751
+  - qty: 1300
+    price: 2.1243
+  stock: 324
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C41349510
+  alt_url: https://www.lcsc.com/product-detail/C41349510.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；H4X 为 105℃ 版本；常见的 ESP32-C3-MINI-1-N4（C2838502）不在镜像中，见
+    unverified.yaml
+- key: lcsc:C18723026
+  mpn: X096-2864KSWPG01-H30
+  manufacturer: Newvisio
+  package: '-'
+  jlc_class: Extended
+  joints: 30
+  description: -40℃~+85℃ 0.96 110cd/m2 128x64 21.74x11.175mm Passive (PMOLED) SSD1315
+    chip White - OLED Display ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 1.8621
+  - qty: 10
+    price: 1.5769
+  - qty: 60
+    price: 1.3966
+  - qty: 120
+    price: 1.213
+  - qty: 480
+    price: 1.131
+  - qty: 900
+    price: 1.095
+  stock: 1134
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C18723026
+  alt_url: https://www.lcsc.com/product-detail/C18723026.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；裸屏（FPC 引出），不是带转接板的模块；商品描述写驱动为
+    SSD1315（不是 SSD1306），兼容性回到 S 级数据手册核对
+- key: lcsc:C725790
+  mpn: TP4056
+  manufacturer: UMW Youtai Semiconductor Co Ltd
+  package: ESOP-8
+  jlc_class: Extended
+  joints: 9
+  description: -40℃~+85℃ 1 1A 35uA 4.2V 4V~6.5V Charging IC Lithium Battery Support
+    Support 恒流充电、恒压充电、涓流充电、自动再充电、充电终止、可编程充电电流、软启动、欠压锁定 ESOP-8 Battery Management ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.085
+  - qty: 50
+    price: 0.0671
+  - qty: 150
+    price: 0.0579
+  - qty: 500
+    price: 0.0504
+  - qty: 2500
+    price: 0.0433
+  - qty: 4000
+    price: 0.0415
+  stock: 392688
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C725790
+  alt_url: https://www.lcsc.com/product-detail/C725790.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C16581
+  mpn: TP4056-42-ESOP8
+  manufacturer: TOPPOWER Nanjing Extension Microelectronics
+  package: ESOP-8
+  jlc_class: Preferred
+  joints: 9
+  description: -40℃~+85℃ 1 1A 2uA 4.2V 4V~8V Charging IC Lithium Battery Support ESOP-8
+    Battery Management ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.1859
+  - qty: 50
+    price: 0.1472
+  - qty: 150
+    price: 0.1284
+  - qty: 500
+    price: 0.1115
+  - qty: 2500
+    price: 0.0915
+  - qty: 4000
+    price: 0.0887
+  stock: 64777
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C16581
+  alt_url: https://www.lcsc.com/product-detail/C16581.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C351410
+  mpn: DW01A
+  manufacturer: PUOLOP
+  package: SOT-23-6L
+  jlc_class: Extended
+  joints: 6
+  description: -40℃~+85℃ 1 2.5V 300mV~10V 3uA 4.3V Protection IC Support SOT-23-6L
+    Battery Management ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0533
+  - qty: 200
+    price: 0.0417
+  - qty: 600
+    price: 0.0351
+  - qty: 3000
+    price: 0.0276
+  - qty: 9000
+    price: 0.0243
+  - qty: 21000
+    price: 0.0223
+  stock: 110707
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C351410
+  alt_url: https://www.lcsc.com/product-detail/C351410.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C18164398
+  mpn: DW01A
+  manufacturer: HL
+  package: SOT23-6
+  jlc_class: Extended
+  joints: 6
+  description: -40℃~+85℃ 1 1.5V~10V 2.5V 4.3V 700nA Lithium Battery Protection IC
+    Support SOT23-6 Battery Management ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0248
+  - qty: 200
+    price: 0.0194
+  - qty: 600
+    price: 0.0164
+  - qty: 3000
+    price: 0.0144
+  - qty: 9000
+    price: 0.0129
+  - qty: 21000
+    price: 0.012
+  stock: 14469
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C18164398
+  alt_url: https://www.lcsc.com/product-detail/C18164398.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C908265
+  mpn: FS8205A
+  manufacturer: FUXINSEMI
+  package: SOT-23-6L
+  jlc_class: Extended
+  joints: 6
+  description: -55℃~+150℃ 1.2V 1.5W 11nC@4.5V 125pF 18mΩ@4.5V 2 N-Channel 20V 6A 800pF
+    SOT-23-6L MOSFETs ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0718
+  - qty: 100
+    price: 0.0586
+  - qty: 300
+    price: 0.0518
+  - qty: 3000
+    price: 0.0399
+  - qty: 6000
+    price: 0.0359
+  - qty: 9000
+    price: 0.034
+  stock: 36731
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C908265
+  alt_url: https://www.lcsc.com/product-detail/C908265.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C351449
+  mpn: 8205A
+  manufacturer: UMW Youtai Semiconductor Co Ltd
+  package: SOT-23-6
+  jlc_class: Extended
+  joints: 6
+  description: -55℃~+150℃ 1.2V 145pF 2 N-Channel 20V 23nC@20V 36mΩ@2.5V 5A 630pF 830mW
+    SOT-23-6 MOSFETs ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.044
+  - qty: 100
+    price: 0.034
+  - qty: 300
+    price: 0.0289
+  - qty: 3000
+    price: 0.0253
+  - qty: 6000
+    price: 0.0222
+  - qty: 9000
+    price: 0.0207
+  stock: 8599
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C351449
+  alt_url: https://www.lcsc.com/product-detail/C351449.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C82942
+  mpn: ME6211C33M5G-N
+  manufacturer: MICRONE Nanjing Micro One Elec
+  package: SOT-23-5
+  jlc_class: Extended
+  joints: 5
+  description: -40℃~+150℃ 1 120mV@(100mA) 3.3V 500mA 50uVrms 60uA 6V 70dB@(1kHz) Fixed
+    Over Current Protection、Enable、Short Circuit Protection Positive SOT-23-5 Voltage
+    Regulators - Linear, Low Drop Out (LDO) Regula
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0617
+  - qty: 100
+    price: 0.05
+  - qty: 300
+    price: 0.044
+  - qty: 3000
+    price: 0.0391
+  - qty: 6000
+    price: 0.0374
+  - qty: 9000
+    price: 0.0363
+  stock: 165398
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C82942
+  alt_url: https://www.lcsc.com/product-detail/C82942.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C5446
+  mpn: XC6206P332MR-G
+  manufacturer: Torex Semicon
+  package: SOT-23-3L
+  jlc_class: Basic
+  joints: 3
+  description: -40℃~+85℃@(Ta) 1 1uA 200mA 3.3V 6V Fixed Over Current Protection Positive
+    SOT-23-3L Voltage Regulators - Linear, Low Drop Out (LDO) Regulators ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.1438
+  - qty: 50
+    price: 0.1181
+  - qty: 150
+    price: 0.1048
+  - qty: 500
+    price: 0.094
+  - qty: 3000
+    price: 0.09
+  - qty: 6000
+    price: 0.0876
+  stock: 405951
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C5446
+  alt_url: https://www.lcsc.com/product-detail/C5446.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C51118
+  mpn: AP2112K-3.3TRG1
+  manufacturer: Diodes Incorporated
+  package: SOT-25-5
+  jlc_class: Extended
+  joints: 5
+  description: -40℃~+85℃@(Ta) 1 250mV@(600mA) 3.3V 50uVrms 55uA 600mA 65dB@(1kHz)
+    6V Fixed Over Current Protection、Thermal Shutdown、Enable control Positive SOT-25-5
+    Voltage Regulators - Linear, Low Drop Out (LDO) Re
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.1724
+  - qty: 50
+    price: 0.1368
+  - qty: 150
+    price: 0.1192
+  - qty: 500
+    price: 0.1036
+  - qty: 3000
+    price: 0.0948
+  - qty: 6000
+    price: 0.0923
+  stock: 12535
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C51118
+  alt_url: https://www.lcsc.com/product-detail/C51118.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C6186
+  mpn: AMS1117-3.3
+  manufacturer: Advanced Monolithic Systems
+  package: SOT-223
+  jlc_class: Basic
+  joints: 4
+  description: -40℃~+125℃ 0.003%Vout 1 1.1V@(800mA) 15V 1A 3.3V 5mA 72dB@(120Hz) Fixed
+    Over Current Protection、Short Circuit Protection、Thermal shutdown Positive SOT-223
+    Voltage Regulators - Linear, Low Drop Out (LD
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.2094
+  - qty: 50
+    price: 0.1633
+  - qty: 150
+    price: 0.1407
+  - qty: 500
+    price: 0.1205
+  - qty: 2500
+    price: 0.1151
+  - qty: 5000
+    price: 0.1117
+  stock: 1139974
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C6186
+  alt_url: https://www.lcsc.com/product-detail/C6186.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C165948
+  mpn: TYPE-C-31-M-12
+  manufacturer: Korean Hroparts Elec
+  package: SMD
+  jlc_class: Extended
+  joints: 16
+  description: -30℃~+80℃ 1 10,000 cycles 16P 20V 5A 7.35mm Female Surface Mount, Right
+    Angle Type-C SMD USB Connectors ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.1872
+  - qty: 50
+    price: 0.1479
+  - qty: 150
+    price: 0.1286
+  - qty: 1000
+    price: 0.1043
+  - qty: 2000
+    price: 0.0995
+  - qty: 5000
+    price: 0.0968
+  stock: 367975
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C165948
+  alt_url: https://www.lcsc.com/product-detail/C165948.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C393939
+  mpn: TYPE-C16PIN
+  manufacturer: SHOU HAN
+  package: SMD
+  jlc_class: Extended
+  joints: 16
+  description: -40℃~+85℃ 1 10 thousand cycles 16P 30V 3A Black Female Surface Mount,
+    Right Angle Type-C SMD USB Connectors ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0692
+  - qty: 100
+    price: 0.0555
+  - qty: 300
+    price: 0.0484
+  - qty: 1000
+    price: 0.0412
+  - qty: 5000
+    price: 0.0392
+  - qty: 10000
+    price: 0.0377
+  stock: 351293
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C393939
+  alt_url: https://www.lcsc.com/product-detail/C393939.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C15134
+  mpn: LIS3DHTR
+  manufacturer: STMicroelectronics
+  package: LGA-16(3x3)
+  jlc_class: Extended
+  joints: 16
+  description: -40℃~+85℃ 1.71V~3.6V 16bit 500nA Accelerometer Motion event detection
+    SPI、I2C X,Y,Z ±16g LGA-16(3x3) Accelerometers ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 1.8932
+  - qty: 10
+    price: 1.6523
+  - qty: 30
+    price: 1.4818
+  - qty: 100
+    price: 1.3261
+  - qty: 500
+    price: 1.254
+  - qty: 1000
+    price: 1.2261
+  stock: 1610
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C15134
+  alt_url: https://www.lcsc.com/product-detail/C15134.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；库存只有 1610，批量前确认库存
+- key: lcsc:C25744
+  mpn: 0402WGF1002TCE
+  manufacturer: UNI ROYAL Uniroyal Elec
+  package: '0402'
+  jlc_class: Basic
+  joints: 2
+  description: -55℃~+155℃ 10kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip
+    Resistor - Surface Mount ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0033
+  - qty: 1000
+    price: 0.0026
+  - qty: 3000
+    price: 0.0022
+  - qty: 10000
+    price: 0.002
+  - qty: 50000
+    price: 0.0017
+  - qty: 50200
+    price: 0.0017
+  stock: 21489602
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C25744
+  alt_url: https://www.lcsc.com/product-detail/C25744.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C25905
+  mpn: 0402WGF5101TCE
+  manufacturer: UNI ROYAL Uniroyal Elec
+  package: '0402'
+  jlc_class: Basic
+  joints: 2
+  description: -55℃~+155℃ 5.1kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402
+    Chip Resistor - Surface Mount ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0024
+  - qty: 1000
+    price: 0.0019
+  - qty: 3000
+    price: 0.0015
+  - qty: 10000
+    price: 0.0014
+  - qty: 50000
+    price: 0.0012
+  - qty: 50200
+    price: 0.0012
+  stock: 5311748
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C25905
+  alt_url: https://www.lcsc.com/product-detail/C25905.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C11702
+  mpn: 0402WGF1001TCE
+  manufacturer: UNI ROYAL Uniroyal Elec
+  package: '0402'
+  jlc_class: Basic
+  joints: 2
+  description: -55℃~+155℃ 1kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip
+    Resistor - Surface Mount ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0036
+  - qty: 1000
+    price: 0.0027
+  - qty: 3000
+    price: 0.0023
+  - qty: 10000
+    price: 0.0021
+  - qty: 50000
+    price: 0.0019
+  - qty: 50200
+    price: 0.0019
+  stock: 14385321
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C11702
+  alt_url: https://www.lcsc.com/product-detail/C11702.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C1525
+  mpn: CL05B104KO5NNNC
+  manufacturer: Samsung Electro Mechanics
+  package: '0402'
+  jlc_class: Basic
+  joints: 2
+  description: 100nF 16V X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT
+    ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0043
+  - qty: 1000
+    price: 0.0032
+  - qty: 3000
+    price: 0.0028
+  - qty: 10000
+    price: 0.0024
+  - qty: 50000
+    price: 0.0023
+  - qty: 100000
+    price: 0.0022
+  stock: 22560770
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C1525
+  alt_url: https://www.lcsc.com/product-detail/C1525.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C52923
+  mpn: CL05A105KA5NQNC
+  manufacturer: Samsung Electro Mechanics
+  package: '0402'
+  jlc_class: Basic
+  joints: 2
+  description: 1uF 25V X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT
+    ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0081
+  - qty: 500
+    price: 0.0063
+  - qty: 1500
+    price: 0.0055
+  - qty: 10000
+    price: 0.0048
+  - qty: 20000
+    price: 0.0046
+  - qty: 50000
+    price: 0.0044
+  stock: 7514754
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C52923
+  alt_url: https://www.lcsc.com/product-detail/C52923.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C19702
+  mpn: CL10A106KP8NNNC
+  manufacturer: Samsung Electro Mechanics
+  package: '0603'
+  jlc_class: Basic
+  joints: 2
+  description: 10V 10uF X5R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT
+    ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0297
+  - qty: 200
+    price: 0.022
+  - qty: 600
+    price: 0.0186
+  - qty: 4000
+    price: 0.016
+  - qty: 8000
+    price: 0.015
+  - qty: 20000
+    price: 0.0143
+  stock: 10061272
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C19702
+  alt_url: https://www.lcsc.com/product-detail/C19702.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C45783
+  mpn: CL21A226MAQNNNE
+  manufacturer: Samsung Electro Mechanics
+  package: 0805
+  jlc_class: Basic
+  joints: 2
+  description: 22uF 25V X5R ±20% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT
+    ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.2384
+  - qty: 200
+    price: 0.1815
+  - qty: 600
+    price: 0.1538
+  - qty: 2000
+    price: 0.129
+  - qty: 10000
+    price: 0.1222
+  - qty: 20000
+    price: 0.1181
+  stock: 3360923
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C45783
+  alt_url: https://www.lcsc.com/product-detail/C45783.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C318884
+  mpn: TS-1187A-B-A-B
+  manufacturer: XKB Connection
+  package: SMD-4P,5.1x5.1mm
+  jlc_class: Basic
+  joints: 4
+  description: -30℃~+85℃ 1.5mm 1.6N 100,000 cycles 12V 5.1mm 5.1mm 50mA Gold No Round
+    Button SPST Surface Mount,Vertical Without Bracket SMD-4P,5.1x5.1mm Tactile Switches
+    ROHS
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 0.0207
+  - qty: 200
+    price: 0.016
+  - qty: 600
+    price: 0.0139
+  - qty: 4000
+    price: 0.0121
+  - qty: 8000
+    price: 0.0115
+  - qty: 20000
+    price: 0.0111
+  stock: 296384
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C318884
+  alt_url: https://www.lcsc.com/product-detail/C318884.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核
+- key: lcsc:C20626143
+  mpn: LCKFB-ESP32S3R8N8
+  manufacturer: LCSC boards
+  package: '-'
+  jlc_class: Extended
+  joints: 40
+  description: '- Development Boards & Kits ROHS'
+  currency: USD
+  moq: 1
+  breaks:
+  - qty: 1
+    price: 5.8844
+  - qty: 10
+    price: 5.1665
+  - qty: 30
+    price: 4.7993
+  - qty: 100
+    price: 4.4453
+  stock: 241
+  status: quote
+  level: B
+  access: mirror
+  source_url: https://jlcpcb.com/partdetail/C20626143
+  alt_url: https://www.lcsc.com/product-detail/C20626143.html
+  mirror: https://github.com/yaqwsx/jlcparts/tree/gh-pages @ 028c436（快照 2026-10-31）
+  date: '2026-11-01'
+  basis: ''
+  note: JLCPCB 元件库价格（贴片下单价），经 jlcparts 镜像取得；下单前在商品页复核；立创自有品牌开发板（ESP32-S3，型号名含 R8N8，具体板载配置以商品页为准）；镜像里
+    102/104 档与 100 档同价，已省略；库存 241

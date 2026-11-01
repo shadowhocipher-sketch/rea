@@ -1,0 +1,354 @@
+{
+ "summary": {
+  "firmware": "/home/user/rea/hardware-studio/products/answer-box/firmware/main.py",
+  "stop_reason": "time_limit",
+  "virtual_ms": 70000.0,
+  "boots": 2,
+  "frames_total": 9,
+  "display": "ssd1681#0",
+  "display_kind": "epaper",
+  "frames": 9,
+  "frame_size": [
+   200,
+   200
+  ],
+  "warnings": [],
+  "unsupported_apis": [],
+  "error": null,
+  "log_counts": {
+   "boot": 2,
+   "pin_init": 18,
+   "i2c_init": 2,
+   "pin_write": 4,
+   "epaper_init": 2,
+   "epaper_refresh": 9,
+   "epaper_sleep": 2,
+   "esp32_wake_on_gpio": 2,
+   "deepsleep": 2,
+   "reboot": 1
+  },
+  "stats": {
+   "lightsleep_ms": 0.0,
+   "deepsleep_ms": 11709.15,
+   "epaper": {
+    "ssd1681#0": {
+     "full": 3,
+     "partial": 6,
+     "refresh_ms": 7560
+    }
+   }
+  },
+  "i2c": {
+   "0x18": {
+    "writes": 18,
+    "write_bytes": 18,
+    "reads": 15,
+    "read_bytes": 15
+   }
+  },
+  "files_written": [
+   "__pycache__/shake.cpython-313.pyc"
+  ],
+  "outputs": [
+   "products/answer-box/sim/sim_main.gif",
+   "products/answer-box/sim/sim_main.png"
+  ]
+ },
+ "log": [
+  {
+   "t_ms": 0.0,
+   "kind": "boot",
+   "n": 1,
+   "cause": 1,
+   "wake": 0
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 1,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 4,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "i2c_init",
+   "bus": 0,
+   "scl": "Pin(4)",
+   "sda": "Pin(1)",
+   "freq": 400000
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 6,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 7,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 8,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 10,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 2,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_init",
+   "pin": 5,
+   "mode": 1,
+   "pull": null
+  },
+  {
+   "t_ms": 0.0,
+   "kind": "pin_write",
+   "pin": 2,
+   "value": 0
+  },
+  {
+   "t_ms": 10.0,
+   "kind": "pin_write",
+   "pin": 2,
+   "value": 1
+  },
+  {
+   "t_ms": 20.0,
+   "kind": "epaper_init",
+   "id": "ssd1681#0"
+  },
+  {
+   "t_ms": 20.0,
+   "kind": "pin_init",
+   "pin": 3,
+   "mode": 1,
+   "pull": 2
+  },
+  {
+   "t_ms": 20.0,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "full",
+   "ms": 2000
+  },
+  {
+   "t_ms": 3002.65,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 6009.7,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 9016.7,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 12003.65,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "full",
+   "ms": 2000
+  },
+  {
+   "t_ms": 15006.3,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 18013.3,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 33290.85,
+   "kind": "epaper_sleep",
+   "id": "ssd1681#0"
+  },
+  {
+   "t_ms": 33290.85,
+   "kind": "esp32_wake_on_gpio",
+   "pins": [
+    3
+   ],
+   "level": true
+  },
+  {
+   "t_ms": 33290.85,
+   "kind": "deepsleep",
+   "ms": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "reboot",
+   "cause": 4,
+   "wake": 7
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "boot",
+   "n": 2,
+   "cause": 4,
+   "wake": 7
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 1,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 4,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "i2c_init",
+   "bus": 0,
+   "scl": "Pin(4)",
+   "sda": "Pin(1)",
+   "freq": 400000
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 6,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 7,
+   "mode": null,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 8,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 10,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 2,
+   "mode": 3,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_init",
+   "pin": 5,
+   "mode": 1,
+   "pull": null
+  },
+  {
+   "t_ms": 45000.0,
+   "kind": "pin_write",
+   "pin": 2,
+   "value": 0
+  },
+  {
+   "t_ms": 45010.0,
+   "kind": "pin_write",
+   "pin": 2,
+   "value": 1
+  },
+  {
+   "t_ms": 45020.0,
+   "kind": "epaper_init",
+   "id": "ssd1681#0"
+  },
+  {
+   "t_ms": 45020.0,
+   "kind": "pin_init",
+   "pin": 3,
+   "mode": 1,
+   "pull": 2
+  },
+  {
+   "t_ms": 45020.0,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "full",
+   "ms": 2000
+  },
+  {
+   "t_ms": 50007.65,
+   "kind": "epaper_refresh",
+   "id": "ssd1681#0",
+   "mode": "partial",
+   "ms": 260
+  },
+  {
+   "t_ms": 65285.2,
+   "kind": "epaper_sleep",
+   "id": "ssd1681#0"
+  },
+  {
+   "t_ms": 65285.2,
+   "kind": "esp32_wake_on_gpio",
+   "pins": [
+    3
+   ],
+   "level": true
+  },
+  {
+   "t_ms": 65285.2,
+   "kind": "deepsleep",
+   "ms": null
+  }
+ ]
+}

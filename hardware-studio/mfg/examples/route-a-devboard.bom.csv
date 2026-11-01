@@ -1,0 +1,6 @@
+ref,name,mpn,manufacturer,package,qty_per_unit,category,lcsc,price_key,cost_mode,attrition,joints,dnp,note
+M1,ESP32-S3 开发板,LCKFB-ESP32S3R8N8,LCSC boards,开发板,1,外购模块,C20626143,,unit,,,,路线 A：开发板直接装
+DS1,0.96 寸 OLED 模块,,,模块,1,外购模块,,est:oled-0.96-module,unit,,,,杜邦线/排针连接
+ENC1,外壳 MJF PA12（克）,,,,15,结构件,,jlc3dp:mjf-pa12-per-gram,unit,,,,示例假设 15 g
+ASM1,整机组装人工（分钟）,,,,10,加工费,,est:assembly-labor,unit,,,,示例假设每台 10 分钟（手工接线）
+PKG1,基础包装,,,,1,包装,,est:packaging-basic,unit,,,,

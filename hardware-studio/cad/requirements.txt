@@ -1,0 +1,2 @@
+# B 线（cad/）额外依赖。公共依赖（build123d、numpy、matplotlib、trimesh、PyYAML、pytest）见顶层 requirements.txt。
+rtree==1.4.1   # MIT；trimesh 射线求交（最小壁厚抽样）需要

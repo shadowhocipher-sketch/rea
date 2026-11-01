@@ -1,0 +1,19 @@
+ref,name,mpn,manufacturer,package,qty_per_unit,category,lcsc,price_key,cost_mode,attrition,joints,dnp,note
+U1,Wi-Fi/BLE 模组,ESP32-S3-WROOM-1-N16R8,Espressif Systems,SMD 25.5x18mm,1,电子件,C2913202,,unit,,,,路线 B：模组 + 自画底板；价格待核实
+U4,3.3V LDO,ME6211C33M5G-N,MICRONE,SOT-23-5,1,电子件,C82942,,unit,,,,
+J1,USB-C 16P 插座,TYPE-C-31-M-12,Korean Hroparts,SMD,1,电子件,C165948,,unit,,,,
+"R1,R2",CC 下拉 5.1k,0402WGF5101TCE,UNI-ROYAL,0402,2,电子件,C25905,,unit,,,,
+R3-R4,10k 电阻,0402WGF1002TCE,UNI-ROYAL,0402,2,电子件,C25744,,unit,,,,EN 上拉、GPIO0 上拉
+C1-C4,100nF 去耦,CL05B104KO5NNNC,Samsung,0402,4,电子件,C1525,,unit,,,,
+C5-C7,10uF,CL10A106KP8NNNC,Samsung,0603,3,电子件,C19702,,unit,,,,
+C8,1uF（EN 延时）,CL05A105KA5NQNC,Samsung,0402,1,电子件,C52923,,unit,,,,
+"SW1,SW2",轻触按键（BOOT/RST）,TS-1187A-B-A-B,XKB,SMD 5.1x5.1,2,电子件,C318884,,unit,,,,
+DS1,0.96 寸 OLED 模块,,,模块,1,外购模块,,est:oled-0.96-module,unit,,,,
+PCB1,PCB 2 层,,,≤100x100mm,1,加工费,,jlcpcb:pcb-2l-proto-100x100,unit,0.02,,,按打样价折算（偏高）
+SMT1,贴片工程费,,,,1,加工费,,jlcpcb:pcba-setup,batch,,,,
+SMT2,钢网,,,,1,加工费,,jlcpcb:pcba-stencil,batch,,,,
+SMT3,贴片焊点费,,,,1,加工费,,jlcpcb:smt-joint,per_joint,,,,
+SMT4,扩展库换料费,,,,1,加工费,,jlcpcb:extended-part-loading,per_extended_type,,,,
+ENC1,外壳 MJF PA12（克）,,,,15,结构件,,jlc3dp:mjf-pa12-per-gram,unit,,,,示例假设 15 g
+ASM1,整机组装人工（分钟）,,,,5,加工费,,est:assembly-labor,unit,,,,示例假设每台 5 分钟
+PKG1,基础包装,,,,1,包装,,est:packaging-basic,unit,,,,

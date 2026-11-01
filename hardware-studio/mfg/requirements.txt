@@ -1,0 +1,6 @@
+# mfg/ 的依赖（顶层 requirements.txt 已包含，这里列出以便单独安装）
+PyYAML==6.0.3   # MIT，读写价格缓存
+pytest==9.2.0   # MIT，测试
+# 外部命令行工具（不随库分发）：
+#   git      —— jlcparts_import.py 读取 jlcparts 镜像
+#   kicad-cli（KiCad 8+，GPL，只作为外部程序调用）或 docker + kicad/kicad:9.0 镜像 —— kicad_check.py

@@ -1,0 +1,3 @@
+# render/ (F 线) 额外依赖。numpy / pillow / trimesh / PyYAML / build123d / matplotlib 在顶层 requirements.txt。
+# trimesh 的折边平滑法线（trimesh.graph.smooth_shade）需要 scipy。BSD-3-Clause。
+scipy==1.18.1

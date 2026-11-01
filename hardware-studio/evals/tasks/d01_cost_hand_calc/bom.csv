@@ -1,0 +1,11 @@
+ref,name,mpn,manufacturer,package,qty_per_unit,category,lcsc,price_key,cost_mode,attrition,joints,dnp,note
+U1,MCU module,,,,1,electronic,,t:mcu,unit,,,,
+R1-R4,resistor,,,0402,4,electronic,,t:res,unit,,,,
+C1-C3,capacitor,,,0402,3,electronic,,t:cap,unit,,,,
+DS1,OLED module,,,,1,module,,t:oled,unit,,,,
+PCB1,PCB,,,,1,process,,t:pcb,unit,,,,
+SMT1,SMT setup,,,,1,process,,t:setup,batch,,,,
+SMT2,SMT joints,,,,1,process,,t:joint,per_joint,,,,
+SMT3,extended part loading,,,,1,process,,t:ext,per_extended_type,,,,
+PKG1,box,,,,1,packaging,,t:pkg,unit,0,,,
+BAT1,battery (not fitted),,,,1,module,,,unit,,,y,

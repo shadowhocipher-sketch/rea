@@ -1,0 +1,50 @@
+# 产品简报（new-product skill 第 1 步）。
+# 检查：python .claude/skills/new-product/product.py check products/answer-box --step 1
+
+name: answer-box
+one_liner: 口袋大小的墨水屏"答案之书"：心里想一个问题，摇一摇，屏上换一句"答案"；不联网、充一次电用很久。
+
+scenario:
+  who: 年轻上班族、学生（成人向礼品，不按玩具/儿童用品设计）
+  where: 口袋、包里、办公桌上
+  when: 想不清楚、需要一点随机决定或放松的时候随手摇几下；每天几次到十几次，每次几秒；充电频率目标见 hardware_intent.battery_life_target
+  feeling: [像纸一样安静, 有一点仪式感, 俏皮]
+  interaction: 拿起来摇一摇 → 屏幕刷新出一句新"答案"；静置自动休眠，画面断电保持；USB-C 充电
+  not_doing: [联网/蓝牙/App, 声音和振动, 触摸屏, 自定义答案上传（第一版只内置答案库）, 背光]
+
+market:
+  regions: [CN]                  # 第一版只做国内；外销时加 EU/US 重跑第 7 步
+  channel: 小批量电商 / 礼品渠道（第一批 100 台试卖，第二批 1000 台）
+
+price:
+  currency: CNY
+  target_retail: 99              # 用户给的"单价目标 ¥99 以内"；按零售价理解见 open_questions
+  target_unit_cost: 99           # 本次按"单台到手成本（BOM + 加工 + 包装）≤ ¥99"检查；若 ¥99 是零售价，成本目标需要更低（倍率待定）
+  quantities: [100, 1000]
+
+features:
+  wireless: []                   # 主控模组带 Wi-Fi/BLE 射频但固件不开启——是否仍算无线设备，见 open_questions
+  connected: false
+  batteries: [lithium]
+  adapter: false                 # 只给 USB-C 口和线（或不给线），不随附充电头
+  children: false
+
+hardware_intent:
+  display: epaper
+  inputs: [accel]
+  outputs: []
+  power: lithium
+  battery_life_target: 充一次用 ≥ 1 个月（每天摇 20 次）——估算目标，待样机实测
+  size_limit_mm: [70, 50, 18]    # 口袋大小：不超过 70×50×18 mm
+
+enclosure_intent:
+  process: mjf                   # 100–1000 台按 cad/DFM.md 第 10 节选 MJF；首件也可 FDM 打样看手感
+  look: 暖白 / 浅灰尼龙磨砂，圆角，像一块小卵石；正面只有屏幕窗
+
+constraints:
+  - 单节锂聚合物软包电芯 + USB-C 充电
+  - 深睡为主，摇一摇由加速度计硬件中断唤醒
+open_questions:
+  - ¥99 是零售价还是单台成本？若是零售价，按渠道倍率倒推的成本上限由产品负责人在第 6 步后定
+  - 主控模组带射频但固件不开启：国内是否仍需 SRRC/无线相关评估，问检测机构（第 7 步）
+  - 中文答案需要设备端中文字库（点阵字体生成、Flash 占用），第 4 步模拟先用英文

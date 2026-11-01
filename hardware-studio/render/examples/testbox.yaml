@@ -1,0 +1,21 @@
+# Render self-test job: python render/render.py --config render/examples/testbox.yaml
+# Model: python render/examples/make_test_model.py  (writes test_model/)
+name: testbox
+out: out/testbox
+scene: studio            # studio | desk | plain
+views: [front, side, back, iso]
+exploded_views: [iso]    # exploded renders use each part's `explode` offset (mm)
+size: 1600x1200
+quality: final           # draft = fast preview
+parts:
+  - path: test_model/body.stl
+    color: "#EFE9DF"
+    material: satin
+  - path: test_model/screen.stl
+    color: "#1E2228"
+    material: glass
+    explode: [0, -15, 0]
+  - path: test_model/knob.step   # STEP works too (tessellated with build123d)
+    color: "#C9A27C"
+    material: matte
+    explode: [0, 0, 20]

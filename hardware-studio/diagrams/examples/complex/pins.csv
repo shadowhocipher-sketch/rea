@@ -1,0 +1,26 @@
+from_part,from_pin,to_part,to_pin,net,kind,note
+# 示例数据（虚构，用于测试排版），不是任何真实产品的引脚
+USB_C,VBUS,CHARGER,VIN,+5V,power,USB 受电
+USB_C,GND,CHARGER,GND,GND,ground,
+USB_C,CC1,CHARGER,CC1,CC1,signal,5.1k 下拉在模块上
+CHARGER,BAT,BATTERY,+,VBAT,power,单节锂电
+CHARGER,GND,BATTERY,-,GND,ground,
+CHARGER,VOUT,LDO,VIN,VSYS,power,
+LDO,VOUT,MCU,3V3,+3V3,power,
+LDO,GND,MCU,GND,GND,ground,
+MCU,3V3,OLED,VCC,+3V3,power,
+MCU,GND,OLED,GND,GND,ground,
+MCU,GPIO8,OLED,SDA,I2C_SDA,signal,I2C 400kHz
+MCU,GPIO9,OLED,SCL,I2C_SCL,signal,
+MCU,GPIO8,IMU,SDA,I2C_SDA,signal,与 OLED 共用总线
+MCU,GPIO9,IMU,SCL,I2C_SCL,signal,
+MCU,3V3,IMU,VDD,+3V3,power,
+MCU,GND,IMU,GND,GND,ground,
+MCU,GPIO4,IMU,INT1,IMU_INT,signal,中断，低有效
+MCU,GPIO2,BUTTON,A,BTN,signal,内部上拉
+MCU,GND,BUTTON,B,GND,ground,
+MCU,GPIO5,BUZZER,+,BUZZ,signal,PWM 2–4kHz
+MCU,GND,BUZZER,-,GND,ground,
+MCU,GPIO1,DIVIDER,MID,VBAT_SENSE,signal,ADC 量电
+BATTERY,+,DIVIDER,TOP,VBAT,power,
+DIVIDER,BOT,BATTERY,-,GND,ground,

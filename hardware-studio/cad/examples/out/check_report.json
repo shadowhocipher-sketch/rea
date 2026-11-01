@@ -1,0 +1,607 @@
+{
+  "name": "generic-box-example",
+  "process": "fdm",
+  "parts": {
+    "bottom": {
+      "bbox": {
+        "min": [
+          -48.0,
+          -30.0,
+          -0.0
+        ],
+        "max": [
+          48.0,
+          30.0,
+          24.93
+        ],
+        "size": [
+          96.0,
+          60.0,
+          24.93
+        ]
+      },
+      "volume_mm3": 28395.19,
+      "valid": true,
+      "wall": {
+        "n": 1500,
+        "min_wall_required": 1.2,
+        "min": 0.662,
+        "p01": 1.199,
+        "p05": 1.2,
+        "median": 2.7,
+        "fraction_below": 0.0007,
+        "thinnest_points": [
+          {
+            "xyz": [
+              1.84,
+              -27.86,
+              22.94
+            ],
+            "t": 0.662
+          },
+          {
+            "xyz": [
+              35.81,
+              -14.16,
+              3.99
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              32.45,
+              -16.26,
+              3.8
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              -34.79,
+              14.88,
+              6.77
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              33.24,
+              -14.76,
+              4.09
+            ],
+            "t": 1.199
+          }
+        ],
+        "note": "抽样估计；卡钩尖、圆角边缘等趋近 0 的几何也会计入，请看最薄点位置判断"
+      },
+      "bed": {
+        "part_size_sorted": [
+          24.93,
+          60.0,
+          96.0
+        ],
+        "bed_sorted": [
+          210.0,
+          220.0,
+          250.0
+        ],
+        "ok": true
+      }
+    },
+    "top": {
+      "bbox": {
+        "min": [
+          -48.0,
+          -30.0,
+          14.93
+        ],
+        "max": [
+          48.0,
+          30.0,
+          30.0
+        ],
+        "size": [
+          96.0,
+          60.0,
+          15.07
+        ]
+      },
+      "volume_mm3": 23354.84,
+      "valid": true,
+      "wall": {
+        "n": 1500,
+        "min_wall_required": 1.2,
+        "min": 1.199,
+        "p01": 1.199,
+        "p05": 1.2,
+        "median": 2.7,
+        "fraction_below": 0.0,
+        "thinnest_points": [
+          {
+            "xyz": [
+              23.83,
+              8.31,
+              23.93
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              28.89,
+              14.41,
+              26.68
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              24.37,
+              7.34,
+              24.23
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              25.21,
+              13.52,
+              24.04
+            ],
+            "t": 1.199
+          },
+          {
+            "xyz": [
+              31.0,
+              11.37,
+              24.78
+            ],
+            "t": 1.199
+          }
+        ],
+        "note": "抽样估计；卡钩尖、圆角边缘等趋近 0 的几何也会计入，请看最薄点位置判断"
+      },
+      "bed": {
+        "part_size_sorted": [
+          15.07,
+          60.0,
+          96.0
+        ],
+        "bed_sorted": [
+          210.0,
+          220.0,
+          250.0
+        ],
+        "ok": true
+      }
+    },
+    "cap_btn_a": {
+      "bbox": {
+        "min": [
+          24.0,
+          6.0,
+          18.8
+        ],
+        "max": [
+          32.0,
+          14.0,
+          31.0
+        ],
+        "size": [
+          8.0,
+          8.0,
+          12.2
+        ]
+      },
+      "volume_mm3": 317.05,
+      "valid": true,
+      "wall": {
+        "n": 1500,
+        "min_wall_required": 1.2,
+        "min": 1.2,
+        "p01": 1.2,
+        "p05": 1.2,
+        "median": 5.993,
+        "fraction_below": 0.0,
+        "thinnest_points": [
+          {
+            "xyz": [
+              27.26,
+              6.41,
+              21.8
+            ],
+            "t": 1.2
+          },
+          {
+            "xyz": [
+              30.73,
+              11.56,
+              23.0
+            ],
+            "t": 1.2
+          },
+          {
+            "xyz": [
+              26.58,
+              13.06,
+              21.8
+            ],
+            "t": 1.2
+          },
+          {
+            "xyz": [
+              28.5,
+              6.11,
+              23.0
+            ],
+            "t": 1.2
+          },
+          {
+            "xyz": [
+              27.17,
+              13.37,
+              23.0
+            ],
+            "t": 1.2
+          }
+        ],
+        "note": "抽样估计；卡钩尖、圆角边缘等趋近 0 的几何也会计入，请看最薄点位置判断"
+      },
+      "bed": {
+        "part_size_sorted": [
+          8.0,
+          8.0,
+          12.2
+        ],
+        "bed_sorted": [
+          210.0,
+          220.0,
+          250.0
+        ],
+        "ok": true
+      }
+    }
+  },
+  "warnings": [],
+  "interference": {
+    "pairs": [],
+    "total": 0.0,
+    "ok": true
+  },
+  "usb_plug_insertion": {
+    "usb_plug_overmold": {
+      "ok": true,
+      "interferes_with": []
+    }
+  },
+  "features": {
+    "display": {
+      "shape": "rect",
+      "opening": [
+        28.0,
+        16.0
+      ],
+      "warnings": [],
+      "step": [
+        36.6,
+        28.6,
+        0.8
+      ],
+      "bezel_thickness": 1.9
+    },
+    "btn_a": {
+      "bore_d": 6.6,
+      "cap_d": 6.0,
+      "sleeve_length": 4.0,
+      "wall": 2.7
+    },
+    "btn_b": {
+      "tongue": [
+        12.0,
+        7.0,
+        1.2
+      ],
+      "slot": 0.8,
+      "travel": 0.5,
+      "root_strain_est": 0.00625,
+      "strain_formula": "ε = 1.5·t·y/L²（DFM:SNAP-1，估算，未计入 3D 打印层间强度下降）",
+      "warnings": []
+    },
+    "usb": {
+      "recess": 1.0,
+      "opening": [
+        13.0,
+        7.1
+      ],
+      "rule": "recess>0：让开插头外壳 overmold",
+      "overmold_enters_wall_by": 1.0,
+      "defaults_note": "插座 / 插头外壳默认尺寸为估算或待核实，见 hwcad/usbc.py 与 DFM.md",
+      "warnings": []
+    },
+    "snap_py": {
+      "deflection": 0.6,
+      "root_strain_est": 0.0108,
+      "strain_formula": "ε = 1.5·t·y/(L²·Q)（DFM:SNAP-1/2，估算）",
+      "hook_z_range": [
+        22.944,
+        24.93
+      ],
+      "pocket_depth_into_wall": 0.8,
+      "wall_remaining_at_pocket": 1.9,
+      "warnings": []
+    },
+    "snap_ny": {
+      "deflection": 0.6,
+      "root_strain_est": 0.0108,
+      "strain_formula": "ε = 1.5·t·y/(L²·Q)（DFM:SNAP-1/2，估算）",
+      "hook_z_range": [
+        22.944,
+        24.93
+      ],
+      "pocket_depth_into_wall": 0.8,
+      "wall_remaining_at_pocket": 1.9,
+      "warnings": []
+    },
+    "battery": {
+      "cell": [
+        40.0,
+        30.0,
+        5.0
+      ],
+      "swell": 0.1,
+      "swollen_thickness": 5.5,
+      "required_height": 5.8,
+      "pocket_inner": [
+        41.0,
+        31.0
+      ],
+      "frame_outer": [
+        43.4,
+        33.4,
+        3.0
+      ],
+      "wire_side": "+x",
+      "source": "swell / xy_clearance / top_gap 为估算，见 DFM:BAT-1"
+    }
+  },
+  "fasteners": [
+    {
+      "name": "fastener_0",
+      "x": 42.0,
+      "y": 24.0,
+      "upper_boss": {
+        "kind": "self_tap",
+        "screw_d": 3.0,
+        "hole_d": 2.4,
+        "outer_d": 6.0,
+        "height": 12.38,
+        "min_engagement_recommended": 6.0,
+        "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+      },
+      "lower_post": {
+        "kind": "clearance_post",
+        "screw_d": 3.0,
+        "hole_d": 3.4,
+        "outer_d": 9.0,
+        "height": 12.040000000000001,
+        "source": "DFM:FAST-3（过孔 d+0.4，待核实）；外径为估算"
+      },
+      "counterbore_depth": 2.0,
+      "screw_length_suggest": 19.9,
+      "note": "建议螺丝长度 = 沉头底到分模面 + 拧入深度 - 0.5 mm（估算，向下取标准长度）"
+    },
+    {
+      "name": "fastener_1",
+      "x": -42.0,
+      "y": 24.0,
+      "upper_boss": {
+        "kind": "self_tap",
+        "screw_d": 3.0,
+        "hole_d": 2.4,
+        "outer_d": 6.0,
+        "height": 12.38,
+        "min_engagement_recommended": 6.0,
+        "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+      },
+      "lower_post": {
+        "kind": "clearance_post",
+        "screw_d": 3.0,
+        "hole_d": 3.4,
+        "outer_d": 9.0,
+        "height": 12.040000000000001,
+        "source": "DFM:FAST-3（过孔 d+0.4，待核实）；外径为估算"
+      },
+      "counterbore_depth": 2.0,
+      "screw_length_suggest": 19.9,
+      "note": "建议螺丝长度 = 沉头底到分模面 + 拧入深度 - 0.5 mm（估算，向下取标准长度）"
+    },
+    {
+      "name": "fastener_2",
+      "x": 42.0,
+      "y": -24.0,
+      "upper_boss": {
+        "kind": "self_tap",
+        "screw_d": 3.0,
+        "hole_d": 2.4,
+        "outer_d": 6.0,
+        "height": 12.38,
+        "min_engagement_recommended": 6.0,
+        "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+      },
+      "lower_post": {
+        "kind": "clearance_post",
+        "screw_d": 3.0,
+        "hole_d": 3.4,
+        "outer_d": 9.0,
+        "height": 12.040000000000001,
+        "source": "DFM:FAST-3（过孔 d+0.4，待核实）；外径为估算"
+      },
+      "counterbore_depth": 2.0,
+      "screw_length_suggest": 19.9,
+      "note": "建议螺丝长度 = 沉头底到分模面 + 拧入深度 - 0.5 mm（估算，向下取标准长度）"
+    },
+    {
+      "name": "fastener_3",
+      "x": -42.0,
+      "y": -24.0,
+      "upper_boss": {
+        "kind": "self_tap",
+        "screw_d": 3.0,
+        "hole_d": 2.4,
+        "outer_d": 6.0,
+        "height": 12.38,
+        "min_engagement_recommended": 6.0,
+        "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+      },
+      "lower_post": {
+        "kind": "clearance_post",
+        "screw_d": 3.0,
+        "hole_d": 3.4,
+        "outer_d": 9.0,
+        "height": 12.040000000000001,
+        "source": "DFM:FAST-3（过孔 d+0.4，待核实）；外径为估算"
+      },
+      "counterbore_depth": 2.0,
+      "screw_length_suggest": 19.9,
+      "note": "建议螺丝长度 = 沉头底到分模面 + 拧入深度 - 0.5 mm（估算，向下取标准长度）"
+    },
+    {
+      "name": "standoff_0",
+      "x": 34.0,
+      "y": 15.0,
+      "part": "lower",
+      "height": 9.01,
+      "kind": "self_tap",
+      "screw_d": 2.0,
+      "hole_d": 1.6,
+      "outer_d": 4.0,
+      "min_engagement_recommended": 4.0,
+      "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+    },
+    {
+      "name": "standoff_1",
+      "x": -34.0,
+      "y": 15.0,
+      "part": "lower",
+      "height": 9.01,
+      "kind": "self_tap",
+      "screw_d": 2.0,
+      "hole_d": 1.6,
+      "outer_d": 4.0,
+      "min_engagement_recommended": 4.0,
+      "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+    },
+    {
+      "name": "standoff_2",
+      "x": 34.0,
+      "y": -15.0,
+      "part": "lower",
+      "height": 9.01,
+      "kind": "self_tap",
+      "screw_d": 2.0,
+      "hole_d": 1.6,
+      "outer_d": 4.0,
+      "min_engagement_recommended": 4.0,
+      "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+    },
+    {
+      "name": "standoff_3",
+      "x": -34.0,
+      "y": -15.0,
+      "part": "lower",
+      "height": 9.01,
+      "kind": "self_tap",
+      "screw_d": 2.0,
+      "hole_d": 1.6,
+      "outer_d": 4.0,
+      "min_engagement_recommended": 4.0,
+      "source": "DFM:FAST-1 EJOT PT（注塑件比例；打印件需试样）"
+    }
+  ],
+  "printer": {
+    "name": "prusa_mk4s",
+    "bed": [
+      250.0,
+      210.0,
+      220.0
+    ]
+  },
+  "checks": {
+    "geometry_valid": true,
+    "interference_zero": true,
+    "usb_plug_fully_inserts": true,
+    "fits_printer_bed": true,
+    "spec_warnings": 0,
+    "wall_fraction_below_min": {
+      "bottom": 0.0007,
+      "top": 0.0,
+      "cap_btn_a": 0.0
+    }
+  },
+  "ok": true,
+  "slice": {
+    "bottom": {
+      "available": true,
+      "ok": true,
+      "slicer": "/usr/bin/prusa-slicer",
+      "filament_mm": 9321.77,
+      "filament_cm3": 22.42,
+      "time_text": "2h 47m 28s",
+      "time_s": 10048.0,
+      "settings": {
+        "layer_height": 0.2,
+        "infill": 0.15,
+        "supports": false,
+        "rotate_x": 0.0
+      },
+      "warnings": [
+        "[2026-11-01 03:08:54.195093] [0x00007fb3764fb6c0] [error]   Reversing even wall line causes it to be printed CCW instead of CW!",
+        "65 => Searching support spots"
+      ],
+      "note": "时间按 PrusaSlicer 默认通用配置估算；质量 = 体积 × 密度（密度待核实）",
+      "filament_g_est": 27.8
+    },
+    "top": {
+      "available": true,
+      "ok": true,
+      "slicer": "/usr/bin/prusa-slicer",
+      "filament_mm": 7656.11,
+      "filament_cm3": 18.42,
+      "time_text": "2h 5m 50s",
+      "time_s": 7550.0,
+      "settings": {
+        "layer_height": 0.2,
+        "infill": 0.15,
+        "supports": false,
+        "rotate_x": 180.0
+      },
+      "warnings": [
+        "65 => Searching support spots"
+      ],
+      "note": "时间按 PrusaSlicer 默认通用配置估算；质量 = 体积 × 密度（密度待核实）",
+      "filament_g_est": 22.84
+    },
+    "cap_btn_a": {
+      "available": true,
+      "ok": true,
+      "slicer": "/usr/bin/prusa-slicer",
+      "filament_mm": 138.29,
+      "filament_cm3": 0.33,
+      "time_text": "5m 6s",
+      "time_s": 306.0,
+      "settings": {
+        "layer_height": 0.2,
+        "infill": 0.15,
+        "supports": false,
+        "rotate_x": 0.0
+      },
+      "warnings": [
+        "65 => Searching support spots",
+        "print warning: Detected print stability issues:",
+        "Consider enabling supports."
+      ],
+      "note": "时间按 PrusaSlicer 默认通用配置估算；质量 = 体积 × 密度（密度待核实）",
+      "filament_g_est": 0.41
+    }
+  },
+  "elapsed_s": 13.0
+}

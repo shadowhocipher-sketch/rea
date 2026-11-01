@@ -1,0 +1,1 @@
+# knowledge/ 无额外依赖：check_sources.py 只用 Python 标准库；测试用顶层 requirements.txt 里的 pytest。

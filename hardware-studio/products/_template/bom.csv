@@ -1,0 +1,10 @@
+ref,name,mpn,manufacturer,package,qty_per_unit,category,lcsc,price_key,cost_mode,attrition,joints,dnp,note
+U1,TODO 主控模组或开发板,,,,1,电子件,,,unit,,,,填 lcsc 编号或 price_key
+PCB1,PCB 2 层,,,,1,加工费,,jlcpcb:pcb-2l-proto-100x100,unit,0.02,,,
+SMT1,贴片工程费,,,,1,加工费,,jlcpcb:pcba-setup,batch,,,,每批一次
+SMT2,钢网,,,,1,加工费,,jlcpcb:pcba-stencil,batch,,,,每批一次
+SMT3,贴片焊点费,,,,1,加工费,,jlcpcb:smt-joint,per_joint,,,,
+SMT4,扩展库换料费,,,,1,加工费,,jlcpcb:extended-part-loading,per_extended_type,,,,
+ENC1,外壳（克）,,,,0,结构件,,jlc3dp:mjf-pa12-per-gram,unit,,,,TODO 用第 5 步切片或体积估克数
+ASM1,组装人工（分钟）,,,,0,加工费,,est:assembly-labor,unit,,,,TODO 每台分钟数
+PKG1,包装,,,,1,包装,,est:packaging-basic,unit,,,,

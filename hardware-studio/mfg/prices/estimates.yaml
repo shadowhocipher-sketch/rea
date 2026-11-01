@@ -1,0 +1,62 @@
+# 估算价格：没有查到 B 级来源，由其他数据推算或按明确的假设取值。
+# 每条都写了 basis（依据和公式）。cost.py 把这些金额计入"估算"。
+# 用于具体产品时，应该用该产品的真实报价替换这些假设。
+- key: est:oled-0.96-module
+  mpn: 0.96 寸 128x64 I2C OLED 模块（带转接板，SSD1306/SSD1315 类）
+  currency: USD
+  moq: 1
+  breaks:
+  - {qty: 1, price: 2.79}
+  - {qty: 10, price: 2.37}
+  - {qty: 60, price: 2.09}
+  - {qty: 120, price: 1.82}
+  - {qty: 480, price: 1.70}
+  - {qty: 900, price: 1.64}
+  status: estimate
+  source_url: https://jlcpcb.com/partdetail/C18723026
+  date: '2026-11-01'
+  basis: >-
+    未查到 B 级的"模块"价格（这类模块主要在淘宝/AliExpress 卖，属 C 级，而且不同卖家的板子、驱动芯片和引脚顺序可能不同）。
+    以同尺寸裸屏 LCSC C18723026（X096-2864KSWPG01-H30，128x64，镜像快照 2026-10-31）的阶梯价为基础，
+    模块另有转接板、稳压和阻容，按裸屏价 × 1.5 估算（1.5 这个系数是假设，没有来源）：
+    1+ 1.8621×1.5=2.79；10+ 1.5769×1.5=2.37；60+ 1.3966×1.5=2.09；120+ 1.213×1.5=1.82；480+ 1.131×1.5=1.70；900+ 1.095×1.5=1.64。
+  note: 估算；量产时建议直接用裸屏上主板，省掉模块转接板
+- key: est:assembly-labor
+  mpn: 整机组装人工（装屏、装电池、合壳、功能测试）
+  currency: USD
+  unit: 分钟
+  breaks:
+  - {qty: 1, price: 0.07}
+  status: estimate
+  date: '2026-11-01'
+  basis: >-
+    未查到来源。假设工时费 ¥30/小时（假设值），按 1 USD = ¥7.2 换算（假设值，未查实时汇率）：
+    30 ÷ 60 ÷ 7.2 ≈ $0.069/分钟，取 $0.07。每台分钟数在 BOM 里给出。两个数都应该用实际报价替换。
+  note: 估算；纯假设参数
+- key: est:packaging-basic
+  mpn: 基础包装（自封袋 + 小纸盒 + 说明卡）
+  currency: USD
+  breaks:
+  - {qty: 1, price: 0.50}
+  - {qty: 500, price: 0.30}
+  status: estimate
+  date: '2026-11-01'
+  basis: >-
+    未查到 B 级来源（包装耗材不在立创/JLCPCB 元件库中）。$0.50 / 500+ $0.30 是假设值，
+    用来占位，让成本表不漏掉这一项；应向包装厂询价后替换。
+  note: 估算；纯假设参数
+- key: est:lipo-402030-200mah
+  mpn: 402030 单节锂聚合物软包电芯 3.7 V 约 200 mAh（30×20×4 mm，带保护板 PCM + 引线）
+  currency: USD
+  moq: 1
+  breaks:
+  - {qty: 1, price: 1.91}
+  status: estimate
+  source_url: https://www.ebay.de/itm/121857264843
+  date: '2026-11-01'
+  basis: >-
+    未查到 B 级价格（2026-11-01 用 WebSearch 限定 lcsc.com / szlcsc.com / jlcpcb.com 搜索 "Lithium Polymer battery 3.7V 200mAh"，
+    只返回电池管理 IC；EEMB 官网 www.eemb.com 本会话 DNS 不可解析）。只有 C 级零售价线索（搜索摘要）：
+    eBay 4 只装 US$7.64（≈ $1.91/只）、reach.dog $4.31、eBay 单只 $5.94。取最低的 $1.91/只作估算，
+    不再打批量折扣（没有依据）。是否带 PCM 各卖家不同，下单前要求供应商给规格书和 UN38.3 报告。
+  note: 估算；向电芯厂询价后替换。尺寸来源见使用它的产品 selection.md

@@ -1,0 +1,8 @@
+name: "(b) 不联网的口袋设备（锂电池 + 充电口）"
+note: 无任何无线功能；USB 充电口，包装内不含充电器
+wireless: []
+connected: false
+batteries: [lithium]
+adapter: false
+children: false
+markets: [CN, EU, US, UK, AU]

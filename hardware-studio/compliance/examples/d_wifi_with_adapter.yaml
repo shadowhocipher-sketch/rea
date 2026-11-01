@@ -1,0 +1,8 @@
+name: "(d) 带电源适配器的 Wi-Fi 设备"
+note: 包装内随附交流市电适配器，无电池
+wireless: [wifi]
+connected: true
+batteries: []
+adapter: true
+children: false
+markets: [CN, EU, US, UK, AU]

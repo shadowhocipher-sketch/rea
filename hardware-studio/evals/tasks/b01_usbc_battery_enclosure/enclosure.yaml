@@ -1,0 +1,35 @@
+# Eval fixture (generic pocket gadget, not a real product): PCB on standoffs above a pouch cell,
+# USB-C on the -x side wall, rectangular screen window on top, one round button.
+# Stack (Z, mm): floor inner 2.7 -> cell 6 (+10 % swell) -> standoffs 8 -> PCB 10.7..12.3
+#                -> USB-C receptacle centre 12.3 + 1.63 = 13.93 (= split_z) -> top inner 22-2.7 = 19.3
+name: eval-b01-pocket
+process: fdm
+printer: prusa_mk4s
+shell:
+  size: [70, 45, 22]
+  wall: 2.7
+  corner_radius: 5
+  edge_radius: 1.2
+  split_z: 13.93
+  lip: {height: 2.0, thickness: 1.2, clearance: 0.3}
+standoffs:
+  - {x: 27,  y: 13,  part: lower, kind: self_tap, thread: M2, height: 8}
+  - {x: -27, y: 13,  part: lower, kind: self_tap, thread: M2, height: 8}
+  - {x: 27,  y: -13, part: lower, kind: self_tap, thread: M2, height: 8}
+  - {x: -27, y: -13, part: lower, kind: self_tap, thread: M2, height: 8}
+screen_windows:
+  - {name: display, face: top, u: 4, v: 0, shape: rect, width: 26, height: 14, corner_radius: 1}
+buttons:
+  - {name: btn, face: top, u: -24, v: 0, type: hole, diameter: 5, plunger_length: 1.0, cap: true}
+usb_c:
+  - {name: usb, face: -x, u: 0, v: 13.93, recess: 0.5}
+battery:
+  x: 4
+  y: 0
+  cell: [40, 30, 6]
+  swell: 0.10
+  wire_side: +x
+components:
+  - {name: pcb, size: [60, 34, 1.6], center: [0, 0], z: 10.7}
+  - {name: display_module, size: [30, 18, 3], center: [4, 0], z: 15.6}
+  - {name: tact_switch, size: [6, 6, 3.5], center: [-24, 0], z: 12.3}

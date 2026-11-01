@@ -1,0 +1,7 @@
+name: eval-e02 BLE 儿童玩具（CR2032 纽扣电池，不联网）
+wireless: [ble]
+connected: false
+batteries: [coin]
+adapter: false
+children: true
+markets: [US, EU, AU]

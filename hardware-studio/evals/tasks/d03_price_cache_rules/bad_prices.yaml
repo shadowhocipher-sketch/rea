@@ -1,0 +1,35 @@
+# Eval fixture: a price cache with four entries that break research-method rules on purpose,
+# and one valid entry.  Expected (by hand, from research-method + mfg/README.md section 3):
+#   e:no-url        quote without source_url            -> must be rejected
+#   e:no-basis      estimate without basis              -> must be rejected
+#   e:no-date       unverified without date             -> must be rejected
+#   e:bad-status    status "guess" (not quote/unverified/estimate) -> must be rejected
+#   e:ok            valid quote                          -> must NOT be named in the errors
+- key: e:no-url
+  currency: USD
+  breaks: [{qty: 1, price: 0.1}]
+  status: quote
+  date: '2026-11-01'
+- key: e:no-basis
+  currency: USD
+  breaks: [{qty: 1, price: 0.1}]
+  status: estimate
+  date: '2026-11-01'
+- key: e:no-date
+  currency: USD
+  breaks: [{qty: 1, price: 0.1}]
+  status: unverified
+  source_url: https://example.invalid/x
+  basis: search snippet
+- key: e:bad-status
+  currency: USD
+  breaks: [{qty: 1, price: 0.1}]
+  status: guess
+  source_url: https://example.invalid/y
+  date: '2026-11-01'
+- key: e:ok
+  currency: USD
+  breaks: [{qty: 1, price: 0.1}]
+  status: quote
+  source_url: https://example.invalid/z
+  date: '2026-11-01'

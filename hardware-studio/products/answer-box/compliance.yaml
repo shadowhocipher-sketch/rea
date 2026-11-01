@@ -1,0 +1,10 @@
+# 由 brief.yaml 生成（product.py compliance-yaml）；改特征请改 brief.yaml 再重新生成
+name: answer-box
+wireless: []
+connected: false
+batteries:
+- lithium
+adapter: false
+children: false
+markets:
+- CN

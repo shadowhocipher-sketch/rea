@@ -1,0 +1,23 @@
+# Renders B's example enclosure (cad/examples/generic_box.yaml -> cad/examples/out/).
+#   python render/render.py --config render/examples/generic_box.yaml
+#   python render/render.py --config render/examples/generic_box.yaml --scene desk --props book,pencil --views iso,front
+# Colours/materials here are illustrative choices, not a product decision.
+name: generic-box
+out: out/generic-box
+scene: studio
+views: [front, side, back, iso]
+exploded_views: [iso]
+size: 1600x1200
+quality: final
+parts:
+  - path: ../../cad/examples/out/bottom.stl
+    color: "#C9A27C"
+    material: matte
+  - path: ../../cad/examples/out/top.step        # STEP input exercised on purpose
+    color: "#EFE9DF"
+    material: satin
+    explode: [0, 0, 28]
+  - path: ../../cad/examples/out/cap_btn_a.stl
+    color: "#3A3F47"
+    material: rubber
+    explode: [0, 0, 48]

@@ -1,0 +1,54 @@
+# answer-box 外壳（第 5 步）。起点 cad/examples/generic_box.yaml；格式见 cad/README.md。单位 mm。
+# 元器件包络和来源见 selection.md "元器件包络"。由内而外的 Z 层叠（底面外表面 Z=0）：
+#   底板 0–2.4 → 电池 2.4–6.8（4.0 + 膨胀 10%）+ 顶部间隙 → PCB 7.3–8.3（1.0 mm 板，估算）
+#   → 器件：C3 模组 8.3–11.3、USB-C 插座 8.3–11.56（中心 9.93 = split_z）→ 墨水屏模块 12.0–15.0
+#   → 顶板内表面 14.2，屏幕台阶挖进 0.8 到 15.0 → 外形高 16.6（brief 上限 18）
+name: answer-box
+process: mjf             # 100–1000 台：cad/DFM.md 第 10 节"20–300 光固化或 MJF / 300–2000 MJF 与快速模比价"
+printer: {name: jlc3dp-mjf-assumed, bed: [380, 284, 380]}   # 外包 MJF，平台尺寸为估算占位（零件只有 58 mm，不构成约束）
+
+shell:
+  size: [58, 42, 16.6]
+  wall: 2.4              # MJF 最小壁厚 1.0：止口 1.0 + 间隙 0.3 + 上壳剩余 1.1，三者都 ≥ 1.0
+  corner_radius: 8       # 卵石感：大圆角
+  edge_radius: 2.0
+  split_z: 9.93          # USB-C 插座中心高度 = PCB 顶面 8.3 + 插座半高 1.63
+  style: top_bottom
+  lip: {height: 1.8, thickness: 1.0, clearance: 0.3}
+
+# 不用螺丝：内腔几乎被 48×33 的屏幕模块占满，四角放不下螺丝柱；两侧各一个卡扣
+snaps:
+  - {name: snap_py, face: +y, u: 0, length: 3.6, thickness: 1.0, width: 8, undercut: 0.4, gap: 0.2, root_height: 2.5}
+  - {name: snap_ny, face: -y, u: 0, length: 3.6, thickness: 1.0, width: 8, undercut: 0.4, gap: 0.2, root_height: 2.5}
+
+# PCB 支柱（下壳底板 → PCB 底面 7.3），放在电池仓外
+standoffs:
+  - {x: 21,  y: 12,  part: lower, kind: plain, outer_d: 3.6, hole_d: 1.6, height: 4.9}
+  - {x: -21, y: 12,  part: lower, kind: plain, outer_d: 3.6, hole_d: 1.6, height: 4.9}
+  - {x: 21,  y: -12, part: lower, kind: plain, outer_d: 3.6, hole_d: 1.6, height: 4.9}
+  - {x: -21, y: -12, part: lower, kind: plain, outer_d: 3.6, hole_d: 1.6, height: 4.9}
+
+screen_windows:
+  # 可视区 27.6×27.6（屏幕规格），开口每边 +0.5；模块外形 48×33 嵌进 0.8 深台阶
+  - {name: display, face: top, u: 0, v: 0, shape: rect, width: 27.6, height: 27.6, corner_radius: 1, margin: 0.5,
+     step: {width: 48, height: 33, depth: 0.8, corner_radius: 0.5}}
+
+usb_c:
+  - {name: usb, face: -x, u: 0, v: 9.93, recess: 0.6}
+
+battery:
+  x: 3
+  y: 0
+  cell: [30, 20, 4.0]    # 402030 软包电芯 长 宽 厚（卖家页 C 级，待核实）
+  swell: 0.10            # 估算（DFM.md BAT-1）
+  xy_clearance: 0.5
+  rib_height: 2.5
+  wire_side: -x
+  top_gap: 0.3
+
+components:
+  - {name: pcb, size: [46, 30, 1.0], center: [0, 0], z: 7.3}
+  - {name: mcu_module, size: [16.6, 13.2, 3.0], center: [8, 4], z: 8.3}          # C3-MINI-1 16.6×13.2（立创描述），高 3.0 估算
+  - {name: accel, size: [3, 3, 1.0], center: [-6, -8], z: 8.3}                 # LIS3DH LGA-16 3×3×1（估算，按封装名）
+  - {name: charger, size: [5, 4, 1.6], center: [-10, 8], z: 8.3}               # TP4056 ESOP-8（估算包络）
+  - {name: epd_module, size: [48, 33, 3.0], center: [0, 0], z: 12.0}           # Waveshare 1.54" 模块外形 48×33（B），厚 3.0 估算
